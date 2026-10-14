@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-08",
+  "python_executable": "C:\\Users\\chx_g\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+  "python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "modules": {
+    "numpy": {
+      "import_ok": true,
+      "version": "2.3.5"
+    },
+    "matplotlib": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'matplotlib'"
+    },
+    "pandas": {
+      "import_ok": true,
+      "version": "3.0.1"
+    },
+    "scipy": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'scipy'"
+    },
+    "tkinter": {
+      "import_ok": true,
+      "version": "未由模块提供"
+    },
+    "h5py": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'h5py'"
+    },
+    "PyQt6": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'PyQt6'"
+    },
+    "PyQt6.QtWebEngineWidgets": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'PyQt6'"
+    },
+    "pytest": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'pytest'"
+    },
+    "ruff": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'ruff'"
+    },
+    "serial": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'serial'"
+    },
+    "pyftdi": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'pyftdi'"
+    },
+    "usb": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'usb'"
+    },
+    "ftd2xx": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'ftd2xx'"
+    },
+    "ftd3xx": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'ftd3xx'"
+    },
+    "sklearn": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'sklearn'"
+    },
+    "filterpy": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'filterpy'"
+    },
+    "crcmod": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'crcmod'"
+    },
+    "openEMS": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'openEMS'"
+    },
+    "CSXCAD": {
+      "import_ok": false,
+      "error": "ModuleNotFoundError: No module named 'CSXCAD'"
+    }
+  },
+  "scope": "仅本次明确指定的 bundled Python；不能外推到其他虚拟环境或系统安装"
+}

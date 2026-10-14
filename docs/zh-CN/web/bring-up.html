@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>硬件上板调试计划</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="../index.html">中文资料目录</a> · <a href="bring-up.md">查看 Markdown</a></header><main><p>原文：<code>docs/bring-up.html</code><br>原文 SHA256：<code>BCA59F2E2372EF7A356264D1F1684621C98661E1286ED0C2EB0BB8A37FCF5CE6</code><br>翻译日期：2026-10-08。以下为原文全文中文译文；状态、产物、测试数及“已验证”均转述原文，不代表本次新增验证。原文未标明页面发布日期；文中的 2026-03-21 为产物/构建日期。源文不一致项见<a href="%E5%AE%A1%E9%98%85%E5%8F%91%E7%8E%B0.html">审阅发现</a>。</p>
+<p>导航：<a href="index.html">AERIS-10 文档</a> · <a href="architecture.html">架构</a> · <a href="implementation-log.html">实现日志</a> · <a href="bring-up.html">上板调试</a> · <a href="reports.html">报告</a> · <a href="release-notes.html">发布说明</a></p>
+<h1>硬件上板调试计划</h1>
+<p>执行检查清单。</p>
+<p>FPGA 模块和载板首次调试的到货前完整性门禁、首次上板冒烟测试和故障定位规则。</p>
+<p><a href="board-day-worksheet.html">打开首次上板工作表</a> · <a href="reports.html">打开产物清单</a></p>
+<h2>到货前完整性门禁</h2>
+<table>
+<thead>
+<tr>
+<th>门禁</th>
+<th>目标</th>
+<th>通过标准</th>
+<th>证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>冻结已知可用的固件和比特流基线</td>
+<td>已有跟踪提交、命名产物集和可重复的烧录流程</td>
+<td>Git 提交、比特流路径、报告、烧录 TCL；心跳镜像位于 <code>docs/artifacts/te0713-te0701-heartbeat-2026-03-21.bit</code>；FT601 集成开发镜像位于 <code>docs/artifacts/te0713-te0701-umft601x-dev-2026-03-21.bit</code>（WNS +0.059 ns，时序无违例）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>保持干净的实现约束</td>
+<td>WNS/WHS/WPWS 为正、XDCB-5 已清除，仅剩已记录的方法学遗留项</td>
+<td>时序摘要及方法学报告</td>
+</tr>
+<tr>
+<td>3</td>
+<td>到货前保持回归通过</td>
+<td>MCU 主机测试和 FPGA 回归/集成套件在跟踪代码树上通过</td>
+<td>15/15 MCU 和 18/18 FPGA 日志</td>
+</tr>
+<tr>
+<td>4</td>
+<td>使首次上电行为可观测</td>
+<td>可通过日志或状态输出识别时钟、LO、波束形成器、PA 和 USB 状态</td>
+<td>DIAG 覆盖、状态字段、ILA/调试计划</td>
+</tr>
+<tr>
+<td>5</td>
+<td>准备板卡到货执行清单</td>
+<td>已编写并审阅上电顺序、中止标准和主机采集步骤</td>
+<td>本页及报告、脚本引用</td>
+</tr>
+<tr>
+<td>6</td>
+<td>记录未解决的硬件到货前风险</td>
+<td>明确列出开放问题，正确解释 Day-0 发现</td>
+<td>下方已知开放风险章节</td>
+</tr>
+</tbody></table>
+<h2>板卡到货冒烟测试</h2>
+<ol>
+<li>上电前检查载板默认配置、稳压器使能、跳线及所有板级时钟源选择。</li>
+<li>以最安全配置为载板和模块上电，保持射频发射路径禁用，立即记录电流。</li>
+<li>执行 FPGA 烧录流程，验证 JTAG 枚举，并通过硬件管理器脚本确认 DONE 和 INIT_COMPLETE。</li>
+<li>在使能任何依赖模拟或射频的功能前，检查确定的复位释放和心跳/状态输出。</li>
+<li>启用 MCU 固件日志，确认 AD9523 状态引脚、LO 初始化结果以及波束形成器通信回读。</li>
+<li>使用带调试能力的 FPGA 镜像和探针，依次确认原始 ADC、DDC、匹配滤波器和 USB 路径活动。</li>
+<li>在任何长时间流式传输测试前，按已知帧结构预期检验 FT601 路径。</li>
+<li>仅在前面所有步骤通过后，开始 PA 偏置、校准和风险更高的射频激活。</li>
+</ol>
+<h2>中止标准</h2>
+<ul>
+<li>出现意外电源轨电流、稳压器不稳定，或温升超过计划空闲范围时，立即停止。</li>
+<li>若锁定 GPIO 与锁定状态回读反复不一致，不得越过 LO 上板调试阶段继续。</li>
+<li>若任一波束形成器的 scratchpad/回读检查失败，停止射频激活。</li>
+<li>若帧结构、背压或总线方向行为不一致，不得继续 USB 压力测试。</li>
+<li>若复位时序或时钟存在性不明确，退回心跳或调试镜像。</li>
+<li>调整上板调试专用目标时，保持生产目标约束和引脚分配源文件不变。</li>
+</ul>
+<h2>首次上电可观测性目标</h2>
+<table>
+<thead>
+<tr>
+<th>子系统</th>
+<th>必须可见的内容</th>
+<th>预期证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FPGA 配置</td>
+<td>JTAG 枚举、DONE、INIT_COMPLETE、可选 ILA 探针存在性</td>
+<td><code>program_fpga.tcl</code> 摘要及硬件管理器状态</td>
+</tr>
+<tr>
+<td>时钟</td>
+<td>AD9523 状态引脚及确定的下游复位释放</td>
+<td>DIAG 时钟消息及状态 GPIO 快照</td>
+</tr>
+<tr>
+<td>LO 链</td>
+<td>ADF4382A 初始化状态、定时同步路径状态、TX/RX 锁定状态</td>
+<td>USART3 DIAG 日志及锁定 GPIO 行为</td>
+</tr>
+<tr>
+<td>波束形成器控制</td>
+<td>各器件通信基本检查及基本温度回读</td>
+<td>ADAR1000 scratchpad/回读及温度打印</td>
+</tr>
+<tr>
+<td>PA 偏置</td>
+<td>DAC/ADC 上板调试进展及 IDQ 校准收敛边界</td>
+<td>含停止条件的逐通道 PA DIAG 输出</td>
+</tr>
+<tr>
+<td>FPGA 数据路径</td>
+<td>依次可见 ADC、DDC、匹配滤波器和 USB 路径活动</td>
+<td>ILA 采集及系统状态输出</td>
+</tr>
+<tr>
+<td>USB/FT601 链路</td>
+<td>帧结构稳定、无明显欠载/背压意外、主机解码基本正常</td>
+<td>主机采集脚本输出及稳定数据包边界</td>
+</tr>
+</tbody></table>
+<h2>硬件到货前所需产物</h2>
+<ul>
+<li>命名的固件基线提交及 MCU 镜像构建说明。</li>
+<li>命名的 FPGA 基线比特流及调试所需的配套 <code>.ltx</code> 探针文件；当前低风险心跳产物为 <code>docs/artifacts/te0713-te0701-heartbeat-2026-03-21.bit</code>。</li>
+<li>当前生产目标 XDC、时序摘要和方法学报告。</li>
+<li>基线和调试镜像的烧录、调试 TCL 脚本。</li>
+<li>跟踪分支回归证据：MCU 主机套件和 FPGA 回归/集成套件。</li>
+<li>Day-0 测量表，覆盖电源电流、温度和观测到的状态输出。</li>
+</ul>
+<p><a href="reports.html">查看具体产物清单</a></p>
+<h2>主机端工具和工作流程</h2>
+<ul>
+<li>使用已提交 Vivado TCL 脚本及 2026-03-21 构建的 TE0713 心跳基线进行 JTAG 烧录。</li>
+<li>在 USART3 采集串口日志，保留上板调试日志时间戳。</li>
+<li>使用 FT601 或主机 USB 采集/解码流程，验证帧结构和载荷稳定性。</li>
+<li>使用 ILA 采集流程，检查原始 ADC、DDC、匹配滤波器和 USB 时钟域检查点。</li>
+<li>为基线镜像、调试镜像和回退镜像选择准备可重复的检查清单。</li>
+</ul>
+<p><a href="board-day-worksheet.html">打开可打印工作表</a></p>
+<h2>板卡到货前已知开放风险</h2>
+<table>
+<thead>
+<tr>
+<th>风险</th>
+<th>当前状态</th>
+<th>Day-0 处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FT601 方法学遗留警告</td>
+<td>生产目标 XDC 清理已验证，但仍记录一个 <code>ft601_txe</code> 方法学遗留项。</td>
+<td>视为已知观测项；进一步改动约束前，先验证实际 FT601 状态行为。</td>
+</tr>
+<tr>
+<td>射频控制路径真实性</td>
+<td>固件顺序和诊断已改善，但 LO 同步、相位行为和波束形成器控制仍需物理验证。</td>
+<td>上板调试优先回读，不得仅凭仿真或日志假定模拟行为。</td>
+</tr>
+<tr>
+<td>原型级顶层功能假设</td>
+<td>活动 FPGA 基线回归通过，但某些雷达功能行为仍需在实际 I/O 条件下进行真实板卡确认。</td>
+<td>在宣称完整流式传输能力前，用 ILA 和主机采集逐级验证数据路径。</td>
+</tr>
+<tr>
+<td>PA 校准边界</td>
+<td>IDQ 校准逻辑比之前安全得多，但真实器件收敛及裕量限制尚未经板卡验证。</td>
+<td>采用保守限制，逐通道观测，异常电流或通道不收敛时停止。</td>
+</tr>
+<tr>
+<td>板卡专用集成未知项</td>
+<td>载板/模块交互、电源轨、时钟及连接器假设仍有部分需在首次装配后验证。</td>
+<td>启用更高能量子系统前，先从已跟踪 TE0713/TE0701 心跳镜像和配置检查开始。</td>
+</tr>
+</tbody></table>
+<p>本页是到货前准备及首次上电执行的操作依据。</p>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

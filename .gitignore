@@ -39,6 +39,8 @@
 # Python
 __pycache__/
 *.pyc
+.venv/
+.tools/
 
 # Local organization/archival folders (not part of repo source)
 10_docs/

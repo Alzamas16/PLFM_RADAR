@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-08",
+  "baseline_files": 894,
+  "source_files_changed": [
+    ".gitignore",
+    "README.md"
+  ],
+  "authorized_source_changes": [
+    ".gitignore",
+    "README.md"
+  ],
+  "unauthorized_source_changes": [],
+  "covered_sources": 18,
+  "translation_files": 17,
+  "original_markdown_html_count": 14,
+  "uncovered_markdown_html": [],
+  "html_readers": 24,
+  "local_links_checked": 219,
+  "errors": [],
+  "scope": "结构/覆盖/指纹/链接检查；不验证逐句翻译、远程链接、工程测试或硬件性能"
+}

@@ -1,0 +1,13 @@
+scenario = sine_1mhz
+n_adc_in   = 16384
+n_cic_out  = 4093
+n_fir_out  = 4087
+n_bb_out   = 4085
+fir_i[0:8] = [0, 0, 0, 0, 0, 0, 0, 0]
+fir_q[0:8] = [0, 0, 0, 0, 0, 0, -1, -1]
+fir_i[-4:] = [-1583, -1617, -1731, -1793]
+fir_i nonzero count = 4077
+fir_i mean(last 1000) = 20.4800
+compare_sine_1mhz.csv rows = 4084
+max|py_i - fir_i_raw| over first 4084 = 0
+py_i[0:8]  = [0, 0, 0, 0, 0, 0, 0, 0]

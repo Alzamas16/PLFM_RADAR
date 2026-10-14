@@ -1,0 +1,174 @@
+{
+  "created_at": "2026-10-08T22:42:38.613645+08:00",
+  "python_version": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+  "python_executable": "D:\\PhD_Prj_Main\\PLFM_RADAR\\.venv\\Scripts\\python.exe",
+  "base_prefix": "C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0",
+  "venv_prefix": "D:\\PhD_Prj_Main\\PLFM_RADAR\\.venv",
+  "include_system_site_packages": false,
+  "installation_gate": "Socket Firewall Free v1.15.4; asset SHA256 verified",
+  "installation_command": "sfw uv pip install --python .venv/Scripts/python.exe --no-python-downloads -r requirements-local.txt --group dev",
+  "inputs": {
+    "requirements-local.txt": "99c9499e241de1609bdfd2d87ed71ec78b3a789c6c986a44ebd38a04b14bc2f0",
+    "pyproject.toml": "395a9a7cad44dc1f1d3160be23c748fe6191f0b3097e7cdabef953a9816df235",
+    "9_Firmware/9_3_GUI/requirements_dashboard.txt": "99b2a6d052fc289616be8cc1f794e406cf6008602d55d36c0473896727555d89",
+    "9_Firmware/9_3_GUI/requirements_v7.txt": "f684ff30cd293da35b72f539412705b884b6e7e253119bd29b1d843640efbcc6",
+    "9_Firmware/9_3_GUI/requirements_pyqt_gui.txt": "afe5889aed6549896ce6be89bbe17079023fe73754f1311c46b0a7a4e5945022"
+  },
+  "packages": [
+    {
+      "name": "cloudpickle",
+      "version": "3.1.2"
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6"
+    },
+    {
+      "name": "contourpy",
+      "version": "1.4.0"
+    },
+    {
+      "name": "crcmod",
+      "version": "1.7"
+    },
+    {
+      "name": "cycler",
+      "version": "0.12.1"
+    },
+    {
+      "name": "filterpy",
+      "version": "1.4.5"
+    },
+    {
+      "name": "fonttools",
+      "version": "4.66.1"
+    },
+    {
+      "name": "h5py",
+      "version": "3.16.0"
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.1"
+    },
+    {
+      "name": "joblib",
+      "version": "1.6.0"
+    },
+    {
+      "name": "kiwisolver",
+      "version": "1.5.1"
+    },
+    {
+      "name": "matplotlib",
+      "version": "3.11.2"
+    },
+    {
+      "name": "narwhals",
+      "version": "2.26.0"
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.3"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3"
+    },
+    {
+      "name": "pandas",
+      "version": "3.0.6"
+    },
+    {
+      "name": "pillow",
+      "version": "12.3.0"
+    },
+    {
+      "name": "pip",
+      "version": "26.1.2"
+    },
+    {
+      "name": "pluggy",
+      "version": "1.6.0"
+    },
+    {
+      "name": "pyftdi",
+      "version": "0.57.2"
+    },
+    {
+      "name": "Pygments",
+      "version": "2.21.0"
+    },
+    {
+      "name": "pyparsing",
+      "version": "3.3.3"
+    },
+    {
+      "name": "PyQt6",
+      "version": "6.11.0"
+    },
+    {
+      "name": "PyQt6-Qt6",
+      "version": "6.11.2"
+    },
+    {
+      "name": "PyQt6-WebEngine",
+      "version": "6.11.0"
+    },
+    {
+      "name": "PyQt6-WebEngine-Qt6",
+      "version": "6.11.2"
+    },
+    {
+      "name": "PyQt6_sip",
+      "version": "13.13.0"
+    },
+    {
+      "name": "pyserial",
+      "version": "3.5"
+    },
+    {
+      "name": "pytest",
+      "version": "9.1.1"
+    },
+    {
+      "name": "python-dateutil",
+      "version": "2.9.0.post0"
+    },
+    {
+      "name": "pyusb",
+      "version": "1.3.1"
+    },
+    {
+      "name": "ruff",
+      "version": "0.16.10"
+    },
+    {
+      "name": "scikit-learn",
+      "version": "1.9.1"
+    },
+    {
+      "name": "scipy",
+      "version": "1.18.1"
+    },
+    {
+      "name": "six",
+      "version": "1.17.0"
+    },
+    {
+      "name": "threadpoolctl",
+      "version": "3.7.0"
+    },
+    {
+      "name": "tzdata",
+      "version": "2026.5"
+    },
+    {
+      "name": "uv",
+      "version": "0.12.23"
+    }
+  ],
+  "installed_distribution_count": 38,
+  "lock_file": "requirements-local.lock.txt",
+  "lock_sha256": "ce3e0cd82c27f2567c7c1cb87088c8801ec1f06c06b69eb6299a974cdd753e45"
+}

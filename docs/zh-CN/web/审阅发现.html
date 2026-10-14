@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>网站资料盘点与审阅发现</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="../index.html">中文资料目录</a> · <a href="%E5%AE%A1%E9%98%85%E5%8F%91%E7%8E%B0.md">查看 Markdown</a></header><main><h1>网站资料盘点与审阅发现</h1>
+<p>盘点日期：2026-10-08。范围：<code>docs</code> 下 7 个英文 HTML 的可见正文、导航、表格和链接。中文全文译文保存在本目录。原始 HTML 未修改；各译文首部记录对应源文件 SHA256。源文件发布日期未标注，报告中的 2026-03-20、产物中的 2026-03-21 原样保留。本次未读取 PDF 内容、未联网、未访问远程 Vivado 主机、未运行固件/FPGA 回归、未进行硬件测量。</p>
+<h2>完成的资料映射</h2>
+<table>
+<thead>
+<tr>
+<th>原文</th>
+<th>中文全文</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>docs/index.html</code></td>
+<td><a href="index.html">index.md</a></td>
+<td>文档站入口、旧时序与回归状态、近期变更</td>
+</tr>
+<tr>
+<td><code>docs/architecture.html</code></td>
+<td><a href="architecture.html">architecture.md</a></td>
+<td>数据路径、目标拆分策略、架构图</td>
+</tr>
+<tr>
+<td><code>docs/implementation-log.html</code></td>
+<td><a href="implementation-log.html">implementation-log.md</a></td>
+<td>Build 17–25 及固件、USB、CFAR、MTI 变更</td>
+</tr>
+<tr>
+<td><code>docs/bring-up.html</code></td>
+<td><a href="bring-up.html">bring-up.md</a></td>
+<td>到货前门禁、冒烟测试、中止标准、开放风险</td>
+</tr>
+<tr>
+<td><code>docs/reports.html</code></td>
+<td><a href="reports.html">reports.md</a></td>
+<td>Build 24/25 完整 15 项报告、产物目录、仿真报告引用</td>
+</tr>
+<tr>
+<td><code>docs/release-notes.html</code></td>
+<td><a href="release-notes.html">release-notes.md</a></td>
+<td>提交时间线、标签发布、架构缺口状态、提交链接</td>
+</tr>
+<tr>
+<td><code>docs/board-day-worksheet.html</code></td>
+<td><a href="board-day-worksheet.html">board-day-worksheet.md</a></td>
+<td>首次上板可填写工作表</td>
+</tr>
+</tbody></table>
+<h2>已验证的翻译与本地引用检查</h2>
+<ul>
+<li>7 个源 HTML 的 SHA256 与各译文首部记录一致；在本子任务开始及结束时计算的源哈希一致。</li>
+<li>原文共 98 个 <code>h1/h2/h3</code> 标题，译文保留对应 98 个标题。</li>
+<li>原文共 254 个表格行，译文保留这些行；工作表另加 2 行 Markdown 必需的列标题，对应原文无表头的元数据表和结果表，未填写任何测量值。</li>
+<li>源文非页面链接（提交 URL、PDF、图片）保留；相对路径按译文目录深度调整，页面链接对应本目录同名译文。</li>
+<li>心跳和 FT601 开发 <code>.bit</code>、3 个 PDF、生产目标 XDC、FPGA 回归运行器、MCU Makefile 和 DIAG 头文件在本地存在。文件存在不证明内容、版本或验证状态正确。</li>
+<li><code>reports.html</code> 所写 <code>9_Firmware/9_2_FPGA/scripts/program_fpga.tcl</code> 与 <code>.../scripts/insert_ila_probes.tcl</code> 路径不存在；实际文件分别位于 <code>9_Firmware/9_2_FPGA/scripts/utils/program_fpga.tcl</code> 和 <code>9_Firmware/9_2_FPGA/scripts/utils/insert_ila_probes.tcl</code>。译文保留原路径，并在本页记录问题。</li>
+</ul>
+<h2>已发现的源文不一致与需确认事项</h2>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>来源及发现</th>
+<th>影响与后续核对</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>W01</td>
+<td><code>index.html</code> 仍引用 Build 16、WNS +0.058 ns、MCU 15/15 和 FPGA 18/18；<code>bring-up.html</code> 的门禁证据也是 15/15、18/18；实施日志和报告则将 Build 25、20/20、23/23 称为当前基线。</td>
+<td>不同页面的“当前”指向不同阶段。需要按实际提交和运行日志统一版本；本次不把原文状态当作当前测试结果。</td>
+</tr>
+<tr>
+<td>W02</td>
+<td>主页称 50T 生产板使用 FT2232H，200T 高配开发板才使用 FT601；架构和报告则将 XC7A200T/FT601 称为生产目标/生产基线。</td>
+<td>产品目标和实现验证目标术语混用，需明确 50T、200T、TE0713 与 USB 方案之间关系。不能直接把 200T 构建数字应用于 50T 生产板。</td>
+</tr>
+<tr>
+<td>W03</td>
+<td>实施日志和报告称架构缺口 1–7 全部关闭、Gaps 2–7 在 Build 21 前关闭；发布说明表中的 Gap 6（CDC-15 USB 总线）仍为“上板调试后处理”。</td>
+<td>Gap 6 的完成状态相互冲突，需要真实修复提交和 CDC 报告确认。</td>
+</tr>
+<tr>
+<td>W04</td>
+<td>主页/bring-up 称仅剩一个 <code>ft601_txe</code>/TIMING-18 方法学遗留项；Build 24 报告却列出 DPIR-1、HPDR-1、LUTAR-1、PDRC-190、SYNTH-6、TIMING-9/28/47 等多个类别，Build 25 称与 Build 24 一致。</td>
+<td>可能是不同构建阶段或不同严重等级统计，但源文没有交代。不能据主页宣称 Build 25 全部方法学警告仅有一个。</td>
+</tr>
+<tr>
+<td>W05</td>
+<td><code>reports.html</code> Build 24 CFAR 资源表为 2,229 LUT、1.66%，紧随正文却写 LUT 占器件 2.82%。</td>
+<td>已做文本内算术核对：2,229 / 134,600 ≈ 1.656%；2.82% 与这些数值不符。译文保留两种值，修订应追溯原始 utilization 报告。</td>
+</tr>
+<tr>
+<td>W06</td>
+<td>Build 24 资源总量段称新增“+1 BRAM18（2048×17）”；同页按模块 BRAM 表与 CFAR 资源表为 1 个 RAMB36/RAMB36E1。</td>
+<td>BRAM 类型口径不一致，需看实际综合/布局布线报告。本次不修正或猜测工具映射。</td>
+</tr>
+<tr>
+<td>W07</td>
+<td>Build 25 分层表中 <code>rx_inst</code> 为 10 BRAM，而列出的接收器子模块 <code>mf_dual</code> 为 7、<code>doppler_proc</code> 为 4；同页另外按模块表又单列 FFT 引擎 4 BRAM。</td>
+<td>按直接父子累计理解，7+4 已超过 10；FFT 是否已包含在这些模块里也不清楚。应核对层次资源报告，避免重计或混用口径。</td>
+</tr>
+<tr>
+<td>W08</td>
+<td>Build 25 资源说明将 chirp 延迟线描述为分布式 RAM；分层说明和资源开销表又称 2,048 个存储 FF/分布式寄存器文件。</td>
+<td>LUTRAM 与寄存器文件不是同一实现统计口径。报告同时存在 LUTRAM 48 和高 FF 数量，需实际 primitive/层次报告明确延迟线映射。</td>
+</tr>
+<tr>
+<td>W09</td>
+<td>发布说明将 <code>v0.1.4-prod-fixes</code> 描述为检测、增益、看门狗等 RTL 变更，但带标签发布段称“仅仿真变更”，因此 WNS 与 Build 21 相同。</td>
+<td>不能凭该说明直接继承 Build 21 的实现时序结论；需要核对相应提交和实现构建。</td>
+</tr>
+<tr>
+<td>W10</td>
+<td>多处将蝶形 5→4 周期写成吞吐率提升 20%。</td>
+<td>已做文本内算术核对：周期减少为 20%；若单位吞吐率严格按周期倒数，则提升为 25%。整个引擎实际吞吐率还取决于其他阶段，需测量或周期模型确认。原文 20% 保留，未将算术解释当作性能测试。</td>
+</tr>
+<tr>
+<td>W11</td>
+<td>发布说明的 <code>v0.1.7-te0713-heartbeat</code> 和 <code>v0.1.8-te0713-ft601-dev</code> 提交均为 <code>TBD</code>，且“带标签发布”列表未列 v0.1.8。</td>
+<td>对应本地 <code>.bit</code> 存在，但原页面的提交/标签可追溯信息尚未齐全。本子任务未检查 Git 标签真实性。</td>
+</tr>
+<tr>
+<td>W12</td>
+<td>Build 24/25 的报告和比特流主体路径为远程主机 <code>~/PLFM_RADAR_work/...</code>；源文还承认 TCL 在步骤 13/15 因 <code>extract_files</code> 参数缺失崩溃。</td>
+<td>页面正文不等同于本地原始报告证据；“构建通过”与“脚本完整执行通过”需分别记录。不能据页面推断远程产物当前存在或脚本错误已修复。</td>
+</tr>
+<tr>
+<td>W13</td>
+<td>Python 旧仿真报告段称“v2 发布前仅作历史参考”，同页又提供 v2 并称其为当前基线。</td>
+<td>报告目录说明有未更新措辞。本次仅确认 3 个 PDF 存在，未读内容，不能判定哪份报告与实际代码一致。</td>
+</tr>
+</tbody></table>
+<h2>证据边界及保留决策</h2>
+<ul>
+<li>保留原 HTML 不变，新增对应全文中文 Markdown；原因：需要可比对原始来源，避免把翻译变成未经授权的技术修订。</li>
+<li>未采用“摘要替代全文”的方案；原因：源材料含门禁、操作条件、数值和开放风险，摘要会丢失执行所需信息。</li>
+<li>不用统一的“全部已完成/测试全部通过”描述项目；原因：网页相互冲突，且没有在本次重新执行回归或读取远程原始报告。</li>
+<li>不依据英文网页改写硬件参数和源文数字；原因：算术或文字矛盾可以记录，但工程修正需要原始实现/测量证据。</li>
+<li>按用户最新范围，不扩展 PDF、Word、Excel 正文翻译；本目录只保留原有 PDF 引用。</li>
+</ul>
+<p>未决项：W01–W13 的工程内容核对和原文修订；对应远程报告、回归日志、Git 标签、实板验证均需后续取得实际证据。本次翻译工作本身已覆盖 7 页全部可见正文。</p>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

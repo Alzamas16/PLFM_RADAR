@@ -1,0 +1,10 @@
+# Project-local Python environment: numerical analysis, V65/V7 GUI and tests.
+# Run from the repository root. Hardware drivers and FPGA/MCU tools are separate.
+-r 9_Firmware/9_3_GUI/requirements_dashboard.txt
+-r 9_Firmware/9_3_GUI/requirements_v7.txt
+-r 9_Firmware/9_3_GUI/requirements_pyqt_gui.txt
+pandas>=2.2
+pyserial>=3.5
+ruff>=0.5
+pytest>=8
+uv>=0.5

@@ -1,0 +1,160 @@
+{
+  "date": "2026-10-08",
+  "commands": [
+    {
+      "name": "git",
+      "found": true,
+      "path": "C:\\Program Files\\Git\\cmd\\git.exe"
+    },
+    {
+      "name": "pwsh",
+      "found": true,
+      "path": "C:\\Users\\chx_g\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe"
+    },
+    {
+      "name": "node",
+      "found": true,
+      "path": "C:\\Users\\chx_g\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe"
+    },
+    {
+      "name": "python",
+      "found": true,
+      "path": "C:\\Users\\chx_g\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe"
+    },
+    {
+      "name": "uv",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "ruff",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "pytest",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "make",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "gcc",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "g++",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "cl",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "clang",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "iverilog",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "vvp",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "vivado",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "matlab",
+      "found": true,
+      "path": "D:\\Program Files\\MATLAB\\R2026a\\bin\\matlab.exe"
+    },
+    {
+      "name": "octave",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "qucs",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "qucs-s",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "QucsStudio",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "openEMS",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "kicad-cli",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "eeschema",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "pcbnew",
+      "found": false,
+      "path": null
+    },
+    {
+      "name": "sfw",
+      "found": false,
+      "path": null
+    }
+  ],
+  "installed_apps": [
+    {
+      "DisplayName": "Git",
+      "DisplayVersion": "2.39.0.2",
+      "InstallLocation": "C:\\Program Files\\Git\\"
+    },
+    {
+      "DisplayName": "MATLAB R2026a",
+      "DisplayVersion": "26.1",
+      "InstallLocation": "D:\\Program Files\\MATLAB\\R2026a"
+    },
+    {
+      "DisplayName": "Microsoft 365 - zh-cn",
+      "DisplayVersion": "16.0.20430.20092",
+      "InstallLocation": "C:\\Program Files\\Microsoft Office"
+    },
+    {
+      "DisplayName": "CST Studio Suite 2026",
+      "DisplayVersion": "1.0.0",
+      "InstallLocation": "D:\\Program Files\\CST Studio Suite 2026\\"
+    },
+    {
+      "DisplayName": "Visual Studio Community 2026",
+      "DisplayVersion": "18.7.3",
+      "InstallLocation": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community"
+    }
+  ],
+  "visual_studio_cpp_component_path": null,
+  "cst_executable_exists": true,
+  "scope": "PATH and Windows uninstall registry plus named executable probes; absence is not proof of no portable or unregistered installation."
+}

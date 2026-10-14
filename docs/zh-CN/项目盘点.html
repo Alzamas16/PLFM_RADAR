@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AERIS-10 本地项目盘点</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="index.html">中文资料目录</a> · <a href="%E9%A1%B9%E7%9B%AE%E7%9B%98%E7%82%B9.md">查看 Markdown</a></header><main><h1>AERIS-10 本地项目盘点</h1>
+<p><strong>结论：仓库包含硬件设计文件、仿真材料和三层固件源码，也具备测试入口；现有证据不足以确认当前源码已完成整机验证。</strong> 本轮完成容易读取资料的中文整理，发现多处状态和协议描述不一致；实际 GUI 无硬件检查没有全部通过。</p>
+<p>盘点日期：2026-10-08；工作区：<code>D:/PhD_Prj_Main/PLFM_RADAR</code>；开始时 HEAD：<code>749bd0f</code>。该提交记录时间为 2026-06-17T03:44:46+01:00。开始时 <code>git status --short</code> 无输出。这里的“项目状态”仅指当前本地版本，没有查询远程仓库状态。</p>
+<h2>文件规模与目录</h2>
+<p>以 <code>git ls-files</code> 的 894 个文件为基线，总大小 226,557,647 字节，约 216.06 MiB。统计不包含本轮新建中文文件、<code>.git/</code> 和被 Git 忽略的本地生成目录。完整逐文件路径、字节数和 SHA256 见 <a href="%E6%96%87%E4%BB%B6%E6%B8%85%E5%8D%95.csv">文件清单</a>。</p>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th align="right">基线文件数</th>
+<th>可确认内容与用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>1_Project_Description/</code></td>
+<td align="right">1</td>
+<td>项目描述文件；Word 本轮暂停</td>
+</tr>
+<tr>
+<td><code>2_Functional Diagram &amp; Interconnection Matrices/</code></td>
+<td align="right">3</td>
+<td>drawio 框图与 JPG/PNG 架构图</td>
+</tr>
+<tr>
+<td><code>3_Power Management/</code></td>
+<td align="right">1</td>
+<td>电源管理 Excel；本轮暂停</td>
+</tr>
+<tr>
+<td><code>4_Schematics and Boards Layout/</code></td>
+<td align="right">145</td>
+<td>主板、电源、频率合成、功放、天线原理图与制造输出</td>
+</tr>
+<tr>
+<td><code>5_Simulations/</code></td>
+<td align="right">89</td>
+<td>MATLAB、Python、Qucs 电路文件和数据、射频网络参数等</td>
+</tr>
+<tr>
+<td><code>6_Application Notes/</code></td>
+<td align="right">1</td>
+<td>UG-290 应用资料；PDF 本轮暂停</td>
+</tr>
+<tr>
+<td><code>7_Components Datasheets and Application notes/</code></td>
+<td align="right">48</td>
+<td>器件资料与接收链摘要；PDF/Word 本轮暂停</td>
+</tr>
+<tr>
+<td><code>8_Utils/</code></td>
+<td align="right">53</td>
+<td>图片、视频、机械 DWG、元件库及辅助文件</td>
+</tr>
+<tr>
+<td><code>9_Firmware/</code></td>
+<td align="right">519</td>
+<td>STM32、FPGA、GUI 与跨层测试</td>
+</tr>
+<tr>
+<td><code>docs/</code></td>
+<td align="right">28</td>
+<td>7 个 HTML、历史报告、图片、比特流、产物说明与时序报告</td>
+</tr>
+<tr>
+<td>根目录及 <code>.github/</code></td>
+<td align="right">5</td>
+<td>README、贡献指南、Licence、Python 配置、CI；另有 <code>.gitignore</code> 1 个</td>
+</tr>
+</tbody></table>
+<p>主要易读说明文件为 7 个 Markdown、7 个 HTML，另有说明类 TXT 与 Licence。项目还包括 50 份 PDF、4 份 DOCX 和 13 份 XLSX；后三类按最新指示不作为本轮处理重点。</p>
+<h2>项目目标与实现边界</h2>
+<p>原 README 描述的是 10.5 GHz 脉冲线性调频相控阵雷达，提供标称 3 km 和 20 km 版本。其 Alpha/开发中徽章与末尾说明表明仍在开发。3 km、20 km、±45°、输出功率等是原文指标；本轮没有雷达外场、暗室、射频或板卡实测，不能写成已实现性能。</p>
+<p>按现有源码与文档，系统由电源及频率合成、射频与阵列、STM32 管理、FPGA 数字信号处理、Python 主机界面组成。FPGA 处理链涉及 ADC、数字下变频、抽取/滤波、匹配滤波与脉冲压缩、距离/多普勒处理及检测。详细源码边界见 <a href="firmware/%E5%AE%9E%E7%8E%B0%E4%B8%8E%E9%AA%8C%E8%AF%81%E7%9B%98%E7%82%B9.html">固件实现与验证盘点</a>。</p>
+<p>MCU 目录包含外围器件驱动、STM32 管理源码及主机 mock 测试。FPGA 包含核心顶层、50T/200T/Trenz 目标封装、XDC、回归脚本和测试平台。GUI 有 V65 Tk 和 V7 PyQt6 入口，V6 被说明文件标为弃用。文件存在和源码包含模块，只能证明材料与实现入口存在，不能证明板上功能完成。</p>
+<p>制造文件已按板卡分目录存放；原理图存在 <code>.sch/.brd</code> 和 KiCad 格式。贡献指南将布局概括为 KiCad，阅读工程时需按实际格式选择工具。原文也明确没有独立装配指南。未对 Gerber、电气规则、BOM 一致性、阻抗或制造可行性作专项复核。</p>
+<h2>已发现的差异</h2>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>可核对证据</th>
+<th>对理解项目的影响</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>型号名称不一致</td>
+<td>README 的扩展版本交替使用 AERIS-10E 和 AERIS-10X</td>
+<td>不能据此假定是两个独立硬件版本</td>
+</tr>
+<tr>
+<td>Python 要求不一致</td>
+<td>README 写 3.8+；<code>pyproject.toml</code> 写 <code>&gt;=3.12</code></td>
+<td>新环境应先以实际工程配置核对依赖；译文同时保留两者</td>
+</tr>
+<tr>
+<td>验证状态不同步</td>
+<td>主页与上板页仍为 Build 16、MCU 15/15、FPGA 18/18；实施日志与报告页已出现 Build 25、20/20、23/23</td>
+<td>网站各页不是统一的当前基线，均不能替代本轮重跑</td>
+</tr>
+<tr>
+<td>FPGA 目标定义不同</td>
+<td>架构页称生产目标 XC7A200T/FT601；主页和约束 README 区分 50T/FT2232H 生产板与 200T/FT601 开发板</td>
+<td>烧录或构建前需确认实际板卡及顶层/约束组合</td>
+</tr>
+<tr>
+<td><code>USB_MODE</code> 默认值不一致</td>
+<td>约束 README 部分段落写默认 0；顶层实际默认 1，200T 构建脚本覆盖为 0</td>
+<td>默认构建与指定目标构建可能选择不同接口</td>
+</tr>
+<tr>
+<td>历史 USB 包头与现有协议不一致</td>
+<td>历史 FT601 产物说明写 <code>0xAE10xxxx</code>；当前协议/RTL 为 <code>0xAA</code> 开头的 11 字节数据包</td>
+<td>调试必须将实际 bit、源码提交与协议版本配对</td>
+</tr>
+<tr>
+<td>Gap 6 完成状态不一致</td>
+<td>发布说明仍为上板后事项；日志/报告称 1–7 全部关闭</td>
+<td>不能整体宣称所有工程缺口已关闭</td>
+</tr>
+<tr>
+<td>报告资源表疑点</td>
+<td>CFAR 2,229 LUT 的百分比在表和正文不同；BRAM18/RAMB36 表述与层级资源合计需核对</td>
+<td>不能将这些历史资源数直接用于本次器件适配结论</td>
+</tr>
+<tr>
+<td>许可文件名及文字待核对</td>
+<td>README 指向 <code>LICENSE</code>，本地为 <code>Licence</code>；本轮只翻译本地文本</td>
+<td>尚未核对官方许可证文本及实际软件许可声明，不作许可范围判断</td>
+</tr>
+<tr>
+<td>算法说明为空</td>
+<td>目录盘点确认 <code>STM32_ALGO.docx</code> 为 0 字节</td>
+<td>该文件不能提供算法证据；按用户要求暂不处理 Word</td>
+</tr>
+</tbody></table>
+<p>更多逐页问题见 <a href="web/%E5%AE%A1%E9%98%85%E5%8F%91%E7%8E%B0.html">网页审阅发现</a>。上述差异在中文全文译文中保留，不改写英文源文或工程参数。</p>
+<h2>初次盘点验证与未验证项</h2>
+<p>已实际执行：读取本地文件与 Git 信息、计算源文件 SHA256、核对实现入口、运行两个 GUI 测试模块的 unittest，并检查新增译文覆盖、源指纹和本地链接。后者具体结果见 <code>校验记录.json</code>。</p>
+<p>GUI 检查使用 bundled Python 3.12.14，运行 174 个测试，3 个 error、5 个 skipped、退出码 1。剩余 166 项正常结束是由总数扣除错误和跳过得到的统计。三个错误均在 <code>TestReplayEngineRawIQ</code> 清理临时 <code>.npy</code> 时触发 Windows <code>WinError 32</code>。详情与命令见 <a href="firmware/%E6%9C%AC%E6%AC%A1%E6%A3%80%E6%9F%A5%E8%AE%B0%E5%BD%95.html">本次检查记录</a>。本轮没有修复这些问题。</p>
+<p>初次盘点的 PATH 查询未找到 <code>make/gcc/iverilog/vivado</code>，当时 bundled Python 缺少 <code>pytest/ruff/h5py/PyQt6</code>。因此没有执行完整 CI、MCU 编译、FPGA 综合/实现/仿真、跨层 pytest、Qt 界面或真实 USB/射频测试。已有历史 <code>.bit/.rpt</code> 和文档中的通过记录不能证明当前源码重建成功。进一步检查确认本机 MATLAB R2026a 可启动，CST 2026 已有安装记录和可执行文件；当前可做、需补工具及需硬件的具体分类见 <a href="%E6%9C%AC%E6%9C%BA%E5%B7%A5%E5%85%B7%E4%B8%8E%E7%A1%AC%E4%BB%B6%E6%9D%A1%E4%BB%B6.html">本机工具与硬件条件</a>，并已加入主 README。</p>
+<p>历史 FT601 时序报告可核对原说明中的时序数值，但同时存在端口方向警告和 output delay 例外；“DRC 0”不能等同于“整体不存在警告或风险”。本次不把历史报告结果提升为整机结论。</p>
+<h2>新增系统 Python 3.13 项目环境</h2>
+<p>按后续要求，在根目录创建 <code>.venv</code>，基于系统 Python 3.13.14，隔离系统 site-packages。37 个 GUI、数值分析、USB/串口和开发依赖经项目本地 <code>sfw</code> 安装，连同已有 pip 共 38 个发行包。依赖一致性检查、隐藏 Qt 初始化及 V65/V7 入口导入通过。</p>
+<p>本次项目环境 GUI pytest 为 <strong>171 通过、3 失败、0 跳过</strong>，退出码 1；失败仍是 Windows 临时 <code>.npy</code> 文件占用。没有修改工程源码或修复这些失败，没有执行完整 CI、FPGA/MCU 或硬件验证。安装、锁定版本及运行方式见 <a href="Python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83.html">Python 虚拟环境</a>。</p>
+<h2>已新增资料与行为变化</h2>
+<ol>
+<li>根目录 <code>README.md</code> 保留 21 个原章节，英文后紧接中文段落、条目和表格单元格；新增 <code>docs/zh-CN/README.md</code> 提供中文导航。按用户明确要求删除本轮新增的 <code>README.zh-CN.md</code>，不保留独立根目录中文入口。</li>
+<li>7 个原 Markdown 均提供中文全文译文；说明类 TXT 与 Licence 也提供中文内容，命令、型号、协议字段与数值保留。</li>
+<li>7 个 HTML 提供中文 Markdown 与浏览器可读 HTML，导航指向对应中文页面。</li>
+<li>新增源文件清单、翻译对应表及同步检查工具；源文改变时检查会指出译文需要复核，不自动重译。</li>
+<li>新增本次测试结果与文档差异记录，使原文历史陈述和本轮检查结果可以分别查阅。</li>
+<li>新增 <code>.venv</code>、<code>requirements-local.txt</code>、确切版本快照 <code>requirements-local.lock.txt</code>，并在 <code>.gitignore</code> 排除 <code>.venv/</code> 和 <code>.tools/</code>；README 运行命令与本机状态同步更新为项目环境。</li>
+</ol>
+<p>根目录 <code>README.md</code> 和 <code>.gitignore</code> 已按用户要求及环境排除需求修改，其余原始资料、硬件设计与工程源码未修改。合并前的英文 README 保存在 <code>sources/README.en.md</code>；逐段、逐条、逐表格检查确认英文内容及顺序保留。范围缩小前已经生成的 PDF/Word/Excel 相关衍生文件按“不自行删除”约定保留，不纳入此次翻译完成统计，也不继续处理。</p>
+<h2>后续需要确认的事项</h2>
+<p>首先统一实际硬件目标、USB 接口和源码/bit/协议基线，再核对网站状态。若继续工程验证，需在完整工具环境执行原 CI 并保存失败、跳过与日志；之后才能进行上板和射频验证。PDF、Word、Excel 翻译及官方许可证核对均待后续明确任务，本轮不展开。</p>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AERIS-10 FPGA 约束文件</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="../index.html">中文资料目录</a> · <a href="FPGA%E7%BA%A6%E6%9D%9F%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E.md">查看 Markdown</a></header><main><h1>AERIS-10 FPGA 约束文件</h1>
+<ul>
+<li>源路径：<code>9_Firmware/9_2_FPGA/constraints/README.md</code>；SHA256：<code>cbf5b7c2907e6d7615aa3e2070b60b2d1f71d880f825a909b61c5b0c3e8f8fc6</code>。</li>
+</ul>
+<p>原文：<code>9_Firmware/9_2_FPGA/constraints/README.md</code>。全文译文忠实保留原文，包括相互矛盾的默认值表述；文末列出本次源码核对结果。</p>
+<h2>四个目标</h2>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>器件</th>
+<th>封装</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>xc7a50t_ftg256.xdc</code></td>
+<td>XC7A50T-2FTG256I</td>
+<td>FTG256（256 球 BGA）</td>
+<td>50T 量产板</td>
+</tr>
+<tr>
+<td><code>xc7a200t_fbg484.xdc</code></td>
+<td>XC7A200T-2FBG484I</td>
+<td>FBG484（484 球 BGA）</td>
+<td>200T 高配开发板</td>
+</tr>
+<tr>
+<td><code>te0712_te0701_minimal.xdc</code></td>
+<td>XC7A200T-2FBG484I</td>
+<td>FBG484（484 球 BGA）</td>
+<td>Trenz 开发分离目标（最小时钟/复位 + LED/状态）</td>
+</tr>
+<tr>
+<td><code>te0713_te0701_minimal.xdc</code></td>
+<td>XC7A200T-2FBG484C</td>
+<td>FBG484（484 球 BGA）</td>
+<td>Trenz 备用 SoM 目标（最小时钟 + FMC 状态输出）</td>
+</tr>
+</tbody></table>
+<h2>为什么有四个文件</h2>
+<p>50T 量产板使用 FTG256 封装的 XC7A50T。200T 高配开发板使用 XC7A200T，提供更多逻辑、BRAM 和 DSP 资源。两种器件的封装和引脚名称完全不同，因此各自需要约束文件。</p>
+<p>Trenz TE0712/TE0701 路径使用与 200T 相同的 FPGA 型号，但板级引脚分配和外设不同。开发目标被拆分为独立的顶层封装 <code>radar_system_top_te0712_dev.v</code> 和最小约束文件，以避免调试时意外混入量产引脚分配。</p>
+<p>Trenz TE0713/TE0701 路径用于 TE0712 交货周期过长的情况。TE0713 使用 XC7A200T-2FBG484C（商业温度等级），需要独立的时钟映射，因此具有专用开发顶层和 XDC。</p>
+<h2>USB 接口架构（USB_MODE）</h2>
+<p>雷达系统支持两种 USB 数据接口，在<strong>编译时</strong>通过 <code>radar_system_top.v</code> 中的 <code>USB_MODE</code> 参数选择：</p>
+<table>
+<thead>
+<tr>
+<th>USB_MODE</th>
+<th>接口</th>
+<th>总线宽度</th>
+<th>时钟速度</th>
+<th>板级目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>FT601（USB 3.0）</td>
+<td>32 位</td>
+<td>100 MHz</td>
+<td>200T 高配开发板</td>
+</tr>
+<tr>
+<td>1（默认）</td>
+<td>FT2232H（USB 2.0）</td>
+<td>8 位</td>
+<td>60 MHz</td>
+<td>50T 量产板</td>
+</tr>
+</tbody></table>
+<h3>USB_MODE 的工作方式</h3>
+<p><code>radar_system_top.v</code> 包含 Verilog <code>generate</code> 块，根据 <code>USB_MODE</code> 参数只实例化一个 USB 接口模块：</p>
+<pre><code class="language-verilog">generate
+if (USB_MODE == 0) begin : gen_ft601
+    usb_data_interface usb_inst (...)         // FT601，32 位
+    // FT2232H 端口连接到非活动状态
+end else begin : gen_ft2232h
+    usb_data_interface_ft2232h usb_inst (...) // FT2232H，8 位
+    // FT601 端口连接到非活动状态
+end
+endgenerate
+</code></pre>
+<p>两个接口共享相同的内部雷达数据总线和主机命令接口。未使用接口的 I/O 引脚连接到安全的非活动状态：低有效信号置高，高有效信号置低，双向总线置为高阻态。</p>
+<h3>各板级目标如何传递 USB_MODE</h3>
+<p>通过<strong>封装模块</strong>覆盖默认值：</p>
+<ul>
+<li><p><strong>50T 量产板</strong>：<code>radar_system_top_50t.v</code> 使用 <code>.USB_MODE(1)</code> 实例化核心，将 FT2232H 的 60 MHz <code>CLKOUT</code> 映射到共用端口 <code>ft601_clk_in</code>。FT601 输入固定为非活动状态，输出接到 <code>_nc</code> 导线。</p>
+<pre><code class="language-verilog">// radar_system_top_50t.v 中：
+radar_system_top #(
+    .USB_MODE(1)
+) u_core ( ... );
+</code></pre>
+</li>
+<li><p><strong>200T 开发板</strong>：直接使用 <code>radar_system_top</code> 作为顶层模块。由于量产板是主要目标，<code>USB_MODE</code> 默认为 <code>1</code>（FT2232H）。构建 FT601 时以 <code>.USB_MODE(0)</code> 覆盖。</p>
+</li>
+</ul>
+<h3>各 USB 接口的 RTL 文件</h3>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>usb_data_interface.v</code></td>
+<td>FT601 USB 3.0 模块（32 位，USB_MODE=0）</td>
+</tr>
+<tr>
+<td><code>usb_data_interface_ft2232h.v</code></td>
+<td>FT2232H USB 2.0 模块（8 位，USB_MODE=1）</td>
+</tr>
+<tr>
+<td><code>radar_system_top.v</code></td>
+<td>包含 USB_MODE generate 块的核心模块</td>
+</tr>
+<tr>
+<td><code>radar_system_top_50t.v</code></td>
+<td>50T 封装：设 USB_MODE=1，并固定未使用的 FT601 端口状态</td>
+</tr>
+</tbody></table>
+<h3>FT2232H 引脚映射（50T，Bank 35，VCCO=3.3V）</h3>
+<p>U6（FT2232HQ）与 U42（XC7A50T）之间均直接连接。仅使用通道 A（245 同步 FIFO 模式），通道 B 未连接。</p>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>FT2232H 引脚</th>
+<th>FPGA 焊球</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FT_D[7:0]</td>
+<td>ADBUS[7:0]</td>
+<td>K1,J3,H3,G4,F2,D1,C3,C1</td>
+<td>双向</td>
+</tr>
+<tr>
+<td>FT_RXF#</td>
+<td>ACBUS0</td>
+<td>A2</td>
+<td>输入（FIFO 非空）</td>
+</tr>
+<tr>
+<td>FT_TXE#</td>
+<td>ACBUS1</td>
+<td>B2</td>
+<td>输入（FIFO 非满）</td>
+</tr>
+<tr>
+<td>FT_RD#</td>
+<td>ACBUS2</td>
+<td>A3</td>
+<td>输出（读选通）</td>
+</tr>
+<tr>
+<td>FT_WR#</td>
+<td>ACBUS3</td>
+<td>A4</td>
+<td>输出（写选通）</td>
+</tr>
+<tr>
+<td>FT_SIWUA</td>
+<td>ACBUS4</td>
+<td>A5</td>
+<td>输出（立即发送）</td>
+</tr>
+<tr>
+<td>FT_CLKOUT</td>
+<td>ACBUS5</td>
+<td>C4（MRCC）</td>
+<td>输入（60 MHz 时钟）</td>
+</tr>
+<tr>
+<td>FT_OE#</td>
+<td>ACBUS6</td>
+<td>B7</td>
+<td>输出（总线方向）</td>
+</tr>
+</tbody></table>
+<h2>Bank 电压分配</h2>
+<h3>XC7A50T-FTG256（50T 量产板）</h3>
+<table>
+<thead>
+<tr>
+<th>Bank</th>
+<th>VCCO</th>
+<th>信号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>3.3V</td>
+<td>JTAG、Flash CS</td>
+</tr>
+<tr>
+<td>14</td>
+<td>3.3V</td>
+<td>ADC LVDS（LVDS_33）、SPI Flash</td>
+</tr>
+<tr>
+<td>15</td>
+<td>3.3V</td>
+<td>DAC、时钟、STM32 3.3V SPI、DIG 总线</td>
+</tr>
+<tr>
+<td>34</td>
+<td>1.8V</td>
+<td>ADAR1000 控制、SPI 1.8V 侧</td>
+</tr>
+<tr>
+<td>35</td>
+<td>3.3V</td>
+<td>FT2232H USB 2.0（8 位数据 + 控制，15 个信号）</td>
+</tr>
+</tbody></table>
+<h3>XC7A200T-FBG484（200T 高配开发板）</h3>
+<table>
+<thead>
+<tr>
+<th>Bank</th>
+<th>VCCO</th>
+<th>已用/可用</th>
+<th>信号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>13</td>
+<td>3.3V</td>
+<td>17/35</td>
+<td>超出主 Bank 容量的调试信号（多普勒单元、距离单元、状态）</td>
+</tr>
+<tr>
+<td>14</td>
+<td>2.5V</td>
+<td>19/50</td>
+<td>ADC LVDS_25 + DIFF_TERM、ADC 掉电控制</td>
+</tr>
+<tr>
+<td>15</td>
+<td>3.3V</td>
+<td>27/50</td>
+<td>系统时钟（100M、120M）、DAC、RF、STM32 3.3V SPI、DIG 总线</td>
+</tr>
+<tr>
+<td>16</td>
+<td>3.3V</td>
+<td>50/50</td>
+<td>FT601 USB 3.0（32 位数据 + 字节使能 + 控制）</td>
+</tr>
+<tr>
+<td>34</td>
+<td>1.8V</td>
+<td>19/50</td>
+<td>ADAR1000 波束形成器控制、SPI 1.8V 侧</td>
+</tr>
+<tr>
+<td>35</td>
+<td>3.3V</td>
+<td>50/50</td>
+<td>状态输出（波束位置、chirp、多普勒数据总线）</td>
+</tr>
+</tbody></table>
+<h2>目标间的信号差异</h2>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>50T 量产板（FTG256）</th>
+<th>200T 开发板（FBG484）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>USB 接口</td>
+<td>FT2232H USB 2.0（8 位，Bank 35）</td>
+<td>FT601 USB 3.0（32 位，Bank 16）</td>
+</tr>
+<tr>
+<td>USB_MODE</td>
+<td>1（通过 <code>radar_system_top_50t</code> 封装）</td>
+<td>0（<code>radar_system_top</code> 默认值）</td>
+</tr>
+<tr>
+<td>USB 时钟</td>
+<td>FT2232H CLKOUT 输出 60 MHz</td>
+<td>FT601 输出 100 MHz</td>
+</tr>
+<tr>
+<td><code>dac_clk</code></td>
+<td>未连接（DAC 由 AD9523 直接提供时钟）</td>
+<td>已布线，由 FPGA 驱动 DAC</td>
+</tr>
+<tr>
+<td><code>ft601_be</code> 宽度</td>
+<td>不适用（FT601 未使用，端口固定）</td>
+<td><code>[3:0]</code>（RTL 已更新）</td>
+</tr>
+<tr>
+<td>ADC LVDS 标准</td>
+<td>LVDS_33（3.3V Bank）</td>
+<td>LVDS_25（2.5V Bank，质量更好）</td>
+</tr>
+<tr>
+<td>状态/调试输出</td>
+<td>无物理引脚（已注释）</td>
+<td>全部布线到 Bank 35 + 13</td>
+</tr>
+</tbody></table>
+<h2>如何构建</h2>
+<h3>快速参考</h3>
+<pre><code class="language-bash"># 在 FPGA 源目录（9_Firmware/9_2_FPGA）运行：
+
+# 50T 量产构建（FT2232H，USB_MODE=1）：
+vivado -mode batch -source scripts/50t/build_50t.tcl 2&gt;&amp;1 | tee build_50t/vivado.log
+
+# 200T 开发构建（FT601，USB_MODE=0）：
+vivado -mode batch -source scripts/200t/build_200t.tcl \
+  -log build/build.log -journal build/build.jou
+</code></pre>
+<p>构建脚本自动选择正确的顶层模块和约束：</p>
+<table>
+<thead>
+<tr>
+<th>构建脚本</th>
+<th>顶层模块</th>
+<th>约束</th>
+<th>USB_MODE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>scripts/50t/build_50t.tcl</code></td>
+<td><code>radar_system_top_50t</code></td>
+<td><code>xc7a50t_ftg256.xdc</code></td>
+<td>1（FT2232H）</td>
+</tr>
+<tr>
+<td><code>scripts/200t/build_200t.tcl</code></td>
+<td><code>radar_system_top</code></td>
+<td><code>xc7a200t_fbg484.xdc</code></td>
+<td>0（FT601）</td>
+</tr>
+</tbody></table>
+<p><strong>无需</strong>手动设置 <code>USB_MODE</code>。顶层模块选择负责处理：</p>
+<ul>
+<li><code>radar_system_top_50t</code> 内部强制 USB_MODE=1。</li>
+<li><code>radar_system_top</code> 默认 USB_MODE=1（FT2232H，量产默认值）。</li>
+</ul>
+<h2>如何在 Vivado 中选择约束</h2>
+<p>Vivado 工程中同一时刻应只启用一个目标 XDC：</p>
+<ol>
+<li>将两个文件添加到工程：<code>File &gt; Add Sources &gt; Add Constraints</code>。</li>
+<li>在 Sources 面板中，右击不需要的 XDC，选择 <code>Set File Properties &gt; Enabled = false</code>，或将其从活动约束集中移除。</li>
+<li>也可以建立两个独立约束集并在它们之间切换。</li>
+</ol>
+<p>对于基于 Tcl 的流程：</p>
+<pre><code class="language-tcl"># 量产目标：
+read_xdc constraints/xc7a200t_fbg484.xdc
+
+# 上游目标：
+read_xdc constraints/xc7a50t_ftg256.xdc
+
+# Trenz TE0712/TE0701 分离目标：
+read_xdc constraints/te0712_te0701_minimal.xdc
+
+# Trenz TE0713/TE0701 分离目标：
+read_xdc constraints/te0713_te0701_minimal.xdc
+</code></pre>
+<h2>各目标的顶层模块</h2>
+<table>
+<thead>
+<tr>
+<th>目标</th>
+<th>顶层模块</th>
+<th>USB_MODE</th>
+<th>USB 接口</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>50T 量产板（FTG256）</td>
+<td><code>radar_system_top_50t</code></td>
+<td>1</td>
+<td>FT2232H（8 位）</td>
+<td>封装设 USB_MODE=1，并固定 FT601 端口</td>
+</tr>
+<tr>
+<td>200T 开发板（FBG484）</td>
+<td><code>radar_system_top</code></td>
+<td>0（覆盖）</td>
+<td>FT601（32 位）</td>
+<td>构建脚本覆盖默认 USB_MODE=1</td>
+</tr>
+<tr>
+<td>Trenz TE0712/TE0701</td>
+<td><code>radar_system_top_te0712_dev</code></td>
+<td>0（覆盖）</td>
+<td>FT601（32 位）</td>
+<td>最小上电调试封装</td>
+</tr>
+<tr>
+<td>Trenz TE0713/TE0701</td>
+<td><code>radar_system_top_te0713_dev</code></td>
+<td>0（覆盖）</td>
+<td>FT601（32 位）</td>
+<td>备用 SoM 封装</td>
+</tr>
+</tbody></table>
+<h2>Trenz 分离状态</h2>
+<ul>
+<li><code>constraints/te0712_te0701_minimal.xdc</code> 当前包含原文标为已验证的 TE0712 引脚：<ul>
+<li><code>clk_100m</code> → <code>R4</code>（TE0712 <code>CLK1B[0]</code>，50 MHz 源）。</li>
+<li><code>reset_n</code> → <code>T3</code>（TE0712 复位引脚）。</li>
+</ul>
+</li>
+<li><code>user_led</code> 和 <code>system_status</code> 现通过 TE0712 B16 封装引脚映射到 TE0701 FMC LA 线路；这是 GPIO 导出路径，并非 TE0701 板载 LED D1..D8。</li>
+<li>引脚分配完成后已移除临时的 <code>NSTD-1</code>/<code>UCIO-1</code> 严重级别降级。</li>
+</ul>
+<h3>当前 GPIO 导出映射</h3>
+<table>
+<thead>
+<tr>
+<th>端口</th>
+<th>TE0712 封装引脚</th>
+<th>TE0712 网络</th>
+<th>TE0701 FMC 网络</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>user_led[0]</code></td>
+<td><code>A19</code></td>
+<td><code>B16_L17_N</code></td>
+<td><code>FMC_LA14_N</code></td>
+</tr>
+<tr>
+<td><code>user_led[1]</code></td>
+<td><code>A18</code></td>
+<td><code>B16_L17_P</code></td>
+<td><code>FMC_LA14_P</code></td>
+</tr>
+<tr>
+<td><code>user_led[2]</code></td>
+<td><code>F20</code></td>
+<td><code>B16_L18_N</code></td>
+<td><code>FMC_LA13_N</code></td>
+</tr>
+<tr>
+<td><code>user_led[3]</code></td>
+<td><code>F19</code></td>
+<td><code>B16_L18_P</code></td>
+<td><code>FMC_LA13_P</code></td>
+</tr>
+<tr>
+<td><code>system_status[0]</code></td>
+<td><code>F18</code></td>
+<td><code>B16_L15_P</code></td>
+<td><code>FMC_LA5_N</code></td>
+</tr>
+<tr>
+<td><code>system_status[1]</code></td>
+<td><code>E18</code></td>
+<td><code>B16_L15_N</code></td>
+<td><code>FMC_LA5_P</code></td>
+</tr>
+<tr>
+<td><code>system_status[2]</code></td>
+<td><code>C22</code></td>
+<td><code>B16_L20_P</code></td>
+<td><code>FMC_LA6_N</code></td>
+</tr>
+<tr>
+<td><code>system_status[3]</code></td>
+<td><code>B22</code></td>
+<td><code>B16_L20_N</code></td>
+<td><code>FMC_LA6_P</code></td>
+</tr>
+</tbody></table>
+<p>说明：最终硬件签核前，必须结合 TE0701 连接器方向和 I/O Planner 核对 FMC 方向及 N/P 标注。</p>
+<h2>Trenz 批处理构建</h2>
+<p>使用分离开发目标专用脚本：</p>
+<pre><code class="language-bash">vivado -mode batch -source scripts/build_te0712_dev.tcl
+
+# TE0713/TE0701 目标
+vivado -mode batch -source scripts/build_te0713_dev.tcl
+</code></pre>
+<p>输出：</p>
+<ul>
+<li>工程目录：<code>vivado_te0712_dev/</code>。</li>
+<li>报告：<code>vivado_te0712_dev/reports/</code>。</li>
+<li>顶层模块：<code>radar_system_top_te0712_dev</code>。</li>
+<li>约束文件：<code>constraints/te0712_te0701_minimal.xdc</code>。</li>
+</ul>
+<p>TE0713 输出：</p>
+<ul>
+<li>工程目录：<code>vivado_te0713_dev/</code>。</li>
+<li>报告：<code>vivado_te0713_dev/reports/</code>。</li>
+<li>顶层模块：<code>radar_system_top_te0713_dev</code>。</li>
+<li>约束文件：<code>constraints/te0713_te0701_minimal.xdc</code>。</li>
+</ul>
+<h2>注意事项</h2>
+<ul>
+<li><strong>USB_MODE 仅在编译时选择</strong>，不能在运行时切换 USB 接口。各板级目标实际只连接一个 USB 芯片。</li>
+<li>50T 量产构建必须使用 <code>radar_system_top_50t</code> 作为顶层。原文此处称，直接使用 <code>radar_system_top</code> 会默认选择 FT601（USB_MODE=0），而 50T 板上没有对应物理连接。</li>
+<li>200T XDC 引脚分配是新 PCB 的<strong>建议</strong>方案，PCB 设计者应遵循此分配。</li>
+<li>200T 的 Bank 16（FT601）已用满 50/50 引脚，没有扩展余量。</li>
+<li>200T 的 Bank 35（状态/调试）也已用满 50/50。新增调试信号应使用 Bank 13 的空闲引脚，剩余 18 个。</li>
+<li>50T 的 Bank 35 用于 FT2232H（15 个信号），剩余引脚可用于后续扩展。</li>
+<li>时钟输入布置在 MRCC（跨区域时钟能力）引脚上，以确保正确接入时钟树。FT2232H CLKOUT（60 MHz）位于 C4（<code>IO_L12N_T1_MRCC_35</code>）。</li>
+</ul>
+<h2>本次盘点核对注</h2>
+<ol>
+<li>源码 <code>radar_system_top.v</code> 第 145 行默认 <code>USB_MODE=1</code>，200T 构建脚本第 113 行使用 <code>set_property generic {USB_MODE=0} [current_fileset]</code>。原文差异表及注意事项中“默认 0”的表述与源码不一致。</li>
+<li>原文 Tcl 注释将 200T 标为“量产”、50T 标为“上游”，与文中板级分类不一致；本译文保留原注释，实际构建应按对应脚本、顶层和 XDC 确认。</li>
+<li>这些引脚、电压、跳线及 GPIO 映射未在本次盘点中进行板上验证。</li>
+</ol>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

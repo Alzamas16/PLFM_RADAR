@@ -1,0 +1,79 @@
+AERIS-10 Simulink reference model -- Milestone M2 report
+ran at 13102026 16:03:12
+MATLAB 26.1.0.3346908 (R2026a) Update 5
+
+M2 = fixed-point DDC (NCO -> Mixer -> CIC -> FIR -> 18:16 interface)
+Truncation policy : strict RTL semantics -- floor on every >>, saturate where RTL does
+Reference         : 18-bit FIR raw output (the golden py_i / rtl_i columns)
+==============================================================================
+
+SCENARIO  dc
+  pipeline  ADC 16384 -> CIC 4093 -> FIR 4087 -> baseband 4085
+  compared  first 4086 samples, 18-bit FIR domain
+  model vs Python reference   max 0 LSB, bit-exact 100.00 %   [PASS]
+  model vs golden py_i        max 0 LSB                  [PASS]
+  model vs golden rtl_i       max 48 LSB, rms 1.09, within-1-LSB 99.7 %
+  golden rtl_i vs golden py_i max 48 LSB, rms 1.09, within-1-LSB 99.7 %
+  steady state  mixer DC +12.314   CIC DC +11.800   FIR DC +20.200
+  steady state  FIR rms (AC) 0.4 LSB
+
+SCENARIO  sine_1mhz
+  pipeline  ADC 16384 -> CIC 4093 -> FIR 4087 -> baseband 4085
+  compared  first 4084 samples, 18-bit FIR domain
+  model vs Python reference   max 0 LSB, bit-exact 100.00 %   [PASS]
+  model vs golden py_i        max 0 LSB                  [PASS]
+  model vs golden rtl_i       max 428 LSB, rms 70.40, within-1-LSB 1.2 %
+  golden rtl_i vs golden py_i max 428 LSB, rms 70.40, within-1-LSB 1.2 %
+  steady state  mixer DC +1.708   CIC DC +11.830   FIR DC +20.480
+  steady state  FIR rms (AC) 1597.4 LSB
+
+==============================================================================
+VERDICT  [PASS]
+  The MATLAB fixed-point DDC is bit-exact against the reference model that
+  generated the golden py_* columns (0 LSB over the whole record, both scenarios).
+  Against the RTL column the agreement is bounded by the golden's OWN rtl-vs-py
+  gap -- this port adds no error of its own. See section on the RTL/Python gap.
+
+  Note: dc scenario rtl_i vs py_i is within 1 LSB for 99.7 % of samples,
+        but sine_1mhz only for 1.2 % (rms 70.4 LSB). The README "<=1 LSB"
+        criterion therefore holds against the Python reference, NOT against the
+        RTL capture of the sine scenario. Pre-existing, not introduced here.
+
+==============================================================================
+ROOT CAUSE of the ~20 LSB DC and of the broken LO leakage rejection
+==============================================================================
+  RTL line  nco_400m_enhanced.v:103
+      wire [5:0] lut_index = (quadrant_w[0] ^ quadrant_w[1])
+                             ? ~lut_address[5:0] : lut_address[5:0];
+  Quarter-wave symmetry needs  quadrant_w[0]  alone. With the XOR the LUT
+  index is complemented for quadrants 1 AND 2 instead of 1 AND 3, so in
+  quadrants 2 and 3 the sine and cosine outputs are interchanged and the
+  complex LO stops being an analytic signal.
+
+  (a) LO waveform error
+      constant phase offset (pipeline lag) :  -64.91 deg  (= -0.60 sample)
+      RESIDUAL phase error after removing it: rms 37.51 deg, max 151.09 deg
+      magnitude |LO| : min 3.238350e+04  max 32767  (ripple 1.17 %)
+
+(b) effective LO DC over the visited phases
+      mixer DC for a DC input        : I +12.314, Q -2.198 LSB
+      implied LO leakage coefficient : I +0.0481, Q -0.0086  (4.81 % / 0.86 % of FS)
+      (an ideal LO would give about -0.5 LSB, i.e. 0.002 % -- pure truncation)
+
+(c) consequence for the 1 MHz scenario -- the input passes straight through
+      steady-state mixer DC  +12.314 -> CIC +11.800 -> FIR +20.200
+      predicted leakage path : 50 LSB * 512 * 0.0481 = 1231 (mixer)
+      expected FIR output rms = 1541  (FIR DC gain 1.7696)
+      measured FIR output rms = 1597 LSB
+      dominant output spectral line = 1.004 MHz  (input is 1.000 MHz)
+      -> CIC stopband rejection (~-76 dB at 119/121 MHz) is bypassed entirely.
+
+==============================================================================
+OPEN ITEM carried into M3
+==============================================================================
+  RTL vs Python disagree by rms 70.4 LSB on sine_1mhz (max 428) while
+  agreeing to rms 1.09 LSB on dc. Not a lag (lag sweep peaks at lag 0).
+  Both the DC offset and this scenario's output are proportional to the LO's
+  effective DC, so a small NCO difference between the RTL table and the Python
+  table would show up exactly here. Worth resolving before the M3 matched filter,
+  because the same amplitude scales appear in the chirp scenarios.

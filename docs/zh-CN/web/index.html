@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>工程文档站点</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="../index.html">中文资料目录</a> · <a href="index.md">查看 Markdown</a></header><main><p>原文：<code>docs/index.html</code><br>原文 SHA256：<code>26495C0AFA7C2749E19560CEEC8F9F062E420C85F74DC780D1E3841E0792C992</code><br>翻译日期：2026-10-08。以下为原文全文中文译文；“当前”“通过”“已验证”及数值均转述原文，不代表本次新增测试或硬件验证。原文未标明页面发布日期。源文不一致项见<a href="%E5%AE%A1%E9%98%85%E5%8F%91%E7%8E%B0.html">审阅发现</a>。</p>
+<p>导航：<a href="index.html">AERIS-10 文档</a> · <a href="architecture.html">架构</a> · <a href="implementation-log.html">实现日志</a> · <a href="bring-up.html">上板调试</a> · <a href="reports.html">报告</a> · <a href="release-notes.html">发布说明</a></p>
+<h1>工程文档站点</h1>
+<p>开源相控阵雷达。</p>
+<p>本站跟踪 AERIS-10 的架构、已验证的实现基线、约束清理进展以及硬件到货前的上板调试准备情况。</p>
+<p><a href="implementation-log.html">查看变更时间线</a> · <a href="bring-up.html">打开准备资料包</a></p>
+<h2>生产板 USB</h2>
+<p><strong>FT2232H（USB 2.0）</strong></p>
+<p>50T 生产板使用 FT2232H。FT601 USB 3.0 仅在 200T 高配开发板上提供。</p>
+<h2>跟踪的时序基线</h2>
+<p><strong>WNS +0.058 ns</strong></p>
+<p>移植已验证的 Build 16 XDC 后，WHS +0.068、WPWS +0.684。</p>
+<h2>回归状态</h2>
+<p><strong>MCU 15 / 15，FPGA 18 / 18</strong></p>
+<p>主机端固件回归测试以及 FPGA 单元和集成测试套件均通过。</p>
+<h2>方法学状态</h2>
+<p><strong>XDCB-5 = 0</strong></p>
+<p>仅剩一个已记录的 TIMING-18 问题，涉及 <code>ft601_txe</code> 异步观测。</p>
+<h2>当前阶段</h2>
+<p><strong>硬件到货前准备</strong></p>
+<p>板卡到货冒烟测试、产物清单以及开放风险跟踪均已准备。</p>
+<h2>近期变更</h2>
+<ul>
+<li>将已验证的 Build 16 生产目标 XDC 清理结果移植到跟踪仓库。</li>
+<li>保持布局布线后的正时序裕量，同时清除 XDCB-5，并将方法学遗留问题减少为一个已记录条目。</li>
+<li>通过 MCU 主机回归测试及 FPGA 回归/集成测试套件验证跟踪分支。</li>
+<li>将上板调试文档更新为 FPGA 模块和载板到货前的准备资料包。</li>
+<li>暂不将上游 ADAR1000 整批导入内容纳入基线，仅在有充分理由时选择性复用。</li>
+</ul>
+<h2>文档地图</h2>
+<ul>
+<li><a href="architecture.html">系统和 FPGA 架构</a></li>
+<li><a href="implementation-log.html">详细工程变更日志</a></li>
+<li><a href="bring-up.html">到货前上板调试计划、产物检查清单及开放风险</a></li>
+<li><a href="reports.html">已发布报告、仿真及产物背景</a></li>
+<li><a href="release-notes.html">按关键提交整理的发布说明</a></li>
+</ul>
+<p>AERIS-10 文档通过 GitHub Pages 从 <code>/docs</code> 发布。</p>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>本机工具与硬件条件</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="index.html">中文资料目录</a> · <a href="%E6%9C%AC%E6%9C%BA%E5%B7%A5%E5%85%B7%E4%B8%8E%E7%A1%AC%E4%BB%B6%E6%9D%A1%E4%BB%B6.md">查看 Markdown</a></header><main><h1>本机工具与硬件条件</h1>
+<p><strong>项目 <code>.venv</code> 已使用系统 Python 3.13.14 并安装 GUI、数值分析与测试依赖，可以开展文档整理、离线分析、GUI 演示/回放和 Python 测试。GUI 测试实际为 171 通过、3 失败，尚未全部通过。RTL、FPGA、MCU、openEMS/QucsStudio 仍需对应工具；烧录、真实通信和射频性能验证需要硬件。</strong></p>
+<p>核查日期：2026-10-08。本节当前 Python 状态以项目 <code>.venv</code>（系统 Python 3.13.14）为准；之前 Codex bundled Python 3.12.14 的探查仅作历史记录。工具检查包含 PATH、Windows 卸载注册表和明确的可执行文件路径；“未检出”不等于已穷尽所有便携安装。安装记录也不等于已具备许可证、工程适配或测试通过。</p>
+<h2>一 本机已有工具可以开展的工作</h2>
+<table>
+<thead>
+<tr>
+<th>工作</th>
+<th>已确认的本机工具</th>
+<th>可以完成的内容与边界</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Markdown/HTML/TXT 翻译和项目盘点</td>
+<td>Git、PowerShell 7、Codex Python/Node、marked</td>
+<td>读取文本、生成中文对照与 HTML、核对源指纹/本地链接。本轮已执行，工程性能不由这些检查验证。</td>
+</tr>
+<tr>
+<td>协议、源码和历史输出静态核对</td>
+<td>Git、Python 3.13.14、NumPy 2.5.3、pandas 3.0.6</td>
+<td>比较操作码、字段布局、数值及已有数据，阅读 ADC/DDC/匹配滤波/检测代码；不能代替 RTL 仿真或真实 USB 抓取。</td>
+</tr>
+<tr>
+<td>Python 阵列因子图、过孔示意图与 DAC 激励 CSV</td>
+<td>项目环境 NumPy、pandas、matplotlib 3.11.2、SciPy 1.18.1 均可导入</td>
+<td>依赖已具备，可开展计算与绘图；本轮没有重新执行这些生成脚本。阵列因子近似不能当作全波验证。</td>
+</tr>
+<tr>
+<td>V65/V7 离线界面、HDF5、跟踪与回放</td>
+<td>Tk、matplotlib、h5py 3.16.0、PyQt6 6.11.0/WebEngine、scikit-learn、filterpy、crcmod 均已安装且可导入</td>
+<td>隐藏 Qt 应用初始化与 WebEngine 导入通过；V65/V7 运行入口可用。没有完成可见界面全流程或真实设备验证。</td>
+</tr>
+<tr>
+<td>GUI/协议无硬件测试与 Python 检查工具</td>
+<td><code>.venv</code> 的 pytest 9.1.1、ruff 0.16.10、uv 0.12.23 可运行</td>
+<td>实际 GUI pytest 为 171 通过、3 失败、0 跳过、退出码 1；失败是 Windows <code>.npy</code> 文件占用。全仓 ruff、跨层和完整 CI 未执行，不能称全部通过。</td>
+</tr>
+<tr>
+<td>MATLAB 天线与射频模型准备、离线计算</td>
+<td>已实际启动 MATLAB R2026a Update 5；可见 Antenna、RF、RF PCB、Phased Array、Radar、Signal Processing 等工具箱</td>
+<td>可开展参数计算、天线/RF 模型建立及已有数据分析。仓库 <code>Matlab/Antenna_array.m</code> 和 <code>Slotted_DielectricFilled_Waveguide.m</code> 的整套求解未在本轮执行，不承诺无需脚本适配即可复现全部结果。</td>
+</tr>
+<tr>
+<td>CST 电磁建模的环境准备</td>
+<td>CST Studio Suite 2026 安装记录及可执行文件已确认</td>
+<td>本机已有 CST，无需先重复安装；许可证与求解未测试，仓库也没有已确认可直接运行的 <code>.cst</code> 工程。把 openEMS/MATLAB 模型转为 CST 属于后续建模任务。</td>
+</tr>
+</tbody></table>
+<p>MATLAB 可启动是实际运行证据；CST 与 Visual Studio 的存在性主要来自安装记录和文件探查，验证程度不同。Office 虽已安装，但 Word/Excel 仍按本轮范围暂停处理。</p>
+<h2>二 需要补充或配置工具才能完成的工作</h2>
+<table>
+<thead>
+<tr>
+<th>工作</th>
+<th>当前缺口</th>
+<th>需要补充或确认的条件</th>
+<th>是否必须有硬件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>完整 CI 与动态跨层契约检查</td>
+<td>Python dev 依赖已安装；动态跨层部分仍缺 C++/Icarus，GUI 仍有 3 项失败</td>
+<td>补动态测试工具并解决既有失败；完整 CI 还包含 MCU 和 RTL，不能仅凭 Python 包安装判断通过。</td>
+<td>主机测试不需要</td>
+</tr>
+<tr>
+<td>MCU 主机单元测试</td>
+<td>make、GCC/C++ 命令未检出；Visual Studio 已登记，但未查到其 C++ 组件路径</td>
+<td>当前 <code>tests/Makefile</code> 按 C11/C++17 的 <code>cc/c++</code> 与 POSIX 命令组织，需兼容工具链及 Windows 入口适配。Visual Studio 的安装记录不能直接证明这套 Makefile 可运行。</td>
+<td>否，使用主机 mock</td>
+</tr>
+<tr>
+<td>FPGA RTL 仿真与回归</td>
+<td>iverilog、vvp 未检出</td>
+<td>补 Icarus Verilog，并适配 <code>run_regression.sh</code> 的 shell/POSIX 依赖。当前任务遵守 PowerShell 约束，不直接执行 Bash 回归脚本。</td>
+<td>仿真不需要</td>
+</tr>
+<tr>
+<td>FPGA 综合、布局布线、时序与 <code>.bit</code> 生成</td>
+<td>Vivado 未在 PATH/安装记录中检出</td>
+<td>配置 Vivado 与目标 Artix-7 器件支持，确认 50T/200T/Trenz 顶层和 XDC 配对。仅生成 bit 不需要板卡。</td>
+<td>生成不需要；烧录及板上验证需要</td>
+</tr>
+<tr>
+<td>openEMS 天线/抗混叠滤波全波仿真</td>
+<td>项目 <code>.venv</code> 缺 openEMS/CSXCAD；MATLAB <code>InitFDTD/RunOpenEMS</code> 未找到</td>
+<td>补原生求解器、CSXCAD 和对应绑定/路径；先处理 AAF 脚本的 macOS 硬编码路径，以及 MATLAB 仿真脚本清理目录的逻辑。本轮没有执行这些脚本。</td>
+<td>否</td>
+</tr>
+<tr>
+<td>QucsStudio 电路仿真</td>
+<td>未检出 QucsStudio；源 <code>.sch</code> 首行标注 QucsStudio 5.8</td>
+<td>提供兼容 QucsStudio 环境及器件模型；<code>QPA2962.sch</code> 引用仓库外的 Windows <code>.s2p</code> 路径，需先确认实际模型。安装工具本身不能修复缺失输入。</td>
+<td>否</td>
+</tr>
+<tr>
+<td>PCB、制造与 DWG 图纸专项审查</td>
+<td>未检出 KiCad/EAGLE 等对应 EDA 命令或安装记录；DWG 阅读环境未专项验证</td>
+<td>按实际 <code>.sch/.brd</code> 或 KiCad 文件选兼容 EDA，并配置 DWG 阅读/编辑工具；Git/文本读取不能完成电气规则和制造可行性校验。</td>
+<td>文件审查不需要；板卡实测需要</td>
+</tr>
+</tbody></table>
+<p>仓库 <code>CONTRIBUTING.md</code> 要求包安装使用 <code>sfw</code> 前缀；本轮已将官方 <code>sfw</code> 放在项目 <code>.tools/sfw.exe</code> 并核对 SHA256，所有项目依赖经其包装安装。<code>.venv/</code> 与 <code>.tools/</code> 已忽略，系统 Python 包没有作为安装目标。具体命令和版本快照见 <a href="Python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83.html">Python 虚拟环境</a>。</p>
+<h2>三 需要硬件才能完成的工作</h2>
+<table>
+<thead>
+<tr>
+<th>工作</th>
+<th>必需实物与工具</th>
+<th>纯软件能够先做的准备</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>STM32 整板烧录、上电/断电时序、温控和功放偏置校准</td>
+<td>实际 STM32/电源/射频板、合适调试下载器、供电及电压/电流测量；还需 ARM 工具链和匹配 HAL/CubeMX 工程</td>
+<td>阅读管理逻辑与主机 mock 测试。仓库没有确认完整可直接烧录的 CubeMX 工程，安装编译器不等于具备整板固件。</td>
+</tr>
+<tr>
+<td>FPGA 心跳、JTAG 烧录、实际时钟与复位</td>
+<td>确认型号的 FPGA 板/Trenz 模块载板、合适 JTAG 接口、供电及 Vivado Hardware Manager</td>
+<td>确认 bit 来源、目标顶层、引脚约束及历史时序。</td>
+</tr>
+<tr>
+<td>真实 USB 数据、吞吐、持续采集和板卡自检</td>
+<td>FT2232H 或 FT601 对应实物、连接板与线缆；FT2232H 的 pyftdi/pyusb 已安装，仍需确认原生 USB 后端；FT601 另需 ftd3xx/D3XX</td>
+<td>使用 mock/demo、离线数据和协议逻辑检查。pyftdi 不能当作 FT601 支持。当前项目环境未安装 ftd3xx，未验证原生后端及实物连接。</td>
+</tr>
+<tr>
+<td>ADC/DAC、时钟同步、射频链增益/噪声、阵列幅相校准</td>
+<td>对应转换器、时钟、射频和天线板，适合频段的信号源、示波器/频谱分析/网络分析及校准连接条件</td>
+<td>波形计算、离线处理、仿真与寄存器/时序审查，不能替代实际电气与射频测量。</td>
+</tr>
+<tr>
+<td>3 km/20 km 探测距离、波束扫描、GPS/IMU 与整机目标跟踪</td>
+<td>完整雷达、阵列、功放、定位/姿态模块及实际测量场景</td>
+<td>先确认算法和测试方法；仿真与历史文档不能证明这些指标已达到。</td>
+</tr>
+</tbody></table>
+<p>本轮未确认有哪些板卡或仪器已经在你手中，因此只说明“任务需要什么”，不将硬件写成已缺失或已具备。</p>
+<h2>本地证据</h2>
+<ul>
+<li><a href="%E6%9C%AC%E6%9C%BAWindows%E5%B7%A5%E5%85%B7.json">Windows 工具探查</a>：PATH、安装记录、CST 文件、Visual Studio C++ 组件探查。</li>
+<li><a href="%E9%A1%B9%E7%9B%AE%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83.json">项目虚拟环境导入探查</a>、<a href="%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95.json">安装记录</a>、<a href="%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E9%AA%8C%E8%AF%81.json">本次验证</a>：以当前 <code>.venv</code> 为准。</li>
+<li><a href="%E6%9C%AC%E6%9C%BAPython%E7%8E%AF%E5%A2%83.json">之前 Codex Python 探查</a>：历史环境，不能套用于当前项目 <code>.venv</code>。</li>
+<li><a href="%E6%9C%AC%E6%9C%BAMATLAB%E7%8E%AF%E5%A2%83.json">MATLAB 探查</a>：实际版本、工具箱、函数路径和最小模型对象创建；不包含仓库求解结果。</li>
+<li><a href="firmware/%E5%AE%9E%E7%8E%B0%E4%B8%8E%E9%AA%8C%E8%AF%81%E7%9B%98%E7%82%B9.html">固件实现与验证盘点</a>、<a href="firmware/%E6%9C%AC%E6%AC%A1%E6%A3%80%E6%9F%A5%E8%AE%B0%E5%BD%95.html">GUI 实际测试记录</a>。</li>
+</ul>
+<p>以上分类区分环境能力和任务完成证据。下一轮可以先从 MATLAB 模型核对、Python 离线逻辑及文档状态统一开始；完整工程验证须补齐对应工具和输入。</p>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

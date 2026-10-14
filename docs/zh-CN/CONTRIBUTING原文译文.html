@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PLFM_RADAR（AERIS-10）贡献指南</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="index.html">中文资料目录</a> · <a href="CONTRIBUTING%E5%8E%9F%E6%96%87%E8%AF%91%E6%96%87.md">查看 Markdown</a></header><main><h1>PLFM_RADAR（AERIS-10）贡献指南</h1>
+<p>原文：<code>CONTRIBUTING.md</code>；指纹见 <code>源文件基线.json</code>。这是原文规则的全文翻译，不表示本轮已经通过这些检查。</p>
+<p>感谢关注项目。本指南介绍如何提交修改供审查和合并。</p>
+<h2>开始参与</h2>
+<ol>
+<li>分叉仓库，从 <code>develop</code> 创建主题分支。<code>main</code> 仅用于生产版本发布。</li>
+<li>不要将 Vivado 工程、位流、构建日志等生成结果纳入版本控制。</li>
+</ol>
+<h3>包安装安全要求</h3>
+<p>因供应链攻击风险，所有包安装必须使用 <code>sfw</code>（安全防火墙）前缀：</p>
+<ul>
+<li>Python：<code>sfw uv pip install &lt;package&gt;</code>，不得直接使用 pip。</li>
+<li>Node/JS：<code>sfw npm install &lt;package&gt;</code>。</li>
+<li>Rust/Cargo：<code>sfw cargo &lt;command&gt;</code>。</li>
+</ul>
+<p>不得运行缺少 <code>sfw</code> 前缀的包安装命令。</p>
+<h2>仓库布局</h2>
+<table>
+<thead>
+<tr>
+<th>路径</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>4_Schematics and Boards Layout/</code></td>
+<td>KiCad 原理图、Gerber、BOM/CPL</td>
+</tr>
+<tr>
+<td><code>9_Firmware/9_1_Microcontroller/</code></td>
+<td>STM32 C/C++ 固件与单元测试</td>
+</tr>
+<tr>
+<td><code>9_Firmware/9_2_FPGA/</code></td>
+<td>Verilog RTL、约束、测试平台、构建脚本</td>
+</tr>
+<tr>
+<td><code>9_Firmware/9_3_GUI/</code></td>
+<td>Python 雷达界面（Tkinter/PyQt6）及命令行工具</td>
+</tr>
+<tr>
+<td><code>9_Firmware/tests/cross_layer/</code></td>
+<td>Python 系统不变量与协议契约测试</td>
+</tr>
+<tr>
+<td><code>docs/</code></td>
+<td>GitHub Pages 文档站点</td>
+</tr>
+</tbody></table>
+<h2>代码标准与工具</h2>
+<p>Python GUI、脚本和测试用 <code>uv</code> 管理依赖，严格执行 <code>ruff</code> 检查；提交前运行 <code>uv run ruff check .</code>，用 <code>pytest</code> 测试。</p>
+<p>Verilog 的 <code>radar_system_top.v</code> 是操作码、位宽、复位默认值和有效范围的唯一事实来源。测试平台必须包含对抗性验证，主动测试边界、竞争条件、非预期输入顺序及运行期间复位。仿真使用 <code>iverilog</code>。</p>
+<p>MCU C/C++ 使用 <code>make test</code> 进行主机端单元测试（原文标注 cpputest）。每次增加代码，都必须验证跨模块、跨进程和跨芯片的系统不变量成立。</p>
+<h2>AI 使用政策</h2>
+<p>允许使用 AI，但代码质量和控制必须由提交修改的维护者负责，而不能依赖代理。维护者对提交内容承担全部责任。</p>
+<ol>
+<li>人承担责任：提交工程师须像对自己编写的代码一样，对 AI 生成代码完全负责。每个 PR 都必须能够由人理解并解释。</li>
+<li>必须审查：不得提交未经阅读的 AI 原始输出。AI 代码与手写代码适用同样的审查标准。</li>
+<li>提交前运行完整 CI：所有 AI 辅助修改在提交前必须通过本地完整 CI，包括 lint、单元、回归和跨层测试。</li>
+</ol>
+<h2>运行测试套件</h2>
+<p>原文称 GitHub Actions 在每个 PR 上运行四项主要任务，推送前应在本地运行。</p>
+<h3>Python 和静态检查</h3>
+<pre><code class="language-bash">uv run ruff check .
+cd 9_Firmware/9_3_GUI
+uv run pytest test_GUI_V65_Tk.py test_v7.py -v
+</code></pre>
+<h3>FPGA 回归</h3>
+<pre><code class="language-bash">cd 9_Firmware/9_2_FPGA
+bash run_regression.sh
+</code></pre>
+<p>原文写为“五个阶段”，但括号实际列出六项：静态检查、修改模块、集成、信号处理、基础设施，以及 P0 对抗性测试。原文要求全部通过；译文保留这个计数差异。</p>
+<h3>MCU 单元测试</h3>
+<pre><code class="language-bash">cd 9_Firmware/9_1_Microcontroller/tests
+make clean &amp;&amp; make
+</code></pre>
+<h3>跨层契约测试</h3>
+<pre><code class="language-bash">uv run pytest 9_Firmware/tests/cross_layer/test_cross_layer_contract.py -v
+</code></pre>
+<h2>合并前 CI 清单</h2>
+<p>所有 PR 必须通过 CI。</p>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>检查内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>python-tests</code></td>
+<td>ruff 无错误，pytest 通过</td>
+</tr>
+<tr>
+<td><code>mcu-tests</code></td>
+<td>make all 退出码为 0</td>
+</tr>
+<tr>
+<td><code>fpga-regression</code></td>
+<td>run_regression.sh 退出码为 0</td>
+</tr>
+<tr>
+<td><code>cross-layer-tests</code></td>
+<td>pytest 退出码为 0</td>
+</tr>
+</tbody></table>
+<h2>重要说明</h2>
+<ul>
+<li>除非维护者明确要求，否则不提供旧版本兼容。</li>
+<li>FPGA RTL <code>radar_system_top.v</code> 是操作码、位宽、复位默认值和有效范围的唯一事实来源，其余各层必须与其一致。</li>
+<li>必须开展对抗性测试，每个测试都要主动尝试破坏代码。</li>
+<li>测试平台时序：在 <code>@(posedge clk)</code> 后使用阻塞赋值驱动被测设计输入之前，始终加入 <code>#1</code> 延迟。</li>
+<li>预取 FIFO：<code>wr_full</code> 在写入 DEPTH+1 次之后置位，并非 DEPTH 次。</li>
+</ul>
+<h2>推送前清单</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <code>uv run ruff check .</code>，无静态检查错误。</li>
+<li><input disabled="" type="checkbox"> <code>uv run pytest test_GUI_V65_Tk.py test_v7.py -v</code>，全部通过。</li>
+<li><input disabled="" type="checkbox"> <code>cd 9_Firmware/9_2_FPGA &amp;&amp; bash run_regression.sh</code>，原文所称全部 5 阶段通过。</li>
+<li><input disabled="" type="checkbox"> <code>cd 9_Firmware/9_1_Microcontroller/tests &amp;&amp; make clean &amp;&amp; make</code>，通过。</li>
+<li><input disabled="" type="checkbox"> <code>uv run pytest 9_Firmware/tests/cross_layer/test_cross_layer_contract.py</code>，通过。</li>
+<li><input disabled="" type="checkbox"> <code>git diff --check</code>，无空白字符问题。</li>
+<li><input disabled="" type="checkbox"> PR 目标分支为 <code>develop</code>。</li>
+</ul>
+<h2>问题反馈</h2>
+<p>通过 GitHub issue 提出问题，使讨论对所有人可见。</p>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

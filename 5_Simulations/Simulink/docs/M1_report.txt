@@ -1,0 +1,8 @@
+AERIS-10 Milestone M1 report
+ran at 13-Oct-2026 14:30:53
+MATLAB 26.1.0.3346908 (R2026a) Update 5
+
+adc_dc.hex         in=16384 out=4096  reject=-74.1 dB [PASS]  trunc8-vs-golden [PASS]
+adc_sine_1mhz.hex  in=16384 out=4096  reject=-50.4 dB [PASS]  trunc8-vs-golden [PASS]
+synth 120MHz       DC(Q)=-0.3991 expect -0.4000 err=0.233% [PASS]
+long_chirp_lut     centroid 11.7 -> 28.3 MHz  trend +16.67 [PASS]

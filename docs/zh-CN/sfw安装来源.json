@@ -1,0 +1,7 @@
+{
+  "release": "v1.15.4",
+  "source": "https://github.com/SocketDev/sfw-free/releases/download/v1.15.4/sfw-free-windows-x86_64.exe",
+  "sha256": "f8c94fc5e41d49c51d2fd013c2c169274df9c483fc763d8c82ff71c5579d3bb0",
+  "verified_against": "GitHub release asset digest",
+  "local_path": ".tools/sfw.exe"
+}

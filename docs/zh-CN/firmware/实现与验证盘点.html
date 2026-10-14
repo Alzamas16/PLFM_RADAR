@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>固件实现与验证盘点</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="../index.html">中文资料目录</a> · <a href="%E5%AE%9E%E7%8E%B0%E4%B8%8E%E9%AA%8C%E8%AF%81%E7%9B%98%E7%82%B9.md">查看 Markdown</a></header><main><h1>固件实现与验证盘点</h1>
+<p>盘点日期：2026-10-08。结论：项目已有 MCU、FPGA、GUI 源码及自动验证入口；本次 Windows 无硬件 GUI 检查未全部通过，现有历史比特流不能证明当前源码或整机已经验证。</p>
+<h2>已有实现与入口</h2>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>已有源码/入口</th>
+<th>本次阅读确认的作用</th>
+<th>验证边界</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MCU</td>
+<td><code>9_Firmware/9_1_Microcontroller/9_1_1_C_Cpp_Libraries/</code>、<code>9_1_3_C_Cpp_Code/</code>、<code>tests/Makefile</code></td>
+<td>ADAR1000、ADF4382A 管理、STM32 平台和 UM982 GPS；主机 mock HAL 与真实部分源文件相连</td>
+<td>host 单测不等于 STM32 交叉编译、烧录或 RF 实测</td>
+</tr>
+<tr>
+<td>FPGA 核心</td>
+<td><code>radar_system_top.v</code></td>
+<td>发射、接收处理、USB 数据和命令、检测与自检顶层集成</td>
+<td>本次未综合、实现或 RTL 仿真</td>
+</tr>
+<tr>
+<td>FPGA 时钟</td>
+<td><code>ad9484_interface_400m.v</code>、<code>adc_clk_mmcm.v</code></td>
+<td>当前源文件已实例化 MMCM；BUFIO 用于 IDDR，MMCM 输出用于可编程逻辑</td>
+<td>仿真会使用 ADC stub，不能验证真实 Xilinx 原语与板上时序</td>
+</tr>
+<tr>
+<td>生产/开发封装</td>
+<td><code>radar_system_top_50t.v</code>、<code>radar_system_top_te0712_dev.v</code>、<code>radar_system_top_te0713_dev.v</code></td>
+<td>50T 专用 USB 封装；Trenz 分离上电调试入口</td>
+<td>当前 TE0713 minimal 顶层为心跳/状态输出，不能当作完整雷达顶层</td>
+</tr>
+<tr>
+<td>FT601 专用开发入口</td>
+<td><code>radar_system_top_te0713_umft601x_dev.v</code></td>
+<td>计数器合成数据、流控制、状态请求、GPIO 心跳</td>
+<td>没有真实雷达 RF/ADC 数据；AGC 状态接默认值</td>
+</tr>
+<tr>
+<td>GUI V65</td>
+<td><code>GUI_V65_Tk.py</code>、<code>radar_protocol.py</code>、<code>smoke_test.py</code></td>
+<td>Tk 面板、USB 协议、记录/采集与板卡自检触发入口</td>
+<td>mock 连接成功不代表真实 USB 驱动、设备或雷达正常</td>
+</tr>
+<tr>
+<td>GUI V7</td>
+<td><code>GUI_V7_PyQt.py</code>、<code>v7/</code></td>
+<td>模型、处理、硬件、软件 FPGA、回放、worker、地图与 dashboard 分模块实现</td>
+<td>PyQt6 等可选依赖缺失会关闭对应功能；本次未启动交互 GUI</td>
+</tr>
+</tbody></table>
+<p>协议核对：<code>radar_protocol.py</code> 与当前 FT601 RTL 的常量表含数据头 <code>0xAA</code>、尾 <code>0x55</code>、11 字节数据包；状态头 <code>0xBB</code>、26 字节状态包。历史 FT601 比特流说明写 <code>0xAE10xxxx</code>，与当前 RTL 打包说明不一致，需按实际比特流来源版本确认。</p>
+<h2>CI 配置与测试入口</h2>
+<p><code>.github/workflows/ci-tests.yml</code> 在 <code>main</code>、<code>develop</code> 的 push 和 pull request 上配置四组任务；已读配置不等于查询到 CI 运行成功。</p>
+<table>
+<thead>
+<tr>
+<th>CI 任务</th>
+<th>配置中的操作</th>
+<th>本次状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Python</td>
+<td>Python 3.12，<code>uv sync --group dev</code>，<code>ruff check .</code>，<code>py_compile</code>，两个 GUI 测试文件的 pytest</td>
+<td>未运行配置中的 uv/ruff/pytest；本次用 unittest 执行同两个测试模块，结果见下文</td>
+</tr>
+<tr>
+<td>MCU</td>
+<td><code>make test</code>，工作目录 <code>9_Firmware/9_1_Microcontroller/tests</code></td>
+<td>PATH 未找到 make/gcc，未执行</td>
+</tr>
+<tr>
+<td>FPGA</td>
+<td>Ubuntu 安装 Icarus Verilog，执行 <code>bash run_regression.sh</code></td>
+<td>PATH 未找到 iverilog，未执行；未跳过门禁</td>
+</tr>
+<tr>
+<td>跨层契约</td>
+<td>pytest 执行 <code>9_Firmware/tests/cross_layer/test_cross_layer_contract.py</code></td>
+<td>pytest/Icarus/C++ 工具不齐，未执行</td>
+</tr>
+</tbody></table>
+<p><code>pyproject.toml</code> 将运行时依赖列表留空；dev 组含 ruff、pytest、numpy、h5py。GUI 所需依赖由 <code>requirements_dashboard.txt</code>、<code>requirements_v7.txt</code>、<code>requirements_pyqt_gui.txt</code> 等另列。因此仅安装项目本身不能推定完整 GUI 可运行。</p>
+<p>当前 <code>tests/Makefile</code> 的 <code>ALL_TESTS</code> 展开为 24 个测试目标：7 个链接真实 ADF4382A 源码、6 个 mock/抽取模式、8 个独立逻辑、1 个 STM32 平台、1 个 C++ AGC、1 个 GPS。CI 注释仍称 20 个，属于注释落后，不能据此报当前测试数。</p>
+<p>当前 <code>run_regression.sh</code> 含 27 处 <code>run_test</code> 调用（含 receiver 黄金生成/比较、完整系统和 FT2232H 分支），CI 注释仍称 25 个 testbench。该脚本先执行 lint，再编译/运行并根据输出标记判断；<code>--quick</code> 跳过长集成测试。本次未使用 <code>--skip-lint</code>。注意该脚本对 vvp 调用的退出状态使用 <code>|| true</code>，主要依赖 PASS/FAIL/完成文本；这是一项静态观察，不是实际证明脚本存在误报。</p>
+<p>跨层测试源码覆盖静态操作码/位宽/布局，Verilog 联合仿真，以及 C++ stub 设置数据包执行。CI 模式下缺失工具会报错；普通本地模式会跳过部分动态测试。因此未来复跑也需保存跳过数量，不能只记录通过数。</p>
+<h2>本次实际检查</h2>
+<p>详情见 <a href="%E6%9C%AC%E6%AC%A1%E6%A3%80%E6%9F%A5%E8%AE%B0%E5%BD%95.html">本次检查记录</a>。bundled Python 为 3.12.14，numpy 可导入；pytest、ruff、h5py、PyQt6 不可导入。运行：</p>
+<pre><code class="language-powershell">&amp; &#39;C:/Users/chx_g/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe&#39; -B -m unittest test_GUI_V65_Tk test_v7 -q
+</code></pre>
+<p>工作目录为 <code>9_Firmware/9_3_GUI</code>。结果：174 个测试，3 个 error，5 个 skipped，退出码 1；其余 166 个未报 failure/error。3 个 error 均发生于 <code>TestReplayEngineRawIQ</code> 删除临时 <code>.npy</code> 文件时，Windows 报 <code>WinError 32</code> 文件占用（源码第 806、827、843 行）。本次未修测试、回放源码或人工删除临时文件。</p>
+<p>这支持“部分纯逻辑测试正常运行”的结论；不支持“完整 GUI 测试通过”“真实 USB 通讯通过”“HDF5 记录已验证”或“Qt 界面已验证”。</p>
+<h2>历史产物证据</h2>
+<table>
+<thead>
+<tr>
+<th>产物</th>
+<th>原文历史记录</th>
+<th>本次可核对证据</th>
+<th>尚未证明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TE0713 心跳 <code>.bit</code> 与 <code>.md</code></td>
+<td>2026-03-21，Vivado 2025.2，DRC 0，WNS +17.863 ns，WHS +0.265 ns</td>
+<td>文件存在；当前 minimal 顶层为计数器心跳输出</td>
+<td>本次未重建；未核验已烧录；未证明当前源版本与 bit 一致</td>
+</tr>
+<tr>
+<td>TE0713 FT601 开发 <code>.bit</code> 与 <code>.md</code></td>
+<td>WNS +0.059 ns，WHS +0.121 ns，WPWS +4.500 ns，DRC 0</td>
+<td>同目录 <code>.rpt</code> 的时序表支持这些时序数值；满足已指定时序约束</td>
+<td>不等于整机雷达验证；本次未重新运行 DRC 或 USB 硬件</td>
+</tr>
+</tbody></table>
+<p>FT601 <code>.rpt</code> 还列出 HPDR-1 端口方向一致性警告 21 项，并提示 methodology 结果可能不是最新；3 个输出端口没有 output delay 但被用户设为 false path。不能将“DRC 0”概括为不存在警告或约束例外。</p>
+<h2>文档差异与后续核对</h2>
+<ol>
+<li><code>constraints/README.md</code> 的部分段落写 <code>USB_MODE</code> 默认 0，源码实际为 1，200T 构建脚本明确覆盖 0。中文译文保留原文并加核对注。</li>
+<li>历史 FT601 操作说明的 <code>0xAE10xxxx</code> 包头与当前 <code>0xAA</code> RTL 常量不一致。实际 USB 调试需保存烧录 bit、源码 commit、协议版本和抓取字节。</li>
+<li>MMCM 集成文档中的抖动/裕量为估计或历史说明，不能当成本次测量。</li>
+<li>黄金 Hex 文件说明要求流水线改变时重生成；本次未建立生成数据与当前 RTL 的完整匹配证据，未覆盖数据。</li>
+<li>本次不修改实现，只增加中文全文资料与核对记录；下一轮验证需要可用 Vivado/Icarus/C++/Python dev 环境以及板卡证据。</li>
+</ol>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>项目 Python 3.13 虚拟环境 / Project Python environment</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="index.html">中文资料目录</a> · <a href="Python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83.md">查看 Markdown</a></header><main><h1>项目 Python 3.13 虚拟环境 / Project Python environment</h1>
+<p>项目根目录 <code>.venv</code> 已由本机系统 Python <strong>3.13.14</strong> 创建，<code>include-system-site-packages = false</code>。已通过 <code>sfw</code> 安装 37 个项目依赖包；环境中另有创建虚拟环境时提供的 pip。运行项目时明确使用 <code>.venv\Scripts\python.exe</code>。</p>
+<p>The project uses <code>.venv</code>, created from the installed system Python 3.13.14. Host dependencies are installed in this environment. Use <code>.venv\Scripts\python.exe</code> for host software, analysis and tests; FPGA tools, MCU toolchains and native hardware drivers remain separate requirements.</p>
+<h2>依赖清单 / Dependencies</h2>
+<p><code>requirements-local.txt</code> 引用现有 V65、V7 和 PyQt GUI 依赖，另含 pandas、pyserial、pytest、ruff、uv；<code>pyproject.toml</code> 的 dev 组同时参与安装。范围包括 NumPy、SciPy、matplotlib、HDF5、PyQt6/WebEngine、跟踪/聚类、CRC、USB Python 接口及测试工具。</p>
+<p><code>requirements-local.lock.txt</code> 保存本次 Windows x64、Python 3.13 环境的确切包版本，供同类环境复现。它不是跨操作系统的通用锁文件，不包含 Vivado、GCC/Make、Icarus、openEMS、CST 或 USB 原生驱动。</p>
+<h2>创建与安装 / Create and install</h2>
+<p>以下命令在项目根目录的 PowerShell 执行。本机 <code>.venv</code> 已创建，日常运行无需重建，也无需激活。</p>
+<pre><code class="language-powershell"># 仅首次创建时执行 / First-time creation only
+python3.13 -m venv .venv
+
+# 使用本机已有 uv，并经 sfw 安装 / Install through sfw
+$env:Path = &quot;$env:USERPROFILE\.local\bin;$env:Path&quot;
+&amp; .\.tools\sfw.exe uv pip install --python .venv/Scripts/python.exe --no-python-downloads -r requirements-local.txt --group dev --link-mode=copy
+</code></pre>
+<p><code>.tools/sfw.exe</code> 按 <a href="https://docs.socket.dev/docs/socket-firewall-free">Socket 官方手动安装方式</a>，从 <a href="https://github.com/SocketDev/sfw-free/releases/tag/v1.15.4">v1.15.4 发布页</a> 下载 Windows x86_64 二进制，SHA256 已与发布资产 digest 核对。来源记录见 <a href="sfw%E5%AE%89%E8%A3%85%E6%9D%A5%E6%BA%90.json">sfw 安装来源</a>。本机已有 <code>uv.exe</code> 在 <code>$env:USERPROFILE\.local\bin</code>，命令只调整当前 PowerShell 会话的 PATH。首次实际安装未指定 <code>--link-mode=copy</code>，uv 因缓存位于 C 盘而环境位于 D 盘，自动回退到复制并成功完成；上述复现命令显式使用复制。</p>
+<p>安装完成后，可使用环境自身的 uv 按版本快照复现：</p>
+<pre><code class="language-powershell">$env:Path = &quot;$PWD\.venv\Scripts;$env:Path&quot;
+&amp; .\.tools\sfw.exe uv pip install --python .venv/Scripts/python.exe --no-python-downloads -r requirements-local.lock.txt --link-mode=copy
+</code></pre>
+<p><code>.venv/</code> 和 <code>.tools/</code> 已加入 <code>.gitignore</code>，包文件与本机工具二进制不纳入版本控制。</p>
+<h2>运行 / Run</h2>
+<pre><code class="language-powershell"># V65 离线演示 / V65 offline demo
+&amp; .\.venv\Scripts\python.exe .\9_Firmware\9_3_GUI\GUI_V65_Tk.py --demo
+
+# V7 界面 / V7 dashboard
+&amp; .\.venv\Scripts\python.exe .\9_Firmware\9_3_GUI\GUI_V7_PyQt.py
+
+# 依赖一致性与 GUI 测试 / Dependencies and GUI tests
+&amp; .\.venv\Scripts\uv.exe pip check --python .venv/Scripts/python.exe
+&amp; .\.venv\Scripts\python.exe -B -m pytest .\9_Firmware\9_3_GUI\test_GUI_V65_Tk.py .\9_Firmware\9_3_GUI\test_v7.py -q --tb=short -p no:cacheprovider
+</code></pre>
+<p>V65 离线演示无需板卡。V7 地图使用在线资源，其离线可用性需另行确认。实时 USB 模式仍需对应设备及后端：FT2232H 使用 pyftdi/libusb，FT601 使用 ftd3xx/D3XX；后者未列入当前通用 GUI 依赖清单。</p>
+<h2>验证记录 / Verification</h2>
+<p>实际结果见 <a href="%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95.json">虚拟环境安装记录</a>、<a href="%E9%A1%B9%E7%9B%AE%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83.json">模块导入探查</a>、<a href="%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E9%AA%8C%E8%AF%81.json">虚拟环境验证</a>。安装成功、可导入或可创建隐藏 Qt 应用，不等同于全部 GUI 功能、完整 CI 或真实硬件验证通过。</p>
+<p>本次 <code>uv pip check</code> 检查环境中的 38 个发行包，依赖兼容；Qt 隐藏应用初始化和 WebEngine 导入通过，pytest/ruff 可运行。GUI pytest 实际为 <strong>171 passed、3 failed、0 skipped、退出码 1</strong>。三个失败仍为 <code>TestReplayEngineRawIQ</code> 清理临时 <code>.npy</code> 时的 Windows <code>WinError 32</code>，本轮没有修改回放或测试源码。与之前 Codex Python 环境相比，原来缺依赖导致的 5 项跳过本次已执行。</p>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

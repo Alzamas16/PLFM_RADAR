@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-08",
+  "python": "D:\\PhD_Prj_Main\\PLFM_RADAR\\.venv\\Scripts\\python.exe",
+  "version": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+  "checks": [
+    {
+      "check": "dependency_check",
+      "command": [
+        "D:\\PhD_Prj_Main\\PLFM_RADAR\\.venv\\Scripts\\uv.exe",
+        "pip",
+        "check",
+        "--python",
+        "D:\\PhD_Prj_Main\\PLFM_RADAR\\.venv\\Scripts\\python.exe"
+      ],
+      "cwd": "D:\\PhD_Prj_Main\\PLFM_RADAR",
+      "exit_code": 0,
+      "log": "docs\\zh-CN\\environment\\dependency_check.log",
+      "tail": "Checked 38 packages in 1ms\nAll installed packages are compatible\n"
+    },
+    {
+      "check": "pytest_version",
+      "command": [
+        "D:\\PhD_Prj_Main\\PLFM_RADAR\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "--version"
+      ],
+      "cwd": "D:\\PhD_Prj_Main\\PLFM_RADAR",
+      "exit_code": 0,
+      "log": "docs\\zh-CN\\environment\\pytest_version.log",
+      "tail": "pytest 9.1.1\n"
+    },
+    {
+      "check": "ruff_version",
+      "command": [
+        "D:\\PhD_Prj_Main\\PLFM_RADAR\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "--version"
+      ],
+      "cwd": "D:\\PhD_Prj_Main\\PLFM_RADAR",
+      "exit_code": 0,
+      "log": "docs\\zh-CN\\environment\\ruff_version.log",
+      "tail": "ruff 0.16.10\n"
+    },
+    {
+      "check": "qt_application",
+      "command": [
+        "D:\\PhD_Prj_Main\\PLFM_RADAR\\.venv\\Scripts\\python.exe",
+        "-c",
+        "from PyQt6.QtWidgets import QApplication; from PyQt6.QtWebEngineWidgets import QWebEngineView; app=QApplication([]); print(\"Qt application and WebEngine imports OK\"); app.quit()"
+      ],
+      "cwd": "D:\\PhD_Prj_Main\\PLFM_RADAR",
+      "exit_code": 0,
+      "log": "docs\\zh-CN\\environment\\qt_application.log",
+      "tail": "Qt application and WebEngine imports OK\n"
+    },
+    {
+      "check": "gui_tests",
+      "command": [
+        "D:\\PhD_Prj_Main\\PLFM_RADAR\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "pytest",
+        "test_GUI_V65_Tk.py",
+        "test_v7.py",
+        "-q",
+        "--tb=short",
+        "-p",
+        "no:cacheprovider"
+      ],
+      "cwd": "D:\\PhD_Prj_Main\\PLFM_RADAR\\9_Firmware\\9_3_GUI",
+      "exit_code": 1,
+      "log": "docs\\zh-CN\\environment\\gui_tests.log",
+      "tail": "........................................................................ [ 41%]\n........................................................................ [ 82%]\n....................FFF.......                                           [100%]\n================================== FAILURES ===================================\n____________ TestReplayEngineRawIQ.test_get_frame_raw_iq_synthetic ____________\ntest_v7.py:827: in test_get_frame_raw_iq_synthetic\n    os.unlink(tmp)\nE   PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'C:\\\\Users\\\\chx_g\\\\AppData\\\\Local\\\\Temp\\\\tmpuqfx6f9i.npy'\n______________ TestReplayEngineRawIQ.test_load_raw_iq_synthetic _______________\ntest_v7.py:806: in test_load_raw_iq_synthetic\n    os.unlink(tmp)\nE   PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'C:\\\\Users\\\\chx_g\\\\AppData\\\\Local\\\\Temp\\\\tmpyncx4yt9.npy'\n______________ TestReplayEngineRawIQ.test_raw_iq_no_fpga_raises _______________\ntest_v7.py:843: in test_raw_iq_no_fpga_raises\n    os.unlink(tmp)\nE   PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'C:\\\\Users\\\\chx_g\\\\AppData\\\\Local\\\\Temp\\\\tmpt6ldhg83.npy'\n============================== warnings summary ===============================\n9_Firmware/9_3_GUI/test_v7.py::TestRadarTarget::test_defaults\n  D:\\PhD_Prj_Main\\PLFM_RADAR\\.venv\\Lib\\site-packages\\filterpy\\common\\helpers.py:367: SyntaxWarning: invalid escape sequence '\\S'\n    P = \\Sum {A[i] B[i].T} for i in 0..N\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ===========================\nFAILED test_v7.py::TestReplayEngineRawIQ::test_get_frame_raw_iq_synthetic - P...\nFAILED test_v7.py::TestReplayEngineRawIQ::test_load_raw_iq_synthetic - Permis...\nFAILED test_v7.py::TestReplayEngineRawIQ::test_raw_iq_no_fpga_raises - Permis...\n3 failed, 171 passed, 1 warning in 20.90s\n"
+    }
+  ],
+  "scope": "依赖一致性、工具可运行、隐藏 Qt 初始化和无硬件 GUI 测试；不代表真实USB/射频/完整CI"
+}

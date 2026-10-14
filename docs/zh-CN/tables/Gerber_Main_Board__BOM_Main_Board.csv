@@ -1,0 +1,802 @@
+﻿sheet,cell,original,中文,状态
+Feuil1,A1,Qty,数量,已翻译
+Feuil1,B1,Value,标称值,已翻译
+Feuil1,C1,Device,器件,已翻译
+Feuil1,D1,Package,封装,已翻译
+Feuil1,E1,Parts,器件位号集合,已翻译
+Feuil1,F1,Description,说明,已翻译
+Feuil1,G1,MANUFACTURER_PART_NUMBER,制造商器件型号,已翻译
+Feuil1,H1,REMARKS,备注,已翻译
+Feuil1,I1,NOTE,备注,已翻译
+Feuil1,C2,L-EUL5650M,L-EUL5650M,型号/位号/数值/名称按原文保留
+Feuil1,D2,L5650M,L5650M,型号/位号/数值/名称按原文保留
+Feuil1,E2,"L1, L11, L12, L13, L14, L15, L16, L17, L18, L21, L23","L1, L11, L12, L13, L14, L15, L16, L17, L18, L21, L23",型号/位号/数值/名称按原文保留
+Feuil1,F2,"INDUCTOR, European symbol",电感，欧洲制图符号,已翻译
+Feuil1,G2,HI2220P601R-10,HI2220P601R-10,型号/位号/数值/名称按原文保留
+Feuil1,H2,,,型号/位号/数值/名称按原文保留
+Feuil1,I2,,,型号/位号/数值/名称按原文保留
+Feuil1,C3,MA10-2,MA10-2,型号/位号/数值/名称按原文保留
+Feuil1,D3,MA10-2,MA10-2,型号/位号/数值/名称按原文保留
+Feuil1,E3,SV1,SV1,型号/位号/数值/名称按原文保留
+Feuil1,F3,PIN HEADER,排针,已翻译
+Feuil1,G3,MA10-2,MA10-2,型号/位号/数值/名称按原文保留
+Feuil1,H3,[DNP不要贴];,[DNP：不要贴装]；,已翻译
+Feuil1,I3,,,型号/位号/数值/名称按原文保留
+Feuil1,C4,PINHD-1X2,PINHD-1X2,型号/位号/数值/名称按原文保留
+Feuil1,D4,1X02,1X02,型号/位号/数值/名称按原文保留
+Feuil1,E4,JP20,JP20,型号/位号/数值/名称按原文保留
+Feuil1,F4,PIN HEADER,排针,已翻译
+Feuil1,G4,Do Not Put,不要贴装,已翻译
+Feuil1,H4,[DNP不要贴];,[DNP：不要贴装]；,已翻译
+Feuil1,I4,,,型号/位号/数值/名称按原文保留
+Feuil1,C5,PINHD-1X3,PINHD-1X3,型号/位号/数值/名称按原文保留
+Feuil1,D5,1X03,1X03,型号/位号/数值/名称按原文保留
+Feuil1,E5,"JP4, JP5, JP6, JP10, JP11, JP12, JP14, JP15, JP16, JP17, JP19","JP4, JP5, JP6, JP10, JP11, JP12, JP14, JP15, JP16, JP17, JP19",型号/位号/数值/名称按原文保留
+Feuil1,F5,PIN HEADER,排针,已翻译
+Feuil1,G5,Do Not Put,不要贴装,已翻译
+Feuil1,H5,[DNP不要贴];,[DNP：不要贴装]；,已翻译
+Feuil1,I5,,,型号/位号/数值/名称按原文保留
+Feuil1,C6,PINHD-1X4,PINHD-1X4,型号/位号/数值/名称按原文保留
+Feuil1,D6,1X04,1X04,型号/位号/数值/名称按原文保留
+Feuil1,E6,"JP8, JP9, JP18","JP8, JP9, JP18",型号/位号/数值/名称按原文保留
+Feuil1,F6,PIN HEADER,排针,已翻译
+Feuil1,G6,Do Not Put,不要贴装,已翻译
+Feuil1,H6,[DNP不要贴];,[DNP：不要贴装]；,已翻译
+Feuil1,I6,,,型号/位号/数值/名称按原文保留
+Feuil1,C7,PINHD-1X6,PINHD-1X6,型号/位号/数值/名称按原文保留
+Feuil1,D7,1X06,1X06,型号/位号/数值/名称按原文保留
+Feuil1,E7,JP2,JP2,型号/位号/数值/名称按原文保留
+Feuil1,F7,PIN HEADER,排针,已翻译
+Feuil1,G7,Do Not Put,不要贴装,已翻译
+Feuil1,H7,[DNP不要贴];,[DNP：不要贴装]；,已翻译
+Feuil1,I7,,,型号/位号/数值/名称按原文保留
+Feuil1,C8,PINHD-1X8,PINHD-1X8,型号/位号/数值/名称按原文保留
+Feuil1,D8,1X08,1X08,型号/位号/数值/名称按原文保留
+Feuil1,E8,JP7,JP7,型号/位号/数值/名称按原文保留
+Feuil1,F8,PIN HEADER,排针,已翻译
+Feuil1,G8,Do Not Put,不要贴装,已翻译
+Feuil1,H8,[DNP不要贴];,[DNP：不要贴装]；,已翻译
+Feuil1,I8,,,型号/位号/数值/名称按原文保留
+Feuil1,C9,PINHD-2X4,PINHD-2X4,型号/位号/数值/名称按原文保留
+Feuil1,D9,2X04,2X04,型号/位号/数值/名称按原文保留
+Feuil1,E9,JP3,JP3,型号/位号/数值/名称按原文保留
+Feuil1,F9,PIN HEADER,排针,已翻译
+Feuil1,G9,Do Not Put,不要贴装,已翻译
+Feuil1,H9,[DNP不要贴];,[DNP：不要贴装]；,已翻译
+Feuil1,I9,,,型号/位号/数值/名称按原文保留
+Feuil1,C10,PINHD-2X6,PINHD-2X6,型号/位号/数值/名称按原文保留
+Feuil1,D10,2X06,2X06,型号/位号/数值/名称按原文保留
+Feuil1,E10,JP1,JP1,型号/位号/数值/名称按原文保留
+Feuil1,F10,PIN HEADER,排针,已翻译
+Feuil1,G10,87834-1211,87834-1211,型号/位号/数值/名称按原文保留
+Feuil1,H10,,,型号/位号/数值/名称按原文保留
+Feuil1,I10,,,型号/位号/数值/名称按原文保留
+Feuil1,C11,PINHD-2X7,PINHD-2X7,型号/位号/数值/名称按原文保留
+Feuil1,D11,2X07,2X07,型号/位号/数值/名称按原文保留
+Feuil1,E11,JP13,JP13,型号/位号/数值/名称按原文保留
+Feuil1,F11,PIN HEADER,排针,已翻译
+Feuil1,G11,90130-1314,90130-1314,型号/位号/数值/名称按原文保留
+Feuil1,H11,,,型号/位号/数值/名称按原文保留
+Feuil1,I11,,,型号/位号/数值/名称按原文保留
+Feuil1,C12,SJ2W,SJ2W,型号/位号/数值/名称按原文保留
+Feuil1,D12,SJ_2,SJ_2,型号/位号/数值/名称按原文保留
+Feuil1,E12,SJ1,SJ1,型号/位号/数值/名称按原文保留
+Feuil1,F12,SMD solder JUMPER,贴片焊接跳线,已翻译
+Feuil1,G12,Do Not Put,不要贴装,已翻译
+Feuil1,H12,[DNP不要贴];,[DNP：不要贴装]；,已翻译
+Feuil1,I12,,,型号/位号/数值/名称按原文保留
+Feuil1,B13,0.1uF,0.1uF,型号/位号/数值/名称按原文保留
+Feuil1,C13,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D13,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E13,"C1, C2, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15, C16, C36, C37, C38, C39, C40, C41, C42, C44, C45, C46, C47, C51, C52, C53, C56, C67, C69, C74, C80, C82, C125, C131, C133, C138, C140, C146, C148, C159, C160, C162, C168, C170, C175, C188, C189, C190, C192, C193, C194, C195, C196, C201, C203, C208, C210, C215, C217, C222, C224, C229, C231, C236, C238, C243, C245, C250, C252, C293","C1, C2, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15, C16, C36, C37, C38, C39, C40, C41, C42, C44, C45, C46, C47, C51, C52, C53, C56, C67, C69, C74, C80, C82, C125, C131, C133, C138, C140, C146, C148, C159, C160, C162, C168, C170, C175, C188, C189, C190, C192, C193, C194, C195, C196, C201, C203, C208, C210, C215, C217, C222, C224, C229, C231, C236, C238, C243, C245, C250, C252, C293",型号/位号/数值/名称按原文保留
+Feuil1,F13,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G13,CL03A104KP3NNNH,CL03A104KP3NNNH,型号/位号/数值/名称按原文保留
+Feuil1,H13,,,型号/位号/数值/名称按原文保留
+Feuil1,I13,,,型号/位号/数值/名称按原文保留
+Feuil1,B14,0.1uF,0.1uF,型号/位号/数值/名称按原文保留
+Feuil1,C14,C-EUC0402,C-EUC0402,型号/位号/数值/名称按原文保留
+Feuil1,D14,C0402,C0402,型号/位号/数值/名称按原文保留
+Feuil1,E14,"C48, C49, C57, C58","C48, C49, C57, C58",型号/位号/数值/名称按原文保留
+Feuil1,F14,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G14,GRM155R71C104KA88D,GRM155R71C104KA88D,型号/位号/数值/名称按原文保留
+Feuil1,H14,,,型号/位号/数值/名称按原文保留
+Feuil1,I14,,,型号/位号/数值/名称按原文保留
+Feuil1,B15,0.1uF,0.1uF,型号/位号/数值/名称按原文保留
+Feuil1,C15,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D15,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E15,"C277, C278, C295, C297, C299, C301, C352, C352","C277, C278, C295, C297, C299, C301, C352, C352",型号/位号/数值/名称按原文保留
+Feuil1,F15,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G15,CL03A104KP3NNNH,CL03A104KP3NNNH,型号/位号/数值/名称按原文保留
+Feuil1,H15,,,型号/位号/数值/名称按原文保留
+Feuil1,I15,,,型号/位号/数值/名称按原文保留
+Feuil1,B16,0.2pF,0.2pF,型号/位号/数值/名称按原文保留
+Feuil1,C16,C-EUC0201,C-EUC0201,型号/位号/数值/名称按原文保留
+Feuil1,D16,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E16,C43,C43,型号/位号/数值/名称按原文保留
+Feuil1,F16,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G16,GJM0335C1ER20WB01D,GJM0335C1ER20WB01D,型号/位号/数值/名称按原文保留
+Feuil1,H16,,,型号/位号/数值/名称按原文保留
+Feuil1,I16,,,型号/位号/数值/名称按原文保留
+Feuil1,B17,0.47uF,0.47uF,型号/位号/数值/名称按原文保留
+Feuil1,C17,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D17,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E17,"C110, C111, C112, C113, C155, C156, C157, C158, C179, C180, C181, C182, C291","C110, C111, C112, C113, C155, C156, C157, C158, C179, C180, C181, C182, C291",型号/位号/数值/名称按原文保留
+Feuil1,F17,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G17,CL03A474KP3NNNC,CL03A474KP3NNNC,型号/位号/数值/名称按原文保留
+Feuil1,H17,,,型号/位号/数值/名称按原文保留
+Feuil1,I17,,,型号/位号/数值/名称按原文保留
+Feuil1,B18,0.6pF,0.6pF,型号/位号/数值/名称按原文保留
+Feuil1,C18,C-EUC0201,C-EUC0201,型号/位号/数值/名称按原文保留
+Feuil1,D18,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E18,C54,C54,型号/位号/数值/名称按原文保留
+Feuil1,F18,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G18,GJM0335C1ER60WB01D,GJM0335C1ER60WB01D,型号/位号/数值/名称按原文保留
+Feuil1,H18,,,型号/位号/数值/名称按原文保留
+Feuil1,I18,,,型号/位号/数值/名称按原文保留
+Feuil1,B19,0R,0R,型号/位号/数值/名称按原文保留
+Feuil1,C19,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D19,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E19,"R18, R19, R34, R35","R18, R19, R34, R35",型号/位号/数值/名称按原文保留
+Feuil1,F19,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G19,RCA02010000ZSEDSR,RCA02010000ZSEDSR,型号/位号/数值/名称按原文保留
+Feuil1,H19,,,型号/位号/数值/名称按原文保留
+Feuil1,I19,,,型号/位号/数值/名称按原文保留
+Feuil1,B20,100R,100R,型号/位号/数值/名称按原文保留
+Feuil1,C20,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D20,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E20,"R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R173","R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R173",型号/位号/数值/名称按原文保留
+Feuil1,F20,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G20,RC0201FR-07100RL,RC0201FR-07100RL,型号/位号/数值/名称按原文保留
+Feuil1,H20,,,型号/位号/数值/名称按原文保留
+Feuil1,I20,,,型号/位号/数值/名称按原文保留
+Feuil1,B21,100nF,100nF,型号/位号/数值/名称按原文保留
+Feuil1,C21,C-EUC0402,C-EUC0402,型号/位号/数值/名称按原文保留
+Feuil1,D21,C0402,C0402,型号/位号/数值/名称按原文保留
+Feuil1,E21,"C76, C78, C258, C259, C260, C262, C264, C266, C313, C317, C320, C324, C327, C331, C334, C337, C339, C341, C342, C343, C344, C345, C346, C347, C348, C349, C350, C351","C76, C78, C258, C259, C260, C262, C264, C266, C313, C317, C320, C324, C327, C331, C334, C337, C339, C341, C342, C343, C344, C345, C346, C347, C348, C349, C350, C351",型号/位号/数值/名称按原文保留
+Feuil1,F21,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G21,GRM155R71C104KA88D,GRM155R71C104KA88D,型号/位号/数值/名称按原文保留
+Feuil1,H21,,,型号/位号/数值/名称按原文保留
+Feuil1,I21,,,型号/位号/数值/名称按原文保留
+Feuil1,B22,100nF,100nF,型号/位号/数值/名称按原文保留
+Feuil1,C22,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D22,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E22,"C24, C25, C26, C27, C28, C29, C30, C32, C33, C34, C35, C50, C256, C257, C279, C281, C298, C302, C303, C304, C305, C306, C307, C310","C24, C25, C26, C27, C28, C29, C30, C32, C33, C34, C35, C50, C256, C257, C279, C281, C298, C302, C303, C304, C305, C306, C307, C310",型号/位号/数值/名称按原文保留
+Feuil1,F22,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G22,CL03A104KP3NNNH,CL03A104KP3NNNH,型号/位号/数值/名称按原文保留
+Feuil1,H22,,,型号/位号/数值/名称按原文保留
+Feuil1,I22,,,型号/位号/数值/名称按原文保留
+Feuil1,B23,100pF,100pF,型号/位号/数值/名称按原文保留
+Feuil1,C23,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D23,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E23,"C66, C68, C73, C79, C81, C124, C130, C132, C137, C139, C145, C147, C152, C161, C167, C169, C174, C183, C200, C202, C207, C209, C214, C216, C221, C223, C228, C230, C235, C237, C242, C244, C249, C251","C66, C68, C73, C79, C81, C124, C130, C132, C137, C139, C145, C147, C152, C161, C167, C169, C174, C183, C200, C202, C207, C209, C214, C216, C221, C223, C228, C230, C235, C237, C242, C244, C249, C251",型号/位号/数值/名称按原文保留
+Feuil1,F23,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G23,0201CG101J500NT,0201CG101J500NT,型号/位号/数值/名称按原文保留
+Feuil1,H23,,,型号/位号/数值/名称按原文保留
+Feuil1,I23,,,型号/位号/数值/名称按原文保留
+Feuil1,B24,103pF,103pF,型号/位号/数值/名称按原文保留
+Feuil1,C24,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D24,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E24,"C60, C63","C60, C63",型号/位号/数值/名称按原文保留
+Feuil1,F24,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G24,MLASU063SCG101JFNA01,MLASU063SCG101JFNA01,型号/位号/数值/名称按原文保留
+Feuil1,H24,"The correct capacitance value for the listed Part Number [MLASU063SCG101JFNA01] is indeed [100pF], not [103pF].Please confirm.",所列型号 [MLASU063SCG101JFNA01] 的正确电容值确为 [100pF]，不是 [103pF]，请确认。,已翻译
+Feuil1,I24,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B25,106pF,106pF,型号/位号/数值/名称按原文保留
+Feuil1,C25,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D25,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E25,C141,C141,型号/位号/数值/名称按原文保留
+Feuil1,F25,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G25,GRM0335C1H111GA01D,GRM0335C1H111GA01D,型号/位号/数值/名称按原文保留
+Feuil1,H25,"The correct capacitance value for the listed Part Number [GRM0335C1H111GA01D] is indeed [110pF], not [106pF].Please confirm.",所列型号 [GRM0335C1H111GA01D] 的正确电容值确为 [110pF]，不是 [106pF]，请确认。,已翻译
+Feuil1,I25,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B26,107.3nH,107.3nH,型号/位号/数值/名称按原文保留
+Feuil1,C26,LL0201,LL0201,型号/位号/数值/名称按原文保留
+Feuil1,D26,L0201,L0201,型号/位号/数值/名称按原文保留
+Feuil1,E26,"L22, L25, L26, L27","L22, L25, L26, L27",型号/位号/数值/名称按原文保留
+Feuil1,F26,"INDUCTOR, European symbol",电感，欧洲制图符号,已翻译
+Feuil1,G26,MLG0603PR11JTD25,MLG0603PR11JTD25,型号/位号/数值/名称按原文保留
+Feuil1,H26,"The correct inductance value for the listed Part Number [MLG0603PR11JTD25] is indeed [110nH], not [107.3nH].Please confirm.",所列型号 [MLG0603PR11JTD25] 的正确电感值确为 [110nH]，不是 [107.3nH]，请确认。,已翻译
+Feuil1,I26,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B27,10k,10k,型号/位号/数值/名称按原文保留
+Feuil1,C27,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D27,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E27,"R39, R40, R83, R84, R111, R123, R145, R151, R153","R39, R40, R83, R84, R111, R123, R145, R151, R153",型号/位号/数值/名称按原文保留
+Feuil1,F27,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G27,AC0201FR-0710KL,AC0201FR-0710KL,型号/位号/数值/名称按原文保留
+Feuil1,H27,,,型号/位号/数值/名称按原文保留
+Feuil1,I27,,,型号/位号/数值/名称按原文保留
+Feuil1,B28,10nF,10nF,型号/位号/数值/名称按原文保留
+Feuil1,C28,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D28,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E28,"C102, C103, C104, C105, C106, C107, C114, C115, C116, C117, C118, C119, C120, C121, C122, C123","C102, C103, C104, C105, C106, C107, C114, C115, C116, C117, C118, C119, C120, C121, C122, C123",型号/位号/数值/名称按原文保留
+Feuil1,F28,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G28,0201B103K250NT,0201B103K250NT,型号/位号/数值/名称按原文保留
+Feuil1,H28,,,型号/位号/数值/名称按原文保留
+Feuil1,I28,,,型号/位号/数值/名称按原文保留
+Feuil1,B29,10uF,10uF,型号/位号/数值/名称按原文保留
+Feuil1,C29,C-EUC0805,C-EUC0805,型号/位号/数值/名称按原文保留
+Feuil1,D29,C0805,C0805,型号/位号/数值/名称按原文保留
+Feuil1,E29,"C75, C77, C312, C316, C319, C323, C326, C330, C333, C336, C338, C340","C75, C77, C312, C316, C319, C323, C326, C330, C333, C336, C338, C340",型号/位号/数值/名称按原文保留
+Feuil1,F29,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G29,GRM21BR61E106KA73L,GRM21BR61E106KA73L,型号/位号/数值/名称按原文保留
+Feuil1,H29,,,型号/位号/数值/名称按原文保留
+Feuil1,I29,,,型号/位号/数值/名称按原文保留
+Feuil1,B30,115R,115R,型号/位号/数值/名称按原文保留
+Feuil1,C30,R-EU_R0201,R-EU_R0201,型号/位号/数值/名称按原文保留
+Feuil1,D30,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E30,R14,R14,型号/位号/数值/名称按原文保留
+Feuil1,F30,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G30,RC0201FR-07115RL,RC0201FR-07115RL,型号/位号/数值/名称按原文保留
+Feuil1,H30,,,型号/位号/数值/名称按原文保留
+Feuil1,I30,,,型号/位号/数值/名称按原文保留
+Feuil1,B31,12nH,12nH,型号/位号/数值/名称按原文保留
+Feuil1,C31,LL0201,LL0201,型号/位号/数值/名称按原文保留
+Feuil1,D31,L0201,L0201,型号/位号/数值/名称按原文保留
+Feuil1,E31,"L2, L8","L2, L8",型号/位号/数值/名称按原文保留
+Feuil1,F31,"INDUCTOR, European symbol",电感，欧洲制图符号,已翻译
+Feuil1,G31,LQP02TN12NH02D,LQP02TN12NH02D,型号/位号/数值/名称按原文保留
+Feuil1,H31,,,型号/位号/数值/名称按原文保留
+Feuil1,I31,,,型号/位号/数值/名称按原文保留
+Feuil1,B32,12pF,12pF,型号/位号/数值/名称按原文保留
+Feuil1,C32,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D32,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E32,"C184, C185","C184, C185",型号/位号/数值/名称按原文保留
+Feuil1,F32,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G32,GRM0335C1E120JA01D,GRM0335C1E120JA01D,型号/位号/数值/名称按原文保留
+Feuil1,H32,,,型号/位号/数值/名称按原文保留
+Feuil1,I32,,,型号/位号/数值/名称按原文保留
+Feuil1,B33,142-0731-211,142-0731-211,型号/位号/数值/名称按原文保留
+Feuil1,C33,142-0731-211,142-0731-211,型号/位号/数值/名称按原文保留
+Feuil1,E33,"J1, J18, J20, J22, J23, J24, J25, J26, J27, J28, J29, J30, J31, J32, J33, J34, J35, J36, J37, J38, J39, J40, J41, J42, J43, J44, J45, J46, J47, J48, J49, J50, J51, J52, J53, J54, J55","J1, J18, J20, J22, J23, J24, J25, J26, J27, J28, J29, J30, J31, J32, J33, J34, J35, J36, J37, J38, J39, J40, J41, J42, J43, J44, J45, J46, J47, J48, J49, J50, J51, J52, J53, J54, J55",型号/位号/数值/名称按原文保留
+Feuil1,F33,"SMA Connector Jack, Female Socket 50 Ohms Through Hole Solder",SMA 母座连接器，50 Ω，通孔焊接,已翻译
+Feuil1,G33,142-0731-211,142-0731-211,型号/位号/数值/名称按原文保留
+Feuil1,H33,[Supplied by customer客供];,[由客户提供，客供]；,已翻译
+Feuil1,I33,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B34,159nH,159nH,型号/位号/数值/名称按原文保留
+Feuil1,C34,LL0201,LL0201,型号/位号/数值/名称按原文保留
+Feuil1,D34,L0201,L0201,型号/位号/数值/名称按原文保留
+Feuil1,E34,"L3, L4","L3, L4",型号/位号/数值/名称按原文保留
+Feuil1,F34,"INDUCTOR, European symbol",电感，欧洲制图符号,已翻译
+Feuil1,G34,LQP03TNR16H02D,LQP03TNR16H02D,型号/位号/数值/名称按原文保留
+Feuil1,H34,,,型号/位号/数值/名称按原文保留
+Feuil1,I34,,,型号/位号/数值/名称按原文保留
+Feuil1,B35,18pF,18pF,型号/位号/数值/名称按原文保留
+Feuil1,C35,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D35,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E35,"C272, C274","C272, C274",型号/位号/数值/名称按原文保留
+Feuil1,F35,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G35,GRM0335C1E180JA01D,GRM0335C1E180JA01D,型号/位号/数值/名称按原文保留
+Feuil1,H35,,,型号/位号/数值/名称按原文保留
+Feuil1,I35,,,型号/位号/数值/名称按原文保留
+Feuil1,B36,1k,1k,型号/位号/数值/名称按原文保留
+Feuil1,C36,R-EU_R0402,R-EU_R0402,型号/位号/数值/名称按原文保留
+Feuil1,D36,R0402,R0402,型号/位号/数值/名称按原文保留
+Feuil1,E36,R37,R37,型号/位号/数值/名称按原文保留
+Feuil1,F36,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G36,RC0402FR-071KL,RC0402FR-071KL,型号/位号/数值/名称按原文保留
+Feuil1,H36,,,型号/位号/数值/名称按原文保留
+Feuil1,I36,,,型号/位号/数值/名称按原文保留
+Feuil1,B37,1k,1k,型号/位号/数值/名称按原文保留
+Feuil1,C37,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D37,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E37,"R41, R43, R55, R56, R57, R58, R59, R61, R82, R85, R86, R87, R88, R93, R94, R99, R100, R101, R102, R107, R108, R109, R118, R124, R125, R126, R127, R128, R129, R130, R131, R133, R134, R135, R136, R137, R138, R139, R140, R144, R147, R148, R149, R167, R168, R169, R170, R171, R172","R41, R43, R55, R56, R57, R58, R59, R61, R82, R85, R86, R87, R88, R93, R94, R99, R100, R101, R102, R107, R108, R109, R118, R124, R125, R126, R127, R128, R129, R130, R131, R133, R134, R135, R136, R137, R138, R139, R140, R144, R147, R148, R149, R167, R168, R169, R170, R171, R172",型号/位号/数值/名称按原文保留
+Feuil1,F37,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G37,1-2176072-2,1-2176072-2,型号/位号/数值/名称按原文保留
+Feuil1,H37,,,型号/位号/数值/名称按原文保留
+Feuil1,I37,,,型号/位号/数值/名称按原文保留
+Feuil1,B38,1k2_1%,1k2_1%,型号/位号/数值/名称按原文保留
+Feuil1,C38,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D38,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E38,R60,R60,型号/位号/数值/名称按原文保留
+Feuil1,F38,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G38,RC0201FR-071K2L,RC0201FR-071K2L,型号/位号/数值/名称按原文保留
+Feuil1,H38,,,型号/位号/数值/名称按原文保留
+Feuil1,I38,,,型号/位号/数值/名称按原文保留
+Feuil1,B39,1nF,1nF,型号/位号/数值/名称按原文保留
+Feuil1,C39,C-EUC0402,C-EUC0402,型号/位号/数值/名称按原文保留
+Feuil1,D39,C0402,C0402,型号/位号/数值/名称按原文保留
+Feuil1,E39,"C314, C318, C321, C325, C328, C332, C335","C314, C318, C321, C325, C328, C332, C335",型号/位号/数值/名称按原文保留
+Feuil1,F39,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G39,CL03B102KA3NNNC,CL03B102KA3NNNC,型号/位号/数值/名称按原文保留
+Feuil1,H39,,,型号/位号/数值/名称按原文保留
+Feuil1,I39,,,型号/位号/数值/名称按原文保留
+Feuil1,B40,1pF,1pF,型号/位号/数值/名称按原文保留
+Feuil1,C40,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D40,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E40,"C70, C71, C72, C83, C84, C85, C126, C128, C129, C134, C135, C136, C142, C143, C144, C149, C150, C151, C163, C165, C166, C171, C172, C173, C197, C198, C199, C204, C205, C206, C211, C212, C213, C218, C219, C220, C225, C226, C227, C232, C233, C234, C239, C240, C241, C246, C247, C248, C253, C254, C255","C70, C71, C72, C83, C84, C85, C126, C128, C129, C134, C135, C136, C142, C143, C144, C149, C150, C151, C163, C165, C166, C171, C172, C173, C197, C198, C199, C204, C205, C206, C211, C212, C213, C218, C219, C220, C225, C226, C227, C232, C233, C234, C239, C240, C241, C246, C247, C248, C253, C254, C255",型号/位号/数值/名称按原文保留
+Feuil1,F40,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G40,GJM0335C1E1R0WB01D,GJM0335C1E1R0WB01D,型号/位号/数值/名称按原文保留
+Feuil1,H40,,,型号/位号/数值/名称按原文保留
+Feuil1,I40,,,型号/位号/数值/名称按原文保留
+Feuil1,B41,1uF,1uF,型号/位号/数值/名称按原文保留
+Feuil1,C41,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D41,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E41,"C86, C87, C88, C89, C90, C91, C92, C93, C94, C95, C96, C97, C98, C99, C100, C101","C86, C87, C88, C89, C90, C91, C92, C93, C94, C95, C96, C97, C98, C99, C100, C101",型号/位号/数值/名称按原文保留
+Feuil1,F41,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G41,CL03A105MQ3CSNH,CL03A105MQ3CSNH,型号/位号/数值/名称按原文保留
+Feuil1,H41,,,型号/位号/数值/名称按原文保留
+Feuil1,I41,,,型号/位号/数值/名称按原文保留
+Feuil1,B42,1uF,1uF,型号/位号/数值/名称按原文保留
+Feuil1,C42,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D42,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E42,"C276, C296, C300","C276, C296, C300",型号/位号/数值/名称按原文保留
+Feuil1,F42,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G42,CL03A105MQ3CSNH,CL03A105MQ3CSNH,型号/位号/数值/名称按原文保留
+Feuil1,H42,,,型号/位号/数值/名称按原文保留
+Feuil1,I42,,,型号/位号/数值/名称按原文保留
+Feuil1,B43,2.2k,2.2k,型号/位号/数值/名称按原文保留
+Feuil1,C43,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D43,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E43,R146,R146,型号/位号/数值/名称按原文保留
+Feuil1,F43,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G43,RC0201FR-072K2L,RC0201FR-072K2L,型号/位号/数值/名称按原文保留
+Feuil1,H43,,,型号/位号/数值/名称按原文保留
+Feuil1,I43,,,型号/位号/数值/名称按原文保留
+Feuil1,B44,2.2uF,2.2uF,型号/位号/数值/名称按原文保留
+Feuil1,C44,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D44,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E44,"C22, C23, C164","C22, C23, C164",型号/位号/数值/名称按原文保留
+Feuil1,F44,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G44,GRM033R60J225ME47D,GRM033R60J225ME47D,型号/位号/数值/名称按原文保留
+Feuil1,H44,,,型号/位号/数值/名称按原文保留
+Feuil1,I44,,,型号/位号/数值/名称按原文保留
+Feuil1,B45,2.443k,2.443k,型号/位号/数值/名称按原文保留
+Feuil1,C45,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D45,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E45,"R89, R90, R91, R92, R95, R96, R97, R98, R103, R104, R105, R106, R119, R120, R121, R122","R89, R90, R91, R92, R95, R96, R97, R98, R103, R104, R105, R106, R119, R120, R121, R122",型号/位号/数值/名称按原文保留
+Feuil1,F45,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G45,RC0201FR-072K44L,RC0201FR-072K44L,型号/位号/数值/名称按原文保留
+Feuil1,H45,,,型号/位号/数值/名称按原文保留
+Feuil1,I45,,,型号/位号/数值/名称按原文保留
+Feuil1,B46,2.7pF,2.7pF,型号/位号/数值/名称按原文保留
+Feuil1,C46,C-EUC0402,C-EUC0402,型号/位号/数值/名称按原文保留
+Feuil1,D46,C0402,C0402,型号/位号/数值/名称按原文保留
+Feuil1,E46,C3,C3,型号/位号/数值/名称按原文保留
+Feuil1,F46,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G46,GJM1555C1H2R7WB01D,GJM1555C1H2R7WB01D,型号/位号/数值/名称按原文保留
+Feuil1,H46,,,型号/位号/数值/名称按原文保留
+Feuil1,I46,,,型号/位号/数值/名称按原文保留
+Feuil1,B47,20pF,20pF,型号/位号/数值/名称按原文保留
+Feuil1,C47,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D47,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E47,"C18, C19","C18, C19",型号/位号/数值/名称按原文保留
+Feuil1,F47,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G47,GCQ0335C1H200GB01D,GCQ0335C1H200GB01D,型号/位号/数值/名称按原文保留
+Feuil1,H47,,,型号/位号/数值/名称按原文保留
+Feuil1,I47,,,型号/位号/数值/名称按原文保留
+Feuil1,B48,200R,200R,型号/位号/数值/名称按原文保留
+Feuil1,C48,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D48,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E48,"R16, R17, R20, R21","R16, R17, R20, R21",型号/位号/数值/名称按原文保留
+Feuil1,F48,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G48,RC0201FR-07200RL,RC0201FR-07200RL,型号/位号/数值/名称按原文保留
+Feuil1,H48,,,型号/位号/数值/名称按原文保留
+Feuil1,I48,,,型号/位号/数值/名称按原文保留
+Feuil1,B49,20k,20k,型号/位号/数值/名称按原文保留
+Feuil1,C49,R-EU_R0402,R-EU_R0402,型号/位号/数值/名称按原文保留
+Feuil1,D49,R0402,R0402,型号/位号/数值/名称按原文保留
+Feuil1,E49,R38,R38,型号/位号/数值/名称按原文保留
+Feuil1,F49,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G49,RC0402FR-0720KL,RC0402FR-0720KL,型号/位号/数值/名称按原文保留
+Feuil1,H49,,,型号/位号/数值/名称按原文保留
+Feuil1,I49,,,型号/位号/数值/名称按原文保留
+Feuil1,B50,22-23-2021,22-23-2021,型号/位号/数值/名称按原文保留
+Feuil1,C50,22-23-2021,22-23-2021,型号/位号/数值/名称按原文保留
+Feuil1,D50,22-23-2021,22-23-2021,型号/位号/数值/名称按原文保留
+Feuil1,E50,"X1, X4, X5, X6, X7, X8, X9, X10, X11, X12, X13, X14, X15, X16, X17, X18, X19, X20, X21, X22, X24, X54, X55, X56, X_1, X_2, X_3, X_4, X_5, X_6, X_7, X_8, X_9, X_10, X_11, X_12, X_13, X_14, X_15, X_16","X1, X4, X5, X6, X7, X8, X9, X10, X11, X12, X13, X14, X15, X16, X17, X18, X19, X20, X21, X22, X24, X54, X55, X56, X_1, X_2, X_3, X_4, X_5, X_6, X_7, X_8, X_9, X_10, X_11, X_12, X_13, X_14, X_15, X_16",型号/位号/数值/名称按原文保留
+Feuil1,F50,".100 (2.54mm) Center Header - 2 Pin""",中心间距 0.100 英寸（2.54 mm）的排针，2 针,已翻译
+Feuil1,G50,22-23-2021,22-23-2021,型号/位号/数值/名称按原文保留
+Feuil1,H50,,,型号/位号/数值/名称按原文保留
+Feuil1,I50,,,型号/位号/数值/名称按原文保留
+Feuil1,B51,22-23-2031,22-23-2031,型号/位号/数值/名称按原文保留
+Feuil1,C51,22-23-2031,22-23-2031,型号/位号/数值/名称按原文保留
+Feuil1,D51,22-23-2031,22-23-2031,型号/位号/数值/名称按原文保留
+Feuil1,E51,"X3, X38, X39, X40, X41, X42, X43, X44, X45, X46, X47, X48, X49, X50, X51, X52","X3, X38, X39, X40, X41, X42, X43, X44, X45, X46, X47, X48, X49, X50, X51, X52",型号/位号/数值/名称按原文保留
+Feuil1,F51,".100 (2.54mm) Center Header - 3 Pin""",中心间距 0.100 英寸（2.54 mm）的排针，3 针,已翻译
+Feuil1,G51,22-23-2031,22-23-2031,型号/位号/数值/名称按原文保留
+Feuil1,H51,,,型号/位号/数值/名称按原文保留
+Feuil1,I51,,,型号/位号/数值/名称按原文保留
+Feuil1,B52,22.1k,22.1k,型号/位号/数值/名称按原文保留
+Feuil1,C52,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D52,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E52,"R154, R155, R156, R157, R158, R159, R160, R161, R162, R163, R164","R154, R155, R156, R157, R158, R159, R160, R161, R162, R163, R164",型号/位号/数值/名称按原文保留
+Feuil1,F52,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G52,RC0201FR-0722K1L,RC0201FR-0722K1L,型号/位号/数值/名称按原文保留
+Feuil1,H52,,,型号/位号/数值/名称按原文保留
+Feuil1,I52,,,型号/位号/数值/名称按原文保留
+Feuil1,B53,22R,22R,型号/位号/数值/名称按原文保留
+Feuil1,C53,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D53,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E53,"R23, R24, R25, R26, R27, R28, R29, R30, R49, R51, R62, R63, R64","R23, R24, R25, R26, R27, R28, R29, R30, R49, R51, R62, R63, R64",型号/位号/数值/名称按原文保留
+Feuil1,F53,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G53,RC0201FR-0722RL,RC0201FR-0722RL,型号/位号/数值/名称按原文保留
+Feuil1,H53,,,型号/位号/数值/名称按原文保留
+Feuil1,I53,,,型号/位号/数值/名称按原文保留
+Feuil1,B54,22pF,22pF,型号/位号/数值/名称按原文保留
+Feuil1,C54,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D54,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E54,"C308, C309","C308, C309",型号/位号/数值/名称按原文保留
+Feuil1,F54,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G54,GRM0335C1E220JA01D,GRM0335C1E220JA01D,型号/位号/数值/名称按原文保留
+Feuil1,H54,,,型号/位号/数值/名称按原文保留
+Feuil1,I54,,,型号/位号/数值/名称按原文保留
+Feuil1,B55,22uF,22uF,型号/位号/数值/名称按原文保留
+Feuil1,C55,C-EUC1206,C-EUC1206,型号/位号/数值/名称按原文保留
+Feuil1,D55,C1206,C1206,型号/位号/数值/名称按原文保留
+Feuil1,E55,"C283, C311, C315, C322, C329","C283, C311, C315, C322, C329",型号/位号/数值/名称按原文保留
+Feuil1,F55,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G55,GRM31CR61E226ME15L,GRM31CR61E226ME15L,型号/位号/数值/名称按原文保留
+Feuil1,H55,,,型号/位号/数值/名称按原文保留
+Feuil1,I55,,,型号/位号/数值/名称按原文保留
+Feuil1,B56,24R,24R,型号/位号/数值/名称按原文保留
+Feuil1,C56,R-EU_R0402,R-EU_R0402,型号/位号/数值/名称按原文保留
+Feuil1,D56,R0402,R0402,型号/位号/数值/名称按原文保留
+Feuil1,E56,"R1, R13","R1, R13",型号/位号/数值/名称按原文保留
+Feuil1,F56,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G56,RC0402FR-0724RL,RC0402FR-0724RL,型号/位号/数值/名称按原文保留
+Feuil1,H56,,,型号/位号/数值/名称按原文保留
+Feuil1,I56,,,型号/位号/数值/名称按原文保留
+Feuil1,B57,25R,25R,型号/位号/数值/名称按原文保留
+Feuil1,C57,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D57,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E57,"R165, R166","R165, R166",型号/位号/数值/名称按原文保留
+Feuil1,F57,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G57,RC0201FR-0725RL,RC0201FR-0725RL,型号/位号/数值/名称按原文保留
+Feuil1,H57,,,型号/位号/数值/名称按原文保留
+Feuil1,I57,,,型号/位号/数值/名称按原文保留
+Feuil1,B58,25pF,25pF,型号/位号/数值/名称按原文保留
+Feuil1,C58,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D58,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E58,"C64, C65, C268, C270","C64, C65, C268, C270",型号/位号/数值/名称按原文保留
+Feuil1,F58,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G58,GRM0335C1E250JA01D,GRM0335C1E250JA01D,型号/位号/数值/名称按原文保留
+Feuil1,H58,,,型号/位号/数值/名称按原文保留
+Feuil1,I58,,,型号/位号/数值/名称按原文保留
+Feuil1,B59,3.3uF,3.3uF,型号/位号/数值/名称按原文保留
+Feuil1,C59,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D59,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E59,C191,C191,型号/位号/数值/名称按原文保留
+Feuil1,F59,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G59,GRM033R60J335ME47D,GRM033R60J335ME47D,型号/位号/数值/名称按原文保留
+Feuil1,H59,,,型号/位号/数值/名称按原文保留
+Feuil1,I59,,,型号/位号/数值/名称按原文保留
+Feuil1,B60,32.8pF,32.8pF,型号/位号/数值/名称按原文保留
+Feuil1,C60,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D60,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E60,"C59, C127","C59, C127",型号/位号/数值/名称按原文保留
+Feuil1,F60,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G60,GJM0335C1E330JB01D,GJM0335C1E330JB01D,型号/位号/数值/名称按原文保留
+Feuil1,H60,"The correct capacitance value for the listed Part Number [GJM0335C1E330JB01D] is indeed [33pF], not [32.8pF].Please confirm.",所列型号 [GJM0335C1E330JB01D] 的正确电容值确为 [33pF]，不是 [32.8pF]，请确认。,已翻译
+Feuil1,I60,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B61,3k2,3k2,型号/位号/数值/名称按原文保留
+Feuil1,C61,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D61,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E61,R33,R33,型号/位号/数值/名称按原文保留
+Feuil1,F61,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G61,RC0201FR-073K2L,RC0201FR-073K2L,型号/位号/数值/名称按原文保留
+Feuil1,H61,,,型号/位号/数值/名称按原文保留
+Feuil1,I61,,,型号/位号/数值/名称按原文保留
+Feuil1,B62,4.3k,4.3k,型号/位号/数值/名称按原文保留
+Feuil1,C62,R-EU_R0201,R-EU_R0201,型号/位号/数值/名称按原文保留
+Feuil1,D62,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E62,"R15, R32","R15, R32",型号/位号/数值/名称按原文保留
+Feuil1,F62,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G62,RC0201FR-074K3L,RC0201FR-074K3L,型号/位号/数值/名称按原文保留
+Feuil1,H62,,,型号/位号/数值/名称按原文保留
+Feuil1,I62,,,型号/位号/数值/名称按原文保留
+Feuil1,B63,4.3pF,4.3pF,型号/位号/数值/名称按原文保留
+Feuil1,C63,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D63,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E63,"C20, C21","C20, C21",型号/位号/数值/名称按原文保留
+Feuil1,F63,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G63,GJM0335C1E4R3WB01D,GJM0335C1E4R3WB01D,型号/位号/数值/名称按原文保留
+Feuil1,H63,,,型号/位号/数值/名称按原文保留
+Feuil1,I63,,,型号/位号/数值/名称按原文保留
+Feuil1,B64,4.7k,4.7k,型号/位号/数值/名称按原文保留
+Feuil1,C64,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D64,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E64,"R42, R44, R45, R46, R47, R48, R50, R52, R53, R54, R65, R66, R67, R68, R69, R70, R71, R72, R73, R74, R75, R76, R77, R117, R141, R142, R143","R42, R44, R45, R46, R47, R48, R50, R52, R53, R54, R65, R66, R67, R68, R69, R70, R71, R72, R73, R74, R75, R76, R77, R117, R141, R142, R143",型号/位号/数值/名称按原文保留
+Feuil1,F64,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G64,RC0201FR-074K7L,RC0201FR-074K7L,型号/位号/数值/名称按原文保留
+Feuil1,H64,,,型号/位号/数值/名称按原文保留
+Feuil1,I64,,,型号/位号/数值/名称按原文保留
+Feuil1,B65,4.7nF,4.7nF,型号/位号/数值/名称按原文保留
+Feuil1,C65,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D65,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E65,"C261, C263, C265, C267, C269, C271, C273, C275, C280, C282, C284, C286, C288, C290, C292, C294","C261, C263, C265, C267, C269, C271, C273, C275, C280, C282, C284, C286, C288, C290, C292, C294",型号/位号/数值/名称按原文保留
+Feuil1,F65,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G65,GRM033R71E472KA88D,GRM033R71E472KA88D,型号/位号/数值/名称按原文保留
+Feuil1,H65,The part we will supply is 	GRM033R61A472KA01D  OK？,将供应的器件型号为 GRM033R61A472KA01D，可以接受吗？,已翻译
+Feuil1,I65,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B66,4.7uF,4.7uF,型号/位号/数值/名称按原文保留
+Feuil1,C66,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D66,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E66,"C108, C109, C153, C154, C177, C178, C287, C289","C108, C109, C153, C154, C177, C178, C287, C289",型号/位号/数值/名称按原文保留
+Feuil1,F66,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G66,GRM033R60J475ME47D,GRM033R60J475ME47D,型号/位号/数值/名称按原文保留
+Feuil1,H66,The part we will supply is 	GRM035R60J475ME15D OK？,将供应的器件型号为 GRM035R60J475ME15D，可以接受吗？,已翻译
+Feuil1,I66,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B67,4.7uF 35V,4.7uF 35V,型号/位号/数值/名称按原文保留
+Feuil1,C67,4.7UF-POLAR-EIA3528-35V-10%(TANT),4.7UF-POLAR-EIA3528-35V-10%(TANT),型号/位号/数值/名称按原文保留
+Feuil1,D67,EIA3528,EIA3528,型号/位号/数值/名称按原文保留
+Feuil1,E67,"C186, C187","C186, C187",型号/位号/数值/名称按原文保留
+Feuil1,G67,595D475X9035B2T,595D475X9035B2T,型号/位号/数值/名称按原文保留
+Feuil1,H67,,,型号/位号/数值/名称按原文保留
+Feuil1,I67,,,型号/位号/数值/名称按原文保留
+Feuil1,B68,47nF,47nF,型号/位号/数值/名称按原文保留
+Feuil1,C68,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D68,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E68,C31,C31,型号/位号/数值/名称按原文保留
+Feuil1,F68,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G68,GRM033R71E473KA88D,GRM033R71E473KA88D,型号/位号/数值/名称按原文保留
+Feuil1,H68,The part we will supply is 	GRM033R61C473KE84D OK？,将供应的器件型号为 GRM033R61C473KE84D，可以接受吗？,已翻译
+Feuil1,I68,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B69,4.7uF,4.7uF,型号/位号/数值/名称按原文保留
+Feuil1,C69,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D69,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E69,"C17, C55, C176, C285","C17, C55, C176, C285",型号/位号/数值/名称按原文保留
+Feuil1,F69,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G69,CM03X5R475M06AH055,CM03X5R475M06AH055,型号/位号/数值/名称按原文保留
+Feuil1,H69,,,型号/位号/数值/名称按原文保留
+Feuil1,I69,,,型号/位号/数值/名称按原文保留
+Feuil1,B70,500R,500R,型号/位号/数值/名称按原文保留
+Feuil1,C70,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D70,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E70,"R110, R112, R113, R114","R110, R112, R113, R114",型号/位号/数值/名称按原文保留
+Feuil1,F70,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G70,RC0201FR-07500RL,RC0201FR-07500RL,型号/位号/数值/名称按原文保留
+Feuil1,H70,,,型号/位号/数值/名称按原文保留
+Feuil1,I70,,,型号/位号/数值/名称按原文保留
+Feuil1,B71,50R,50R,型号/位号/数值/名称按原文保留
+Feuil1,C71,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D71,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E71,"R31, R115, R116","R31, R115, R116",型号/位号/数值/名称按原文保留
+Feuil1,F71,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G71,RC0201FR-0750RL,RC0201FR-0750RL,型号/位号/数值/名称按原文保留
+Feuil1,H71,,,型号/位号/数值/名称按原文保留
+Feuil1,I71,,,型号/位号/数值/名称按原文保留
+Feuil1,B72,50nH,50nH,型号/位号/数值/名称按原文保留
+Feuil1,C72,LL0201,LL0201,型号/位号/数值/名称按原文保留
+Feuil1,D72,L0201,L0201,型号/位号/数值/名称按原文保留
+Feuil1,E72,"L9, L10, L24, L28","L9, L10, L24, L28",型号/位号/数值/名称按原文保留
+Feuil1,F72,"INDUCTOR, European symbol",电感，欧洲制图符号,已翻译
+Feuil1,G72,CE0603M-51NH,CE0603M-51NH,型号/位号/数值/名称按原文保留
+Feuil1,H72,,,型号/位号/数值/名称按原文保留
+Feuil1,I72,,,型号/位号/数值/名称按原文保留
+Feuil1,B73,56R,56R,型号/位号/数值/名称按原文保留
+Feuil1,C73,R-EU_R0201,R-EU_R0201,型号/位号/数值/名称按原文保留
+Feuil1,D73,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E73,R22,R22,型号/位号/数值/名称按原文保留
+Feuil1,F73,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G73,RC0201FR-0756RL,RC0201FR-0756RL,型号/位号/数值/名称按原文保留
+Feuil1,H73,,,型号/位号/数值/名称按原文保留
+Feuil1,I73,,,型号/位号/数值/名称按原文保留
+Feuil1,B74,5R,5R,型号/位号/数值/名称按原文保留
+Feuil1,C74,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D74,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E74,"R132, R150, R152","R132, R150, R152",型号/位号/数值/名称按原文保留
+Feuil1,F74,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G74,RC0201FR-075R1L,RC0201FR-075R1L,型号/位号/数值/名称按原文保留
+Feuil1,H74,"The correct resistance value for the listed Part Number [RC0201FR-075R1L] is indeed [5.1Ω], not [5Ω].Please confirm.",所列型号 [RC0201FR-075R1L] 的正确电阻值确为 [5.1Ω]，不是 [5Ω]，请确认。,已翻译
+Feuil1,I74,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B75,7.8pF,7.8pF,型号/位号/数值/名称按原文保留
+Feuil1,C75,CC0201,CC0201,型号/位号/数值/名称按原文保留
+Feuil1,D75,C0201,C0201,型号/位号/数值/名称按原文保留
+Feuil1,E75,"C61, C62","C61, C62",型号/位号/数值/名称按原文保留
+Feuil1,F75,"CAPACITOR, European symbol",电容，欧洲制图符号,已翻译
+Feuil1,G75,GJM0335C1E7R8WB01D,GJM0335C1E7R8WB01D,型号/位号/数值/名称按原文保留
+Feuil1,H75,,,型号/位号/数值/名称按原文保留
+Feuil1,I75,,,型号/位号/数值/名称按原文保留
+Feuil1,B76,830R,830R,型号/位号/数值/名称按原文保留
+Feuil1,C76,R-EU_R0402,R-EU_R0402,型号/位号/数值/名称按原文保留
+Feuil1,D76,R0402,R0402,型号/位号/数值/名称按原文保留
+Feuil1,E76,R36,R36,型号/位号/数值/名称按原文保留
+Feuil1,F76,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G76,RC0402FR-07830RL,RC0402FR-07830RL,型号/位号/数值/名称按原文保留
+Feuil1,H76,,,型号/位号/数值/名称按原文保留
+Feuil1,I76,,,型号/位号/数值/名称按原文保留
+Feuil1,B77,840R,840R,型号/位号/数值/名称按原文保留
+Feuil1,C77,RR0201,RR0201,型号/位号/数值/名称按原文保留
+Feuil1,D77,R0201,R0201,型号/位号/数值/名称按原文保留
+Feuil1,E77,"R78, R79, R80, R81","R78, R79, R80, R81",型号/位号/数值/名称按原文保留
+Feuil1,F77,"RESISTOR, European symbol",电阻，欧洲制图符号,已翻译
+Feuil1,G77,RC0201FR-07840RL,RC0201FR-07840RL,型号/位号/数值/名称按原文保留
+Feuil1,H77,,,型号/位号/数值/名称按原文保留
+Feuil1,I77,,,型号/位号/数值/名称按原文保留
+Feuil1,B78,AD8352ACPZ-R7,AD8352ACPZ-R7,型号/位号/数值/名称按原文保留
+Feuil1,C78,AD8352ACPZ-R7,AD8352ACPZ-R7,型号/位号/数值/名称按原文保留
+Feuil1,D78,CP_16_3_ADI,CP_16_3_ADI,型号/位号/数值/名称按原文保留
+Feuil1,E78,"U4, U8","U4, U8",型号/位号/数值/名称按原文保留
+Feuil1,G78,AD8352ACPZ-R7,AD8352ACPZ-R7,型号/位号/数值/名称按原文保留
+Feuil1,H78,,,型号/位号/数值/名称按原文保留
+Feuil1,I78,,,型号/位号/数值/名称按原文保留
+Feuil1,B79,AD9484BCPZ-500,AD9484BCPZ-500,型号/位号/数值/名称按原文保留
+Feuil1,C79,AD9484BCPZ-500,AD9484BCPZ-500,型号/位号/数值/名称按原文保留
+Feuil1,D79,CP_56_5_ADI,CP_56_5_ADI,型号/位号/数值/名称按原文保留
+Feuil1,E79,U1,U1,型号/位号/数值/名称按原文保留
+Feuil1,G79,AD9484BCPZ-500,AD9484BCPZ-500,型号/位号/数值/名称按原文保留
+Feuil1,H79,,,型号/位号/数值/名称按原文保留
+Feuil1,I79,,,型号/位号/数值/名称按原文保留
+Feuil1,B80,AD9708AR,AD9708AR,型号/位号/数值/名称按原文保留
+Feuil1,C80,AD9708AR,AD9708AR,型号/位号/数值/名称按原文保留
+Feuil1,D80,RW_28_ADI,RW_28_ADI,型号/位号/数值/名称按原文保留
+Feuil1,E80,U3,U3,型号/位号/数值/名称按原文保留
+Feuil1,G80,AD9708AR,AD9708AR,型号/位号/数值/名称按原文保留
+Feuil1,H80,[Supplied by customer客供];,[由客户提供，客供]；,已翻译
+Feuil1,I80,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B81,ADAR1000ACCZN,ADAR1000ACCZN,型号/位号/数值/名称按原文保留
+Feuil1,C81,ADAR1000ACCZN,ADAR1000ACCZN,型号/位号/数值/名称按原文保留
+Feuil1,D81,CC-88-1_ADI,CC-88-1_ADI,型号/位号/数值/名称按原文保留
+Feuil1,E81,"ADAR1_, ADAR2_, ADAR3_, ADAR4_","ADAR1_, ADAR2_, ADAR3_, ADAR4_",型号/位号/数值/名称按原文保留
+Feuil1,G81,ADAR1000ACCZN,ADAR1000ACCZN,型号/位号/数值/名称按原文保留
+Feuil1,H81,[Supplied by customer客供];,[由客户提供，客供]；,已翻译
+Feuil1,I81,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B82,ADS7830IPWR,ADS7830IPWR,型号/位号/数值/名称按原文保留
+Feuil1,C82,ADS7830IPWR,ADS7830IPWR,型号/位号/数值/名称按原文保留
+Feuil1,D82,PW16,PW16,型号/位号/数值/名称按原文保留
+Feuil1,E82,"U10, U88, U89","U10, U88, U89",型号/位号/数值/名称按原文保留
+Feuil1,G82,ADS7830IPWR,ADS7830IPWR,型号/位号/数值/名称按原文保留
+Feuil1,H82,,,型号/位号/数值/名称按原文保留
+Feuil1,I82,,,型号/位号/数值/名称按原文保留
+Feuil1,B83,ADTR1107ACCZ,ADTR1107ACCZ,型号/位号/数值/名称按原文保留
+Feuil1,C83,ADTR1107ACCZ,ADTR1107ACCZ,型号/位号/数值/名称按原文保留
+Feuil1,D83,CC-24-8_ADI,CC-24-8_ADI,型号/位号/数值/名称按原文保留
+Feuil1,E83,"ADTR1107_1, ADTR1107_2, ADTR1107_3, ADTR1107_4, ADTR1107_5, ADTR1107_6, ADTR1107_7, ADTR1107_8, ADTR1107_9, ADTR1107_10, ADTR1107_11, ADTR1107_12, ADTR1107_13, ADTR1107_14, ADTR1107_15, ADTR1107_16","ADTR1107_1, ADTR1107_2, ADTR1107_3, ADTR1107_4, ADTR1107_5, ADTR1107_6, ADTR1107_7, ADTR1107_8, ADTR1107_9, ADTR1107_10, ADTR1107_11, ADTR1107_12, ADTR1107_13, ADTR1107_14, ADTR1107_15, ADTR1107_16",型号/位号/数值/名称按原文保留
+Feuil1,G83,ADTR1107ACCZ,ADTR1107ACCZ,型号/位号/数值/名称按原文保留
+Feuil1,H83,[Supplied by customer客供];,[由客户提供，客供]；,已翻译
+Feuil1,I83,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B84,AT93C46A-10SQ-2.7,AT93C46A-10SQ-2.7,型号/位号/数值/名称按原文保留
+Feuil1,C84,AT93C46A-10SQ-2.7,AT93C46A-10SQ-2.7,型号/位号/数值/名称按原文保留
+Feuil1,D84,SOIC8,SOIC8,型号/位号/数值/名称按原文保留
+Feuil1,E84,IC1,IC1,型号/位号/数值/名称按原文保留
+Feuil1,F84,Three-wire Automotive Temperature Serial EEPROM 1K (64 x 16),三线串行 EEPROM，汽车温度范围，1K（64×16）,已翻译
+Feuil1,G84,AT93C46A-10SQ-2.7,AT93C46A-10SQ-2.7,型号/位号/数值/名称按原文保留
+Feuil1,H84,[Supplied by customer客供];,[由客户提供，客供]；,已翻译
+Feuil1,I84,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B85,BLM15HB121SN1,BLM15HB121SN1,型号/位号/数值/名称按原文保留
+Feuil1,C85,BLM15HB121SN1,BLM15HB121SN1,型号/位号/数值/名称按原文保留
+Feuil1,D85,L0402,L0402,型号/位号/数值/名称按原文保留
+Feuil1,E85,"L5, L6, L7, L19, L20","L5, L6, L7, L19, L20",型号/位号/数值/名称按原文保留
+Feuil1,F85,EMIFIL (R) Chip Ferrite Bead for GHz Noise,EMIFIL（R）芯片铁氧体磁珠，用于 GHz 噪声抑制,已翻译
+Feuil1,G85,BLM15PE121SH1D,BLM15PE121SH1D,型号/位号/数值/名称按原文保留
+Feuil1,H85,,,型号/位号/数值/名称按原文保留
+Feuil1,I85,,,型号/位号/数值/名称按原文保留
+Feuil1,B86,BPF2,BPF2,型号/位号/数值/名称按原文保留
+Feuil1,C86,BPF2,BPF2,型号/位号/数值/名称按原文保留
+Feuil1,D86,BPF2,BPF2,型号/位号/数值/名称按原文保留
+Feuil1,E86,"U$2, U$3","U$2, U$3",型号/位号/数值/名称按原文保留
+Feuil1,G86,Not a component,不是元器件,已翻译
+Feuil1,H86,[DNP不要贴];,[DNP：不要贴装]；,已翻译
+Feuil1,I86,Do not put,Do not put,待人工核对
+Feuil1,B87,Blue,蓝色,已翻译
+Feuil1,C87,LED-BLUE0603,LED-BLUE0603,型号/位号/数值/名称按原文保留
+Feuil1,D87,LED-0603,LED-0603,型号/位号/数值/名称按原文保留
+Feuil1,E87,"D2, D3, D4, D5","D2, D3, D4, D5",型号/位号/数值/名称按原文保留
+Feuil1,F87,Blue SMD LED,蓝色贴片 LED,已翻译
+Feuil1,G87,KB EELP41.12-P1R2-36-3X4X-5-R18,KB EELP41.12-P1R2-36-3X4X-5-R18,型号/位号/数值/名称按原文保留
+Feuil1,H87,,,型号/位号/数值/名称按原文保留
+Feuil1,I87,,,型号/位号/数值/名称按原文保留
+Feuil1,B88,CJT-T-P-HH-ST-TH1,CJT-T-P-HH-ST-TH1,型号/位号/数值/名称按原文保留
+Feuil1,C88,CJT-T-P-HH-ST-TH1,CJT-T-P-HH-ST-TH1,型号/位号/数值/名称按原文保留
+Feuil1,D88,CJTTPHHSTTH1,CJTTPHHSTTH1,型号/位号/数值/名称按原文保留
+Feuil1,E88,"J19, J21","J19, J21",型号/位号/数值/名称按原文保留
+Feuil1,F88,Conn Twinax F 0Hz to 4GHz 100Ohm Solder ST Thru-Hole Gold,Twinax 母连接器，0 Hz 至 4 GHz，100 Ω，直式通孔焊接，镀金,已翻译
+Feuil1,G88,CJT-T-P-HH-ST-TH1,CJT-T-P-HH-ST-TH1,型号/位号/数值/名称按原文保留
+Feuil1,H88,,,型号/位号/数值/名称按原文保留
+Feuil1,I88,,,型号/位号/数值/名称按原文保留
+Feuil1,B89,DAC5578SRGET,DAC5578SRGET,型号/位号/数值/名称按原文保留
+Feuil1,C89,DAC5578SRGET,DAC5578SRGET,型号/位号/数值/名称按原文保留
+Feuil1,D89,RGE24_2P7X2P7,RGE24_2P7X2P7,型号/位号/数值/名称按原文保留
+Feuil1,E89,"U7, U69","U7, U69",型号/位号/数值/名称按原文保留
+Feuil1,G89,DAC5578SRGET,DAC5578SRGET,型号/位号/数值/名称按原文保留
+Feuil1,H89,,,型号/位号/数值/名称按原文保留
+Feuil1,I89,,,型号/位号/数值/名称按原文保留
+Feuil1,B90,ECS-120-10-36B2-JTN-TR,ECS-120-10-36B2-JTN-TR,型号/位号/数值/名称按原文保留
+Feuil1,C90,CRYSTAL-12MHZ,CRYSTAL-12MHZ,型号/位号/数值/名称按原文保留
+Feuil1,D90,CRYSTAL-SMD-2X2.5MM,CRYSTAL-SMD-2X2.5MM,型号/位号/数值/名称按原文保留
+Feuil1,E90,Y1,Y1,型号/位号/数值/名称按原文保留
+Feuil1,F90,12.0MHz Crystal,12.0MHz 晶体,已翻译
+Feuil1,G90,ECS-120-10-36B2-JTN-TR,ECS-120-10-36B2-JTN-TR,型号/位号/数值/名称按原文保留
+Feuil1,H90,"The correct package for the listed Part Number [ECS-120-10-36B2-JTN-TR] is indeed [SMD2520-4P], not [CRYSTAL-12MHZ『 』CRYSTAL-SMD-2X2.5MM].Please confirm.",所列型号 [ECS-120-10-36B2-JTN-TR] 的正确封装确为 [SMD2520-4P]，不是 [CRYSTAL-12MHZ『 』CRYSTAL-SMD-2X2.5MM]，请确认。,已翻译
+Feuil1,I90,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B91,EP4RKU+,EP4RKU+,型号/位号/数值/名称按原文保留
+Feuil1,C91,EP4RKU+,EP4RKU+,型号/位号/数值/名称按原文保留
+Feuil1,D91,DG1677-2_MNC,DG1677-2_MNC,型号/位号/数值/名称按原文保留
+Feuil1,E91,U16,U16,型号/位号/数值/名称按原文保留
+Feuil1,G91,EP4RKU+,EP4RKU+,型号/位号/数值/名称按原文保留
+Feuil1,H91,,,型号/位号/数值/名称按原文保留
+Feuil1,I91,,,型号/位号/数值/名称按原文保留
+Feuil1,B92,FT2232HQ,FT2232HQ,型号/位号/数值/名称按原文保留
+Feuil1,C92,FT2232HQ,FT2232HQ,型号/位号/数值/名称按原文保留
+Feuil1,D92,64QFN_FT2232HQ_FTD,64QFN_FT2232HQ_FTD,型号/位号/数值/名称按原文保留
+Feuil1,E92,U6,U6,型号/位号/数值/名称按原文保留
+Feuil1,G92,FT2232HQ,FT2232HQ,型号/位号/数值/名称按原文保留
+Feuil1,H92,The part we can get here was made in the year of 2022+ OK？,此处可供应器件生产年份为 2022 年及以后，可以接受吗？,已翻译
+Feuil1,I92,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B93,INA241A3IDGKRDGK0008A-MFG,INA241A3IDGKRDGK0008A-MFG,型号/位号/数值/名称按原文保留
+Feuil1,C93,INA241A3IDGKRDGK0008A-MFG,INA241A3IDGKRDGK0008A-MFG,型号/位号/数值/名称按原文保留
+Feuil1,D93,DGK0008A-MFG,DGK0008A-MFG,型号/位号/数值/名称按原文保留
+Feuil1,E93,"U11, U73, U74, U75, U76, U77, U78, U79, U80, U81, U82, U83, U84, U85, U86, U87","U11, U73, U74, U75, U76, U77, U78, U79, U80, U81, U82, U83, U84, U85, U86, U87",型号/位号/数值/名称按原文保留
+Feuil1,G93,INA241A3IDGKR,INA241A3IDGKR,型号/位号/数值/名称按原文保留
+Feuil1,H93,,,型号/位号/数值/名称按原文保留
+Feuil1,I93,,,型号/位号/数值/名称按原文保留
+Feuil1,B94,LTC5552IUDBTRMPBF,LTC5552IUDBTRMPBF,型号/位号/数值/名称按原文保留
+Feuil1,C94,LTC5552IUDBTRMPBF,LTC5552IUDBTRMPBF,型号/位号/数值/名称按原文保留
+Feuil1,D94,UDB_12_ADI,UDB_12_ADI,型号/位号/数值/名称按原文保留
+Feuil1,E94,"U5, U13","U5, U13",型号/位号/数值/名称按原文保留
+Feuil1,G94,LTC5552IUDB#TRMPBF,LTC5552IUDB#TRMPBF,型号/位号/数值/名称按原文保留
+Feuil1,H94,"[Price is changing higher, final price should be subjected to the real price when order!]",[价格正在上涨，最终价格以订购时的实际价格为准！],已翻译
+Feuil1,I94,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B95,M3SWA2-34DR+,M3SWA2-34DR+,型号/位号/数值/名称按原文保留
+Feuil1,C95,M3SWA2-34DR+,M3SWA2-34DR+,型号/位号/数值/名称按原文保留
+Feuil1,D95,16_QFN,16_QFN,型号/位号/数值/名称按原文保留
+Feuil1,E95,"RF_SW_1, RF_SW_2, RF_SW_3, RF_SW_4, RF_SW_5, RF_SW_6, RF_SW_7, RF_SW_8, RF_SW_9, RF_SW_10, RF_SW_11, RF_SW_12, RF_SW_13, RF_SW_14, RF_SW_15, RF_SW_16, U$1","RF_SW_1, RF_SW_2, RF_SW_3, RF_SW_4, RF_SW_5, RF_SW_6, RF_SW_7, RF_SW_8, RF_SW_9, RF_SW_10, RF_SW_11, RF_SW_12, RF_SW_13, RF_SW_14, RF_SW_15, RF_SW_16, U$1",型号/位号/数值/名称按原文保留
+Feuil1,G95,M3SWA2-34DR+,M3SWA2-34DR+,型号/位号/数值/名称按原文保留
+Feuil1,H95,,,型号/位号/数值/名称按原文保留
+Feuil1,I95,,,型号/位号/数值/名称按原文保留
+Feuil1,B96,MINI-USB-32005-201,MINI-USB-32005-201,型号/位号/数值/名称按原文保留
+Feuil1,C96,MINI-USB-32005-201,MINI-USB-32005-201,型号/位号/数值/名称按原文保留
+Feuil1,D96,32005-201,32005-201,型号/位号/数值/名称按原文保留
+Feuil1,E96,"X2, X53","X2, X53",型号/位号/数值/名称按原文保留
+Feuil1,F96,MINI USB-B Conector,Mini USB-B 连接器,已翻译
+Feuil1,G96,10118192-0002LF,10118192-0002LF,型号/位号/数值/名称按原文保留
+Feuil1,H96,,,型号/位号/数值/名称按原文保留
+Feuil1,I96,,,型号/位号/数值/名称按原文保留
+Feuil1,B97,MOMENTARY-SWITCH-SPST-SMD-4.6X2.8MM,MOMENTARY-SWITCH-SPST-SMD-4.6X2.8MM,型号/位号/数值/名称按原文保留
+Feuil1,C97,MOMENTARY-SWITCH-SPST-SMD-4.6X2.8MM,MOMENTARY-SWITCH-SPST-SMD-4.6X2.8MM,型号/位号/数值/名称按原文保留
+Feuil1,D97,TACTILE_SWITCH_SMD_4.6X2.8MM,TACTILE_SWITCH_SMD_4.6X2.8MM,型号/位号/数值/名称按原文保留
+Feuil1,E97,S1,S1,型号/位号/数值/名称按原文保留
+Feuil1,F97,Momentary Switch (Pushbutton) - SPST,瞬时按键开关，单刀单掷（SPST）,已翻译
+Feuil1,G97,EVQP0E07K,EVQP0E07K,型号/位号/数值/名称按原文保留
+Feuil1,H97,,,型号/位号/数值/名称按原文保留
+Feuil1,I97,,,型号/位号/数值/名称按原文保留
+Feuil1,B98,MT25QL01GBBB8E12-0AUT,MT25QL01GBBB8E12-0AUT,型号/位号/数值/名称按原文保留
+Feuil1,C98,MT25QL01GBBB8E12-0AUT,MT25QL01GBBB8E12-0AUT,型号/位号/数值/名称按原文保留
+Feuil1,D98,BGA24_MT25QL_MRN,BGA24_MT25QL_MRN,型号/位号/数值/名称按原文保留
+Feuil1,E98,U9,U9,型号/位号/数值/名称按原文保留
+Feuil1,G98,MT25QL01GBBB8E12-0AUT,MT25QL01GBBB8E12-0AUT,型号/位号/数值/名称按原文保留
+Feuil1,H98,,,型号/位号/数值/名称按原文保留
+Feuil1,I98,,,型号/位号/数值/名称按原文保留
+Feuil1,B99,NX3215SA-32.768KHz,NX3215SA-32.768KHz,型号/位号/数值/名称按原文保留
+Feuil1,C99,NX3225GD-8MHZ-STD-CRA-3,NX3225GD-8MHZ-STD-CRA-3,型号/位号/数值/名称按原文保留
+Feuil1,D99,XTAL_NX3225GD-8MHZ-STD-CRA-3_N,XTAL_NX3225GD-8MHZ-STD-CRA-3_N,型号/位号/数值/名称按原文保留
+Feuil1,E99,XTAL3,XTAL3,型号/位号/数值/名称按原文保留
+Feuil1,G99,NX3215SA-32.768K-STD-MUS-2,NX3215SA-32.768K-STD-MUS-2,型号/位号/数值/名称按原文保留
+Feuil1,H99,"The quoted part number is [NX3215SA-32.768K-STD-MUS-2], not [NX3225GD-8MHZ-STD-CRA-3/XTAL] as specified in description",报价型号为 [NX3215SA-32.768K-STD-MUS-2]，不是描述中所写的 [NX3225GD-8MHZ-STD-CRA-3/XTAL]。,已翻译
+Feuil1,I99,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B100,NX3225GD-8MHZ-STD-CRA-3,NX3225GD-8MHZ-STD-CRA-3,型号/位号/数值/名称按原文保留
+Feuil1,C100,NX3225GD-8MHZ-STD-CRA-3,NX3225GD-8MHZ-STD-CRA-3,型号/位号/数值/名称按原文保留
+Feuil1,D100,XTAL_NX3225GD-8MHZ-STD-CRA-3_N,XTAL_NX3225GD-8MHZ-STD-CRA-3_N,型号/位号/数值/名称按原文保留
+Feuil1,E100,XTAL1,XTAL1,型号/位号/数值/名称按原文保留
+Feuil1,G100,NX3225GD-8MHZ-STD-CRA-3,NX3225GD-8MHZ-STD-CRA-3,型号/位号/数值/名称按原文保留
+Feuil1,H100,"The quoted part number is [NX3225GD-8MHZ-STD-CRA-3], not [XTAL] as specified in description,The correct package for the listed Part Number [NX3225GD-8MHZ-STD-CRA-3] is indeed [SMD3225-2P], not [3225].Please confirm.",报价型号为 [NX3225GD-8MHZ-STD-CRA-3]，不是描述中的 [XTAL]。型号 [NX3225GD-8MHZ-STD-CRA-3] 的正确封装确为 [SMD3225-2P]，不是 [3225]，请确认。,已翻译
+Feuil1,I100,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B101,OPA4703EA/250,OPA4703EA/250,型号/位号/数值/名称按原文保留
+Feuil1,C101,OPA4703EA/250,OPA4703EA/250,型号/位号/数值/名称按原文保留
+Feuil1,D101,PW14,PW14,型号/位号/数值/名称按原文保留
+Feuil1,E101,"OPA_1, OPA_2, OPA_3, OPA_4","OPA_1, OPA_2, OPA_3, OPA_4",型号/位号/数值/名称按原文保留
+Feuil1,G101,OPA4703EA/250,OPA4703EA/250,型号/位号/数值/名称按原文保留
+Feuil1,H101,,,型号/位号/数值/名称按原文保留
+Feuil1,I101,,,型号/位号/数值/名称按原文保留
+Feuil1,B102,STM32F746ZGT7,STM32F746ZGT7,型号/位号/数值/名称按原文保留
+Feuil1,C102,STM32F746ZGT7,STM32F746ZGT7,型号/位号/数值/名称按原文保留
+Feuil1,D102,LQFP-144_STM,LQFP-144_STM,型号/位号/数值/名称按原文保留
+Feuil1,E102,U2,U2,型号/位号/数值/名称按原文保留
+Feuil1,G102,STM32F746ZGT7,STM32F746ZGT7,型号/位号/数值/名称按原文保留
+Feuil1,H102,The part we can get here was made in the year of 2022+ OK？,此处可供应器件生产年份为 2022 年及以后，可以接受吗？,已翻译
+Feuil1,I102,"Okay, Please proceed",可以，请继续,已翻译
+Feuil1,B103,SZMMSZ5232BT1G,SZMMSZ5232BT1G,型号/位号/数值/名称按原文保留
+Feuil1,C103,SZMMSZ5232BT1G,SZMMSZ5232BT1G,型号/位号/数值/名称按原文保留
+Feuil1,D103,SOD-123_ONS,SOD-123_ONS,型号/位号/数值/名称按原文保留
+Feuil1,E103,"U14, U15, U17, U37, U38, U39, U40, U41, U43, U44, U45, U46, U47, U48, U49, U50, U51, U52, U53, U54, U55, U56, U57, U58, U59, U60, U61, U62, U63, U64, U65, U66, U67, U68","U14, U15, U17, U37, U38, U39, U40, U41, U43, U44, U45, U46, U47, U48, U49, U50, U51, U52, U53, U54, U55, U56, U57, U58, U59, U60, U61, U62, U63, U64, U65, U66, U67, U68",型号/位号/数值/名称按原文保留
+Feuil1,G103,SZMMSZ5232BT1G,SZMMSZ5232BT1G,型号/位号/数值/名称按原文保留
+Feuil1,H103,,,型号/位号/数值/名称按原文保留
+Feuil1,I103,,,型号/位号/数值/名称按原文保留
+Feuil1,B104,XC7A50T-2FTG256I,XC7A50T-2FTG256I,型号/位号/数值/名称按原文保留
+Feuil1,C104,XC7A50T-2FTG256I,XC7A50T-2FTG256I,型号/位号/数值/名称按原文保留
+Feuil1,D104,BGA256C100P16X16_1700X1700X155,BGA256C100P16X16_1700X1700X155,型号/位号/数值/名称按原文保留
+Feuil1,E104,U42,U42,型号/位号/数值/名称按原文保留
+Feuil1,F104,Artix-7 Field Programmable Gate Array (FPGA) IC 170 2764800 52160 256-LBGA  Check availability,Artix-7 FPGA 芯片；原描述参数 170、2764800、52160；256-LBGA 封装；请核查供货情况,已翻译
+Feuil1,G104,XC7A50T-2FTG256I,XC7A50T-2FTG256I,型号/位号/数值/名称按原文保留
+Feuil1,H104,information on chip will be removed,芯片上的标识信息将被去除,已翻译
+Feuil1,I104,"Okay, Please proceed",可以，请继续,已翻译

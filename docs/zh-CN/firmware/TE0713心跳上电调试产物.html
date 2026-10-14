@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TE0713/TE0701 心跳上电调试产物</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="../index.html">中文资料目录</a> · <a href="TE0713%E5%BF%83%E8%B7%B3%E4%B8%8A%E7%94%B5%E8%B0%83%E8%AF%95%E4%BA%A7%E7%89%A9.md">查看 Markdown</a></header><main><h1>TE0713/TE0701 心跳上电调试产物</h1>
+<ul>
+<li>源路径：<code>docs/artifacts/te0713-te0701-heartbeat-2026-03-21.md</code>；SHA256：<code>6fec413b166ca6150180d48966800753c7a079fbfe40996ac95d7932d700760f</code>。</li>
+</ul>
+<p>原文：<code>docs/artifacts/te0713-te0701-heartbeat-2026-03-21.md</code>。以下构建结果是原文历史记录，不是本次构建结果。</p>
+<ul>
+<li>日期：2026-03-21。</li>
+<li>目标：Trenz <code>TE0713-03-82C46-A</code>，安装在 <code>TE0701-06</code> 上。</li>
+<li>顶层模块：<code>radar_system_top_te0713_dev</code>。</li>
+<li>约束文件：<code>9_Firmware/9_2_FPGA/constraints/te0713_te0701_minimal.xdc</code>。</li>
+<li>比特流：<code>docs/artifacts/te0713-te0701-heartbeat-2026-03-21.bit</code>。</li>
+</ul>
+<p>构建结果：</p>
+<ul>
+<li>Vivado：<code>2025.2</code>。</li>
+<li>实现：<code>write_bitstream Complete!</code>（比特流写入完成）。</li>
+<li>DRC：<code>0 Errors</code>（0 个错误）。</li>
+<li>WNS：<code>+17.863 ns</code>。</li>
+<li>WHS：<code>+0.265 ns</code>。</li>
+</ul>
+<p>用途：</p>
+<ul>
+<li>为 <code>TE0713 + TE0701</code> 首次上电提供风险最低的镜像。</li>
+<li>在 FT601 或雷达路径调试前，验证 FPGA 配置、主时钟路径以及心跳/状态输出。</li>
+</ul>
+<p>板卡到手当天的用法：</p>
+<ul>
+<li>首先烧录此镜像。</li>
+<li>确认 JTAG 能枚举设备并成功配置。</li>
+<li>继续 FT601 或更高风险的集成前，确认心跳/状态信号活动。</li>
+</ul>
+<p>构建来源：</p>
+<ul>
+<li>在 <code>livepeerservice.ddns.net</code> 上远程构建。</li>
+<li>Vivado 路径：<code>/mnt/bcache/Xilinx/Vivado/2025.2/Vivado/bin/vivado</code>。</li>
+</ul>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

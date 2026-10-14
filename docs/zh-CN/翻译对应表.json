@@ -1,0 +1,112 @@
+[
+  {
+    "source": "README.md",
+    "translation": "docs/zh-CN/README原文译文.md",
+    "source_sha256": "35f3f426368ef9182c7ec24ec100a892e8eb6eb9fb80bf1898d73602cf017b66",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留",
+    "english_snapshot": "docs/zh-CN/sources/README.en.md",
+    "original_sha256": "4ed9240368b578d70b1c20740095259f63e79d388fe55f151933ba2f2e5cdfec"
+  },
+  {
+    "source": "CONTRIBUTING.md",
+    "translation": "docs/zh-CN/CONTRIBUTING原文译文.md",
+    "source_sha256": "ab6fa9ae202a493f4eef0edce3b9ec92a720aba7f9e8678cdbaf0459fdd9f289",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  },
+  {
+    "source": "Licence",
+    "translation": "docs/zh-CN/Licence原文译文.md",
+    "source_sha256": "bc418e2a5cfda7cbe7470a4bdf0ffce9df3013f5dee21075861d31a22d3448a7",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  },
+  {
+    "source": "9_Firmware/9_2_FPGA/adc_clk_mmcm_integration.md",
+    "translation": "docs/zh-CN/firmware/ADC时钟MMCM集成指南.md",
+    "source_sha256": "b0a17d092de56a81938fbec072bab2dcd90321c2f33883b7129a38d7b4695f85",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  },
+  {
+    "source": "9_Firmware/9_2_FPGA/constraints/README.md",
+    "translation": "docs/zh-CN/firmware/FPGA约束文件说明.md",
+    "source_sha256": "cbf5b7c2907e6d7615aa3e2070b60b2d1f71d880f825a909b61c5b0c3e8f8fc6",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  },
+  {
+    "source": "9_Firmware/9_2_FPGA/tb/cosim/real_data/hex/STALE_NOTICE.md",
+    "translation": "docs/zh-CN/firmware/黄金参考Hex文件说明.md",
+    "source_sha256": "e2dcbba7caf775cfb5792cd3751dcb15651ba60b97ecd5256074d996b0a77012",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  },
+  {
+    "source": "docs/artifacts/te0713-te0701-heartbeat-2026-03-21.md",
+    "translation": "docs/zh-CN/firmware/TE0713心跳上电调试产物.md",
+    "source_sha256": "6fec413b166ca6150180d48966800753c7a079fbfe40996ac95d7932d700760f",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  },
+  {
+    "source": "docs/artifacts/te0713-te0701-umft601x-dev-2026-03-21.md",
+    "translation": "docs/zh-CN/firmware/FT601集成开发比特流.md",
+    "source_sha256": "d8865c8797b0fd7bfba76b84851dd16bec86e98445da8bf810b4b2f9d3d18ed0",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  },
+  {
+    "source": "9_Firmware/9_3_GUI/GUI_versions.txt",
+    "translation": "docs/zh-CN/firmware/GUI版本说明.md",
+    "source_sha256": "0c844ec7706fbc89cfcee5fe8e6d995e06d8b97114ef7fd3d9dbf634abfb692c",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  },
+  {
+    "source": "9_Firmware/9_2_FPGA/tb/cosim/scenario_info.txt",
+    "translation": "docs/zh-CN/firmware/测试场景与匹配滤波参考数据.md",
+    "source_sha256": "87a61cf630dc3dbf1f93d32515aec65299e4473392ce35f4ffc841ca215c52ac",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  },
+  {
+    "source": "9_Firmware/9_2_FPGA/tb/mf_golden_summary.txt",
+    "translation": "docs/zh-CN/firmware/测试场景与匹配滤波参考数据.md",
+    "source_sha256": "27d5899b3b85017cd3eca4012846918400d1f0dc18bd3be87e70a9515033e75a",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  },
+  {
+    "source": "docs/index.html",
+    "translation": "docs/zh-CN/web/index.md",
+    "source_sha256": "26495c0afa7c2749e19560ceec8f9f062e420c85f74dc780d1e3841e0792c992",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  },
+  {
+    "source": "docs/architecture.html",
+    "translation": "docs/zh-CN/web/architecture.md",
+    "source_sha256": "3364a2b0a1f94093f94ce5988d9aa36cf90903310555deb66ae2e7c0db1cd40d",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  },
+  {
+    "source": "docs/implementation-log.html",
+    "translation": "docs/zh-CN/web/implementation-log.md",
+    "source_sha256": "6548dd185fe7838b2a9a87268732012da42c018625bc921ac38b05144be67e80",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  },
+  {
+    "source": "docs/bring-up.html",
+    "translation": "docs/zh-CN/web/bring-up.md",
+    "source_sha256": "bca59f2e2372ef7a356264d1f1684621c98661e1286ed0c2eb0bb8a37fcf5ce6",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  },
+  {
+    "source": "docs/reports.html",
+    "translation": "docs/zh-CN/web/reports.md",
+    "source_sha256": "d64c2b9558707a4d69e5205578fdce600e32fab43a717ae26d30ae1fb2c11f54",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  },
+  {
+    "source": "docs/release-notes.html",
+    "translation": "docs/zh-CN/web/release-notes.md",
+    "source_sha256": "fd2e0ddc7f30a7fe41946b66b44b8f70f0f4df03671cb56ed4f8a68013fd9732",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  },
+  {
+    "source": "docs/board-day-worksheet.html",
+    "translation": "docs/zh-CN/web/board-day-worksheet.md",
+    "source_sha256": "1a13148d7d39e10e6e8d5a8d1befa3806ae847bbb4d2207a182ca186b10ab8eb",
+    "scope": "英文说明全文中文对照；数据值、命令与标识符保留"
+  }
+]

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AERIS-10 FT601 集成开发比特流</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="../index.html">中文资料目录</a> · <a href="FT601%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E6%AF%94%E7%89%B9%E6%B5%81.md">查看 Markdown</a></header><main><h1>AERIS-10 FT601 集成开发比特流</h1>
+<ul>
+<li>源路径：<code>docs/artifacts/te0713-te0701-umft601x-dev-2026-03-21.md</code>；SHA256：<code>d8865c8797b0fd7bfba76b84851dd16bec86e98445da8bf810b4b2f9d3d18ed0</code>。</li>
+</ul>
+<p>原文：<code>docs/artifacts/te0713-te0701-umft601x-dev-2026-03-21.md</code>。以下构建指标与操作要求均为原文记录，不表示本次已完成构建或硬件验证。</p>
+<p><strong>文件：</strong> <code>te0713-te0701-umft601x-dev-2026-03-21.bit</code><br><strong>标签：</strong> <code>v0.1.8-te0713-ft601-dev</code><br><strong>日期：</strong> 2026-03-21<br><strong>目标：</strong> XC7A200T-2FBG484C（TE0713-03），安装在 TE0701-06 载板上，另接 UMFT601X-B FMC LPC。</p>
+<h2>构建概况</h2>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>WNS（建立时间）</td>
+<td>+0.059 ns</td>
+</tr>
+<tr>
+<td>WHS（保持时间）</td>
+<td>+0.121 ns</td>
+</tr>
+<tr>
+<td>WPWS（脉冲宽度）</td>
+<td>+4.500 ns</td>
+</tr>
+<tr>
+<td>失败端点</td>
+<td>0</td>
+</tr>
+<tr>
+<td>DRC 错误</td>
+<td>0</td>
+</tr>
+<tr>
+<td>时钟</td>
+<td>ft601_clk_in 100 MHz（周期 10 ns）</td>
+</tr>
+<tr>
+<td>策略</td>
+<td>Performance_ExplorePostRoutePhysOpt</td>
+</tr>
+<tr>
+<td>Vivado</td>
+<td>2025.2</td>
+</tr>
+</tbody></table>
+<h2>此比特流的功能</h2>
+<ul>
+<li>通过轻量封装 <code>radar_system_top_te0713_umft601x_dev.v</code>，实例化 <code>usb_data_interface.v</code>（完整 FT601 USB 数据通路）。</li>
+<li>生成合成测试数据：距离剖面数据包（计数器 XOR 模式），以及可选的多普勒和 CFAR 数据包，由主机命令控制。</li>
+<li>响应 USB 主机命令（流控制 <code>0x04</code>，状态请求 <code>0xFF</code>）。</li>
+<li>以约 6 Hz 心跳驱动 <code>ft601_gpio0</code>（计数器第 24 位）。</li>
+<li>上电复位结束后驱动 <code>ft601_chip_reset_n</code>（32k 个时钟周期）。</li>
+<li><code>ft601_wakeup_n</code> 保持高电平（非活动状态）。</li>
+</ul>
+<h2>硬件配置</h2>
+<ol>
+<li>将 TE0713-03 安装在 TE0701-06 载板上。</li>
+<li>将 UMFT601X-B 插入 TE0701 J10（FMC LPC 连接器）。</li>
+<li>TE0701 VIOTB = 3.3V（跳线配置）。</li>
+<li>UMFT601X-B 跳线：JP1=开路，JP2=2-3，JP3=开路，JP6=短接（3.3V），JP4=2-3，JP5=2-3（245 同步 FIFO 模式）。</li>
+<li>使用 USB 3.0 Micro-B 电缆将 UMFT601X-B 连接到主机 PC。</li>
+<li>使用 Trenz 编程 USB 进行 JTAG 操作。</li>
+</ol>
+<h2>烧录</h2>
+<pre><code class="language-tcl"># 打开 Vivado Hardware Manager
+open_hw_manager
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {te0713-te0701-umft601x-dev-2026-03-21.bit} [current_hw_device]
+program_hw_devices [current_hw_device]
+</code></pre>
+<h2>验证步骤</h2>
+<ol>
+<li>烧录后检查 <code>ft601_gpio0</code> 是否翻转（约 6 Hz），以确认 FPGA 正在运行。</li>
+<li>主机 PC 上应将 FT601 枚举为 USB 3.0 设备（VID <code>0x0403</code>，PID <code>0x601F</code>）。</li>
+<li>使用 FTDI D3XX 驱动 / <code>ftd3xx</code> Python 库读取数据：<ul>
+<li>打开设备，将管道设为通道 0。</li>
+<li>读取应返回包含测试模式数据包的 32 位字。</li>
+<li>数据包头：<code>0xAE10xxxx</code>，其中 <code>xxxx</code> 为数据包类型。</li>
+</ul>
+</li>
+</ol>
+<h2>时序收敛说明</h2>
+<p>此前的构建因源同步时钟偏斜未满足建立时间：</p>
+<ul>
+<li>FT601 时钟经 IBUF+BUFG 输入，插入延迟约 5 ns。</li>
+<li>参考 <code>ft601_clk_in</code> 的 <code>set_output_delay</code> 造成约 5 ns 的虚假偏斜惩罚（源端有插入延迟，端口处的目的端为 0）。</li>
+<li>修复方式是对输出约束使用 <code>set_max_delay -datapath_only</code>，直接约束寄存器到焊盘的路径，预算为 7.5 ns。</li>
+<li>输入延迟仍使用参考 <code>ft601_clk_in</code> 的 <code>set_input_delay</code>；其方向正确，即由 FT601 驱动数据，FPGA 在 IBUF+BUFG 后采样。</li>
+</ul>
+<h2>源文件</h2>
+<ul>
+<li><code>9_Firmware/9_2_FPGA/radar_system_top_te0713_umft601x_dev.v</code>：封装顶层。</li>
+<li><code>9_Firmware/9_2_FPGA/usb_data_interface.v</code>：FT601 USB 数据接口。</li>
+<li><code>9_Firmware/9_2_FPGA/constraints/te0713_te0701_umft601x.xdc</code>：FMC LPC 约束。</li>
+<li><code>9_Firmware/9_2_FPGA/scripts/build_te0713_umft601x_dev.tcl</code>：构建脚本。</li>
+</ul>
+<h2>本次盘点核对注</h2>
+<p>同目录时序报告的 WNS/WHS/WPWS 与上述数值一致，但报告还列出 HPDR-1 端口方向一致性警告 21 项。数据包头表述应结合当前 <code>usb_data_interface.v</code> 的具体打包逻辑核对，不能仅凭此操作说明判定与全部 GUI 协议兼容。</p>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

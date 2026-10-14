@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>首次上板工作表</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="../index.html">中文资料目录</a> · <a href="board-day-worksheet.md">查看 Markdown</a></header><main><p>原文：<code>docs/board-day-worksheet.html</code><br>原文 SHA256：<code>1A13148D7D39E10E6E8D5A8D1BEFA3806AE847BBB4D2207A182CA186B10AB8EB</code><br>翻译日期：2026-10-08。以下为原文全文中文译文；空白栏位保留供填写，预期证据不是本次观测结果。原文未标明页面发布日期。</p>
+<p>导航：<a href="index.html">AERIS-10 文档</a> · <a href="architecture.html">架构</a> · <a href="implementation-log.html">实现日志</a> · <a href="bring-up.html">上板调试</a> · <a href="reports.html">报告</a> · <a href="release-notes.html">发布说明</a></p>
+<h1>首次上板工作表</h1>
+<p>首次上板执行。</p>
+<p>面向 FPGA 模块和载板首次调试的可打印操作员工作表。与上板调试计划和产物清单配合使用，实时记录证据、通过/失败状态和阻塞项。</p>
+<p><a href="bring-up.html">打开上板调试计划</a> · <a href="reports.html">打开产物清单</a></p>
+<h2>调试会话元数据</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>填写</th>
+<th>项目</th>
+<th>填写</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>日期/时间</td>
+<td></td>
+<td>操作员</td>
+<td></td>
+</tr>
+<tr>
+<td>载板修订版</td>
+<td></td>
+<td>FPGA 模块修订版</td>
+<td></td>
+</tr>
+<tr>
+<td>MCU 固件提交</td>
+<td></td>
+<td>FPGA 比特流/探针标签</td>
+<td></td>
+</tr>
+<tr>
+<td>电源配置</td>
+<td></td>
+<td>环境温度</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>上电前检查</h2>
+<table>
+<thead>
+<tr>
+<th>检查</th>
+<th>预期证据</th>
+<th>状态</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>已审阅载板跳线/默认配置绑带</td>
+<td>对照板卡说明完成记录</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>已检查模块安装及连接器</td>
+<td>无弯曲引脚、无明显短路、线缆无拉力</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>初次上电保持射频发射路径禁用</td>
+<td>已确认安全 GPIO/电源状态</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>已识别所选镜像集</td>
+<td>明确选择心跳、调试或基线镜像</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>电源及配置检查</h2>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>预期证据</th>
+<th>状态</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>初次上电</td>
+<td>空闲电流处于计划范围内，无意外发热</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>JTAG 枚举</td>
+<td>硬件管理器中可见目标器件</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>比特流烧录</td>
+<td>DONE = HIGH，INIT_COMPLETE = 有效</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>可选探针加载</td>
+<td>预期 ILA 核被枚举</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>复位/心跳基本检查</td>
+<td>确定的复位释放和状态活动</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>固件和控制路径检查</h2>
+<table>
+<thead>
+<tr>
+<th>检查</th>
+<th>预期证据</th>
+<th>状态</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>USART3 上板调试日志</td>
+<td>带时间戳的启动消息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>AD9523 状态</td>
+<td>状态引脚/日志表明时钟正常</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ADF4382A TX/RX 初始化</td>
+<td>初始化返回 OK，锁定状态合理</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ADAR1000 通信</td>
+<td>所有器件的 scratchpad/回读检查通过</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>温度/健康检查</td>
+<td>未提前出现过温、故障或紧急关断</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>FPGA 数据路径和 USB 检查</h2>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>预期证据</th>
+<th>状态</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原始 ADC 可见性</td>
+<td>ILA 或状态证据显示预期时钟上的活动</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DDC/匹配滤波器活动</td>
+<td>观察到有效脉冲及非恒定输出</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>USB 帧结构基本检查</td>
+<td>包头、载荷长度、包尾保持一致</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>FT601 行为</td>
+<td>无明显背压或总线方向异常</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>持续流式传输试验</td>
+<td>未立即出现锁死、帧结构漂移或复位事件</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>需记录的测量</h2>
+<table>
+<thead>
+<tr>
+<th>测量</th>
+<th>观测值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>载板/模块空闲电流</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5V / 3V3 电源轨</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>LO 锁定指示</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ADAR 温度</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>PA IDQ 抽查</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>USB 枚举/吞吐率记录</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>是否遇到停止条件？</h2>
+<table>
+<thead>
+<tr>
+<th>条件</th>
+<th>是否触发</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>意外电流或温升</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>LO 锁定/回读不一致</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ADAR 通信失败</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>USB 帧结构或总线方向异常</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>复位/时钟状态不明确</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>其他阻塞项</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>结果</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>填写</th>
+<th>项目</th>
+<th>填写</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>会话结果</td>
+<td></td>
+<td>下一步使用的镜像</td>
+<td></td>
+</tr>
+<tr>
+<td>主要阻塞项</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>下一步行动负责人</td>
+<td></td>
+<td>目标完成时间</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>将本工作表与上板调试计划和产物清单一起使用，以一致方式记录观测。</p>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

@@ -1,0 +1,8 @@
+[
+  {
+    "source": ".gitignore",
+    "original_sha256": "bcf11a81b1f40ada499a415f6cae3f04e3011b05136bba563bdb069606d9b790",
+    "current_sha256": "60c6bbb8aee6c1a7057110b07ecf4b09ba8d0de74b6169f0df533fef169c5cc6",
+    "reason": "用户要求在项目目录创建虚拟环境并安装依赖；排除 .venv 和本地 .tools 二进制"
+  }
+]

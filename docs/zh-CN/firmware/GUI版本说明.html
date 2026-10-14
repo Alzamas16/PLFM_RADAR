@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GUI 版本说明</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="../index.html">中文资料目录</a> · <a href="GUI%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E.md">查看 Markdown</a></header><main><h1>GUI 版本说明</h1>
+<ul>
+<li>源路径：<code>9_Firmware/9_3_GUI/GUI_versions.txt</code>；SHA256：<code>0c844ec7706fbc89cfcee5fe8e6d995e06d8b97114ef7fd3d9dbf634abfb692c</code>。</li>
+</ul>
+<p>原文：<code>9_Firmware/9_3_GUI/GUI_versions.txt</code>。以下完整翻译原版本说明；原文重复的 V3 条目保持重复，V1 的空说明保持空。</p>
+<pre><code class="language-text">GUI_V1 ==&gt; 
+GUI_V2 ==&gt; 添加 STM32 USB CDC
+GUI_V3 ==&gt; 在 STM32 USB 数据包中添加俯仰角，并对仰角进行俯仰修正
+GUI_V3 ==&gt; 添加 Google_Map、实时目标绘图、Chirp duration_2
+GUI_V4 ==&gt; 添加俯仰修正
+
+GUI_V5 ==&gt; 添加 Mercury 颜色
+
+GUI_V6 ==&gt; 添加 USB3 FT601 支持 [已弃用，被 V65/V7 取代]
+
+GUI_V65_Tk ==&gt; 板卡上电调试面板（FT2232H 读取、实时距离-多普勒热力图、CFAR 叠加、瀑布图、主机命令、HDF5 记录、回放、演示模式）
+radar_protocol ==&gt; 协议层（数据包解析、命令构建、FT2232H 连接、数据记录器、采集线程）
+smoke_test ==&gt; 板卡上电调试冒烟测试主机脚本（通过操作码 0x30 触发 FPGA 自检）
+</code></pre>
+<p>本次核对：当前还存在 <code>GUI_V7_PyQt.py</code> 与 <code>v7/</code> 模块目录，但原版本文件没有单独列出其条目；不在全文译文中自行补写版本历史。</p>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

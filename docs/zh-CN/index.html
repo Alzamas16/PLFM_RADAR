@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AERIS-10 项目中文资料</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="index.html">中文资料目录</a> · <a href="README.md">查看 Markdown</a></header><main><h1>AERIS-10 项目中文资料</h1>
+<p>已盘点本地仓库，并为容易直接读取的 Markdown、HTML 和说明类 TXT 建立中文译文。原文保留，译文中的历史测试结果、状态与性能仍代表原作者记录；本次核对结论单列于盘点报告。</p>
+<p>本轮范围按你的最后指示执行：Markdown 与 HTML 为主，包含说明类 TXT 和纯文本 Licence；PDF、Word、Excel 暂停。范围缩小前已生成的 <code>reports/</code>、<code>tables/</code> 及 <code>表格中文对照.md</code> 保留但不属于本轮交付，不将其视作最终完整翻译。</p>
+<h2>建议阅读顺序</h2>
+<ol>
+<li><a href="%E9%A1%B9%E7%9B%AE%E7%9B%98%E7%82%B9.html">项目盘点</a>：目录、现状、问题、验证边界。
+<a href="Python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83.html">Python 3.13 虚拟环境</a>说明项目 <code>.venv</code>、依赖安装和运行方式；本次 GUI 测试为 171 通过、3 失败、无跳过。
+<a href="%E6%9C%AC%E6%9C%BA%E5%B7%A5%E5%85%B7%E4%B8%8E%E7%A1%AC%E4%BB%B6%E6%9D%A1%E4%BB%B6.html">本机工具与硬件条件</a>明确哪些可用当前工具开展，哪些要补依赖，哪些需实物；主 README 同步包含全文。</li>
+<li><a href="README%E5%8E%9F%E6%96%87%E8%AF%91%E6%96%87.html">README 全文译文</a>：项目目标、结构、原文规格和入门说明。</li>
+<li><a href="web/architecture.html">架构</a>与<a href="firmware/%E5%AE%9E%E7%8E%B0%E4%B8%8E%E9%AA%8C%E8%AF%81%E7%9B%98%E7%82%B9.html">固件实现盘点</a>：理解硬件、处理链与软件边界。</li>
+<li><a href="web/bring-up.html">上板指南</a>与<a href="web/board-day-worksheet.html">板卡到货记录表</a>：了解原文规划的硬件验证步骤。</li>
+<li><a href="web/%E5%AE%A1%E9%98%85%E5%8F%91%E7%8E%B0.html">网页文档审阅发现</a>与<a href="firmware/%E6%9C%AC%E6%AC%A1%E6%A3%80%E6%9F%A5%E8%AE%B0%E5%BD%95.html">本次检查记录</a>：阅读状态矛盾与实际测试结果。</li>
+</ol>
+<h2>Markdown 原文对应译文</h2>
+<table>
+<thead>
+<tr>
+<th>英文原文</th>
+<th>中文全文译文</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>README.md</code></td>
+<td><a href="README%E5%8E%9F%E6%96%87%E8%AF%91%E6%96%87.html">项目说明</a></td>
+</tr>
+<tr>
+<td><code>CONTRIBUTING.md</code></td>
+<td><a href="CONTRIBUTING%E5%8E%9F%E6%96%87%E8%AF%91%E6%96%87.html">贡献指南</a></td>
+</tr>
+<tr>
+<td><code>9_Firmware/9_2_FPGA/adc_clk_mmcm_integration.md</code></td>
+<td><a href="firmware/ADC%E6%97%B6%E9%92%9FMMCM%E9%9B%86%E6%88%90%E6%8C%87%E5%8D%97.html">ADC 时钟 MMCM 集成</a></td>
+</tr>
+<tr>
+<td><code>9_Firmware/9_2_FPGA/constraints/README.md</code></td>
+<td><a href="firmware/FPGA%E7%BA%A6%E6%9D%9F%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E.html">FPGA 约束说明</a></td>
+</tr>
+<tr>
+<td><code>9_Firmware/9_2_FPGA/tb/cosim/real_data/hex/STALE_NOTICE.md</code></td>
+<td><a href="firmware/%E9%BB%84%E9%87%91%E5%8F%82%E8%80%83Hex%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E.html">黄金参考 Hex 文件说明</a></td>
+</tr>
+<tr>
+<td><code>docs/artifacts/te0713-te0701-heartbeat-2026-03-21.md</code></td>
+<td><a href="firmware/TE0713%E5%BF%83%E8%B7%B3%E4%B8%8A%E7%94%B5%E8%B0%83%E8%AF%95%E4%BA%A7%E7%89%A9.html">TE0713 心跳产物</a></td>
+</tr>
+<tr>
+<td><code>docs/artifacts/te0713-te0701-umft601x-dev-2026-03-21.md</code></td>
+<td><a href="firmware/FT601%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E6%AF%94%E7%89%B9%E6%B5%81.html">FT601 开发比特流</a></td>
+</tr>
+</tbody></table>
+<h2>HTML 原文对应译文</h2>
+<p>七个原网页均提供中文 Markdown 版本，并生成同名 <code>.html</code> 页面供浏览器阅读。</p>
+<table>
+<thead>
+<tr>
+<th>英文网页</th>
+<th>中文 Markdown</th>
+<th>中文网页</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>docs/index.html</code></td>
+<td><a href="web/index.html">工程文档主页</a></td>
+<td><a href="web/index.html">网页</a></td>
+</tr>
+<tr>
+<td><code>docs/architecture.html</code></td>
+<td><a href="web/architecture.html">架构与数据路径</a></td>
+<td><a href="web/architecture.html">网页</a></td>
+</tr>
+<tr>
+<td><code>docs/implementation-log.html</code></td>
+<td><a href="web/implementation-log.html">实施日志</a></td>
+<td><a href="web/implementation-log.html">网页</a></td>
+</tr>
+<tr>
+<td><code>docs/bring-up.html</code></td>
+<td><a href="web/bring-up.html">上板调试</a></td>
+<td><a href="web/bring-up.html">网页</a></td>
+</tr>
+<tr>
+<td><code>docs/reports.html</code></td>
+<td><a href="web/reports.html">测试报告</a></td>
+<td><a href="web/reports.html">网页</a></td>
+</tr>
+<tr>
+<td><code>docs/release-notes.html</code></td>
+<td><a href="web/release-notes.html">发布说明</a></td>
+<td><a href="web/release-notes.html">网页</a></td>
+</tr>
+<tr>
+<td><code>docs/board-day-worksheet.html</code></td>
+<td><a href="web/board-day-worksheet.html">板卡到货记录表</a></td>
+<td><a href="web/board-day-worksheet.html">网页</a></td>
+</tr>
+</tbody></table>
+<h2>其他容易读取的资料</h2>
+<ul>
+<li><a href="firmware/GUI%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E.html">GUI 版本说明</a>：<code>GUI_versions.txt</code> 全文翻译。</li>
+<li><a href="firmware/%E6%B5%8B%E8%AF%95%E5%9C%BA%E6%99%AF%E4%B8%8E%E5%8C%B9%E9%85%8D%E6%BB%A4%E6%B3%A2%E5%8F%82%E8%80%83%E6%95%B0%E6%8D%AE.html">测试场景与匹配滤波参考数据</a>：两个说明类 TXT 的完整中文说明，保留原始数据值。</li>
+<li><a href="Licence%E5%8E%9F%E6%96%87%E8%AF%91%E6%96%87.html">Licence 本地文本译文</a>：只翻译仓库文件实际文字，未校对官方许可证。</li>
+<li><a href="%E6%96%87%E4%BB%B6%E6%B8%85%E5%8D%95.csv">原文件清单</a>与<a href="%E7%9B%98%E7%82%B9%E7%BB%9F%E8%AE%A1.json">统计</a>：以本轮开始时的 Git 跟踪文件为基线，包含源文件 SHA256。</li>
+</ul>
+<p>纯数据 TXT、CSV、HEX、MEM、程序代码、工程配置不做自然语言改写，避免改变可执行输入、协议与制造数据。未联网查询发布网站、GitHub CI、星标数量或官方许可文本。</p>
+<h2>译文同步检查</h2>
+<p><code>翻译对应表.json</code> 记录原文、中文译文及原文 SHA256。源文更新后，可运行以下检查识别需要重新翻译的项目；检查本身不自动重译，也不改原文：</p>
+<pre><code class="language-powershell">&amp; &#39;C:/Users/chx_g/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe&#39; -B docs/zh-CN/tools/check_translations.py
+</code></pre>
+<p>同步检查仅核对覆盖、文件指纹、围栏闭合及本地链接，不能代替逐句人工审阅或工程测试。原文不一致之处保留并加注，不在翻译中悄悄修正。</p>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

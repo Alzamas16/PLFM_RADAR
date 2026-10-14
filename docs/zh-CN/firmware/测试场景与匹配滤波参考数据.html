@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>测试场景与匹配滤波参考数据</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="../index.html">中文资料目录</a> · <a href="%E6%B5%8B%E8%AF%95%E5%9C%BA%E6%99%AF%E4%B8%8E%E5%8C%B9%E9%85%8D%E6%BB%A4%E6%B3%A2%E5%8F%82%E8%80%83%E6%95%B0%E6%8D%AE.md">查看 Markdown</a></header><main><h1>测试场景与匹配滤波参考数据</h1>
+<ul>
+<li>源路径：<code>9_Firmware/9_2_FPGA/tb/cosim/scenario_info.txt</code>；SHA256：<code>87a61cf630dc3dbf1f93d32515aec65299e4473392ce35f4ffc841ca215c52ac</code>。</li>
+<li>源路径：<code>9_Firmware/9_2_FPGA/tb/mf_golden_summary.txt</code>；SHA256：<code>27d5899b3b85017cd3eca4012846918400d1f0dc18bd3be87e70a9515033e75a</code>。</li>
+</ul>
+<p>原文一：<code>9_Firmware/9_2_FPGA/tb/cosim/scenario_info.txt</code>。原文二：<code>9_Firmware/9_2_FPGA/tb/mf_golden_summary.txt</code>。这是已有测试向量与黄金参考文件的数据解读及完整文本翻译，保留原始数值；不是测量结果或本次仿真结果。</p>
+<h2>AERIS-10 测试向量场景</h2>
+<p>系统参数：</p>
+<ul>
+<li>载频：10.5 GHz。</li>
+<li>中频：120 MHz。</li>
+<li>Chirp 带宽：20 MHz。</li>
+<li>ADC：400 MSPS，8 位。</li>
+<li>距离分辨率：7.5 m。</li>
+<li>波长：28.57 mm。</li>
+</ul>
+<p>场景 1：单目标。</p>
+<pre><code class="language-text">目标(距离=500.0m, 速度=0.0m/s, RCS=0.0dBsm, 延迟=1333.3 个采样点)
+</code></pre>
+<p>场景 2：多目标（5 个目标）。</p>
+<pre><code class="language-text">目标(距离=100.0m, 速度=0.0m/s, RCS=20.0dBsm, 延迟=266.7 个采样点)
+目标(距离=500.0m, 速度=30.0m/s, RCS=10.0dBsm, 延迟=1333.3 个采样点)
+目标(距离=1000.0m, 速度=-15.0m/s, RCS=5.0dBsm, 延迟=2666.7 个采样点)
+目标(距离=2000.0m, 速度=50.0m/s, RCS=0.0dBsm, 延迟=5333.3 个采样点)
+目标(距离=5000.0m, 速度=-5.0m/s, RCS=-5.0dBsm, 延迟=13333.3 个采样点)
+</code></pre>
+<p>场景 3：仅噪声（标准差=5.0 LSB）。</p>
+<p>场景 4：直流输入（值=128）。</p>
+<p>场景 5：1 MHz 正弦波（幅度=50 LSB）。</p>
+<p>基带匹配滤波（MF）测试目标：</p>
+<pre><code class="language-text">目标(距离=500.0m, 速度=0.0m/s, RCS=10.0dBsm, 延迟=1333.3 个采样点)
+目标(距离=1500.0m, 速度=20.0m/s, RCS=5.0dBsm, 延迟=4000.0 个采样点)
+</code></pre>
+<h2>匹配滤波黄金参考概况</h2>
+<p>运算：<code>output = IFFT( FFT(signal) * conj(FFT(reference)) )</code>。</p>
+<p>FFT 长度：1024。</p>
+<h3>用例 1</h3>
+<p>直流自相关：signal=ref=DC（I=0x1000，Q=0）。预期：第 0 个单元有较大峰值，其他位置为零。由于 16 位限幅，峰值会饱和至 32767。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>原始值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>峰值单元</td>
+<td>0</td>
+</tr>
+<tr>
+<td>峰值幅度（浮点）</td>
+<td>17179869184.000000</td>
+</tr>
+<tr>
+<td>峰值 I（浮点）</td>
+<td>17179869184.000000</td>
+</tr>
+<tr>
+<td>峰值 Q（浮点）</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<td>峰值 I（量化）</td>
+<td>32767</td>
+</tr>
+<tr>
+<td>峰值 Q（量化）</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>文件：</p>
+<pre><code class="language-text">mf_golden_sig_i_case1.hex
+mf_golden_sig_q_case1.hex
+mf_golden_ref_i_case1.hex
+mf_golden_ref_q_case1.hex
+mf_golden_out_i_case1.hex
+mf_golden_out_q_case1.hex
+</code></pre>
+<h3>用例 2</h3>
+<p>单频信号自相关：signal=ref=tone（第 5 个频率单元，幅度 8000）。预期：峰值位于第 0 个单元（自相关峰值在零时延处）。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>原始值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>峰值单元</td>
+<td>0</td>
+</tr>
+<tr>
+<td>峰值幅度（浮点）</td>
+<td>65536183223.999985</td>
+</tr>
+<tr>
+<td>峰值 I（浮点）</td>
+<td>65536183223.999985</td>
+</tr>
+<tr>
+<td>峰值 Q（浮点）</td>
+<td>-0.000000</td>
+</tr>
+<tr>
+<td>峰值 I（量化）</td>
+<td>32767</td>
+</tr>
+<tr>
+<td>峰值 Q（量化）</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>文件：</p>
+<pre><code class="language-text">mf_golden_sig_i_case2.hex
+mf_golden_sig_q_case2.hex
+mf_golden_ref_i_case2.hex
+mf_golden_ref_q_case2.hex
+mf_golden_out_i_case2.hex
+mf_golden_out_q_case2.hex
+</code></pre>
+<h3>用例 3</h3>
+<p>平移单频信号：signal=tone（第 5 个频率单元），ref 为同一 tone 延迟 3 个采样点。原文预期互相关峰值应发生平移以反映延迟。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>原始值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>峰值单元</td>
+<td>253</td>
+</tr>
+<tr>
+<td>峰值幅度（浮点）</td>
+<td>65536183223.999992</td>
+</tr>
+<tr>
+<td>峰值 I（浮点）</td>
+<td>0.000005</td>
+</tr>
+<tr>
+<td>峰值 Q（浮点）</td>
+<td>65536183223.999992</td>
+</tr>
+<tr>
+<td>峰值 I（量化）</td>
+<td>0</td>
+</tr>
+<tr>
+<td>峰值 Q（量化）</td>
+<td>32767</td>
+</tr>
+</tbody></table>
+<p>文件：</p>
+<pre><code class="language-text">mf_golden_sig_i_case3.hex
+mf_golden_sig_q_case3.hex
+mf_golden_ref_i_case3.hex
+mf_golden_ref_q_case3.hex
+mf_golden_out_i_case3.hex
+mf_golden_out_q_case3.hex
+</code></pre>
+<h3>用例 4</h3>
+<p>脉冲自相关：signal=ref=delta（n=0，I=0x7FFF）。预期：第 0 个单元为缩放后的脉冲（将饱和至 32767），其他单元均应为零。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>原始值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>峰值单元</td>
+<td>0</td>
+</tr>
+<tr>
+<td>峰值幅度（浮点）</td>
+<td>1073676289.000000</td>
+</tr>
+<tr>
+<td>峰值 I（浮点）</td>
+<td>1073676289.000000</td>
+</tr>
+<tr>
+<td>峰值 Q（浮点）</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<td>峰值 I（量化）</td>
+<td>32767</td>
+</tr>
+<tr>
+<td>峰值 Q（量化）</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>文件：</p>
+<pre><code class="language-text">mf_golden_sig_i_case4.hex
+mf_golden_sig_q_case4.hex
+mf_golden_ref_i_case4.hex
+mf_golden_ref_q_case4.hex
+mf_golden_out_i_case4.hex
+mf_golden_out_q_case4.hex
+</code></pre>
+<p>数据解读：上述浮点参考值与 16 位量化值存在饱和，这是源文件明确描述的参考生成行为。用例 3 的单元 253 是源文件记录值，本次未重算，不能直接解释成已经验证的 3 点时延估计。</p>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

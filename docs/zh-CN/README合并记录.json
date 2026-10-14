@@ -1,0 +1,12 @@
+{
+  "source": "README.md",
+  "reason": "用户要求中文直接位于对应英文原文的下一行",
+  "english_snapshot": "docs/zh-CN/sources/README.en.md",
+  "original_sha256": "4ed9240368b578d70b1c20740095259f63e79d388fe55f151933ba2f2e5cdfec",
+  "merged_sha256": "35f3f426368ef9182c7ec24ec100a892e8eb6eb9fb80bf1898d73602cf017b66",
+  "english_content_preserved": true,
+  "section_pairs": 21,
+  "layout": "英文在上、中文在下；段落和列表逐条对应，标题和表格用 <br> 换行",
+  "translation_pairs": 174,
+  "line_translations": "docs/zh-CN/README逐行译文.json"
+}

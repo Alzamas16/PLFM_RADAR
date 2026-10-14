@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ADC 时钟 MMCM 集成指南</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="../index.html">中文资料目录</a> · <a href="ADC%E6%97%B6%E9%92%9FMMCM%E9%9B%86%E6%88%90%E6%8C%87%E5%8D%97.md">查看 Markdown</a></header><main><h1>ADC 时钟 MMCM 集成指南</h1>
+<ul>
+<li>源路径：<code>9_Firmware/9_2_FPGA/adc_clk_mmcm_integration.md</code>；SHA256：<code>b0a17d092de56a81938fbec072bab2dcd90321c2f33883b7129a38d7b4695f85</code>。</li>
+</ul>
+<p>原文：<code>9_Firmware/9_2_FPGA/adc_clk_mmcm_integration.md</code>。译文保留原文中的估计、建议及技术判断；其中数值和安全性论断不是本次验证结论。</p>
+<h2>概述</h2>
+<p><code>adc_clk_mmcm.v</code> 是可以直接替换使用的 MMCME2_ADV 封装，用于以降低抖动的 PLL 环路替换 400 MHz ADC 数据时钟输出上的直接 BUFG。</p>
+<h3>当前时钟路径（Build 18）</h3>
+<pre><code class="language-text">adc_dco_p/n → IBUFDS → BUFIO  （仅驱动 IDDR，延迟接近零）
+                      → BUFG   （驱动所有 400 MHz 可编程逻辑）
+</code></pre>
+<h3>新时钟路径（使用 MMCM）</h3>
+<pre><code class="language-text">adc_dco_p/n → IBUFDS → BUFIO  （保持不变，仅驱动 IDDR）
+                      → MMCME2 CLKIN1 → CLKOUT0 → BUFG  （400 MHz 可编程逻辑）
+                                      → CLKFBOUT → BUFG → CLKFBIN （反馈）
+</code></pre>
+<h2>预期时序改善</h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>之前（Build 18）</th>
+<th>之后（估计）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>输入抖动</td>
+<td>50 ps</td>
+<td>50 ps（不变）</td>
+</tr>
+<tr>
+<td>输出抖动（MMCM）</td>
+<td>不适用</td>
+<td>约 20–30 ps</td>
+</tr>
+<tr>
+<td>时钟不确定度</td>
+<td>43 ps</td>
+<td>约 25 ps</td>
+</tr>
+<tr>
+<td>WNS（建立时间，400 MHz）</td>
+<td>+0.062 ns</td>
+<td>约 +0.08 至 +0.10 ns</td>
+</tr>
+<tr>
+<td>WHS（保持时间，100 MHz）</td>
+<td>+0.059 ns</td>
+<td>不变</td>
+</tr>
+</tbody></table>
+<p>改善来自 Vivado 时序分析中时钟不确定度的降低。MMCM 的 PLL 环路衰减输入抖动，因此 Vivado 从时序预算中扣除的不确定度更少。</p>
+<h2>MMCM 配置</h2>
+<pre><code class="language-text">CLKIN1          = 400 MHz（2.500 ns）
+DIVCLK_DIVIDE   = 1
+CLKFBOUT_MULT_F = 2.0 → VCO = 800 MHz
+CLKOUT0_DIVIDE_F = 2.0 → 输出 = 400 MHz
+BANDWIDTH       = HIGH（最大抖动滤波）
+</code></pre>
+<p>800 MHz 的 VCO 频率处于 Artix-7 -2 速度等级的范围内（600–1200 MHz）。</p>
+<h2>资源开销</h2>
+<table>
+<thead>
+<tr>
+<th>资源</th>
+<th>数量</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MMCME2_ADV</td>
+<td>1</td>
+<td>原为 0/10，现在为 1/10</td>
+</tr>
+<tr>
+<td>BUFG</td>
+<td>+1（反馈）</td>
+<td>原为 4/32，现在为 5/32</td>
+</tr>
+<tr>
+<td>FF</td>
+<td>0</td>
+<td>不增加可编程逻辑寄存器</td>
+</tr>
+</tbody></table>
+<h2>集成步骤</h2>
+<h3>步骤 1：修改 <code>ad9484_interface_400m.v</code></h3>
+<p>用 <code>adc_clk_mmcm</code> 替换 BUFG 实例：</p>
+<pre><code class="language-verilog">// 删除这些行（65–69）：
+//   BUFG bufg_dco (
+//       .I(adc_dco),
+//       .O(adc_dco_buffered)
+//   );
+//   assign adc_dco_bufg = adc_dco_buffered;
+
+// 改为添加以下内容：
+wire mmcm_locked;
+wire adc_dco_mmcm;
+
+adc_clk_mmcm mmcm_inst (
+    .clk_in       (adc_dco),       // 来自 IBUFDS 输出
+    .reset_n      (reset_n),
+    .clk_400m_out (adc_dco_mmcm),  // 抑制抖动后的 400 MHz
+    .mmcm_locked  (mmcm_locked)
+);
+
+// 所有可编程逻辑均使用 MMCM 输出
+wire adc_dco_buffered = adc_dco_mmcm;
+assign adc_dco_bufg = adc_dco_buffered;
+</code></pre>
+<h3>步骤 2：根据 MMCM 锁定状态控制复位（推荐）</h3>
+<p>在 <code>ad9484_interface_400m.v</code> 中修改复位同步器，要求 MMCM 已锁定：</p>
+<pre><code class="language-verilog">// 将复位同步器的输入从以下内容：
+//   always @(posedge adc_dco_buffered or negedge reset_n) begin
+//       if (!reset_n)
+//           reset_sync_400m &lt;= 2&#39;b00;
+//       else
+//           reset_sync_400m &lt;= {reset_sync_400m[0], 1&#39;b1};
+//   end
+
+// 改成：
+wire reset_n_gated = reset_n &amp; mmcm_locked;
+
+always @(posedge adc_dco_buffered or negedge reset_n_gated) begin
+    if (!reset_n_gated)
+        reset_sync_400m &lt;= 2&#39;b00;
+    else
+        reset_sync_400m &lt;= {reset_sync_400m[0], 1&#39;b1};
+end
+</code></pre>
+<p>这可确保 400 MHz 时钟域在 MMCM 锁定、时钟稳定前始终处于复位状态。若不这样处理，上电后最初约 10 µs 内（MMCM 锁定前）可能出现带毛刺的时钟边沿。</p>
+<h3>步骤 3：添加约束文件</h3>
+<p>将 <code>constraints/adc_clk_mmcm.xdc</code> 添加到 Vivado 工程。取消约束的注释，并按实际实例层级调整路径。</p>
+<p>需要取消注释的关键约束：</p>
+<ol>
+<li><code>create_generated_clock</code>（或确认 Vivado 会自动创建）。</li>
+<li><code>adc_dco_p</code> 与 <code>clk_400m_mmcm</code> 之间的 <code>set_max_delay</code>。</li>
+<li><code>clk_400m_mmcm</code> 与其他时钟域之间的 <code>set_false_path</code>。</li>
+<li><code>LOCKED</code> 输出上的 <code>set_false_path</code>。</li>
+</ol>
+<h3>步骤 4：添加到构建脚本</h3>
+<p>在 Tcl 构建脚本中添加新源文件：</p>
+<pre><code class="language-tcl">read_verilog adc_clk_mmcm.v
+read_xdc constraints/adc_clk_mmcm.xdc
+</code></pre>
+<h3>步骤 5：验证</h3>
+<p>构建完成后：</p>
+<ol>
+<li>检查 <code>report_clocks</code>：应显示新的 MMCM 派生时钟。</li>
+<li>检查 <code>report_clock_interaction</code>：确认没有意外的跨域关系。</li>
+<li>检查 <code>adc_dco_p</code> / MMCM 时钟组的 WNS：应有所改善。</li>
+<li>硬件调试时在 ILA 中检查 MMCM 锁定状态。</li>
+</ol>
+<h2>BUFIO 兼容性说明</h2>
+<p>此次修改<strong>不影响</strong>用于 IDDR 采集的 BUFIO 路径。BUFIO 只驱动 IOB 原语（IDDR），不能经过 MMCM。BUFIO 继续使用原始 IBUFDS 输出，插入延迟接近零；对于源同步 DDR 采集，这种方式是正确的。</p>
+<p>从 BUFIO 时钟域到 BUFG 时钟域的重新寄存（<code>ad9484_interface_400m.v</code> 的第 105–108 行）现在由原始 <code>adc_dco_p</code> 时钟跨到 MMCM 派生时钟。由于两者频率一致，且 MMCM 锁定于输入时钟，原文认为这是安全的单寄存器传输。XDC 中的 <code>set_max_delay</code> 约束可确保 Vivado 对其验证。</p>
+<h2>仿真</h2>
+<p>在定义 <code>SIMULATION</code>（iverilog）时，模块直接透传时钟，并模拟约 4096 周期的锁定延迟。这与当前测试平台行为一致，无需修改任何测试平台。</p>
+<h2>回退</h2>
+<p>若要回退，只需恢复 <code>ad9484_interface_400m.v</code> 中原来的 BUFG，并从工程中移除 <code>adc_clk_mmcm.v</code> 与 <code>constraints/adc_clk_mmcm.xdc</code>。其他文件不受影响。</p>
+<h2>本次盘点核对注</h2>
+<p>当前源码已包含 <code>mmcm_inst</code>，200T 构建脚本已引用 MMCM 源文件与 XDC。上面的行号、资源量、抖动估计及跨域安全性说明属于原文内容；本次未执行 Vivado 或板上验证。</p>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AERIS-10 开源脉冲线性调频相控阵雷达</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="index.html">中文资料目录</a> · <a href="README%E5%8E%9F%E6%96%87%E8%AF%91%E6%96%87.md">查看 Markdown</a></header><main><h1>AERIS-10 开源脉冲线性调频相控阵雷达</h1>
+<p>原文：合并前的 <code>README.md</code>，英文快照保存在 <code>sources/README.en.md</code>，版本指纹见同目录 <code>源文件基线.json</code>。本文件翻译本轮起始版本，原文中的性能、完成状态、许可证解释及社区数据均为原作者陈述，未经本轮硬件实测或联网核实。原文型号 AERIS-10E 与 AERIS-10X 的混用予以保留。</p>
+<p>原文徽章：GitHub 星标、分叉、关注；软件 MIT；硬件 CERN-OHL-P；状态 Alpha；功能仍在开发；频率 10.5GHz；欢迎提交 PR。徽章对应的在线数据不在本次核查范围内。</p>
+<p>AERIS-10 是一个开源、低成本的 10.5 GHz 相控阵雷达系统，采用脉冲线性调频（LFM）调制。它提供两个版本，标称探测距离分别为 3 km 和 20 km，面向希望探索和试验相控阵雷达技术的研究人员、无人机开发者和资深软件定义无线电（SDR）爱好者。</p>
+<p><img src="../../8_Utils/Antenna_Array.jpg" alt="AERIS-10 天线阵列"></p>
+<h2>概述</h2>
+<p>AERIS-10 项目希望通过完全开源、模块化、可供修改的雷达系统，让更多人接触雷达技术。大学研究人员、无人机初创企业和高级创客可以用这个平台试验波束成形、脉冲压缩、多普勒处理和目标跟踪。</p>
+<h2>主要功能</h2>
+<ul>
+<li>开源硬件和软件：原文称提供完整的原理图、PCB 布局、固件和软件。</li>
+<li>两个版本：AERIS-10N（Nexus）采用 8×16 贴片天线阵列，标称距离 3 km；AERIS-10E（Extended）采用 32×16 介质填充缝隙波导阵列，标称距离 20 km。</li>
+<li>全电子波束转向：俯仰和方位方向均为 ±45°。</li>
+<li>高级信号处理：板载 FPGA 完成脉冲压缩、多普勒 FFT、MTI 和 CFAR。</li>
+<li>Python 图形界面：提供地图集成的用户界面。</li>
+<li>GPS/IMU 集成：实时位置与姿态修正。</li>
+<li>模块化设计：独立的电源管理、频率合成和射频电路板。</li>
+</ul>
+<h2>系统架构</h2>
+<p><img src="../../8_Utils/RADAR_V6_V2.png" alt="AERIS-10 系统框图"></p>
+<h3>硬件组成</h3>
+<p>电源管理板为各电子元件提供所需电压，并进行适当滤波和时序控制；时序由微控制器保证。</p>
+<p>频率合成板采用高性能、低抖动时钟发生器 AD9523-1，为接收和发射频率合成器 ADF4382、DAC、ADC 和 FPGA 提供相位对齐的参考时钟。</p>
+<p>主板包含以下部分：</p>
+<ul>
+<li>DAC：产生雷达线性调频信号。</li>
+<li>两个 LTC5552 微波混频器：完成上变频和中频下变频。</li>
+<li>四个四通道 ADAR1000 移相器：完成接收和发射链路波束成形。</li>
+<li>十六个 ADTR1107 前端芯片：兼用于接收链低噪声放大和发射链功率放大。</li>
+<li>XC7A50T FPGA：位于上游 FTG256 板，负责通过 DAC 产生 PLFM 线性调频信号、读取 ADC 原始数据、跨 FPGA/STM32/GUI 的混合自动增益控制（AGC）、I/Q 基带下变频、抽取、滤波、正向 FFT、脉冲压缩、多普勒/MTI/CFAR 处理和 USB 接口。</li>
+<li>STM32F746xx 微控制器：负责上电与断电时序（参见电源管理 Excel 表）、与 FPGA 通信及各外围器件的配置和连接。</li>
+</ul>
+<p>STM32 所管理的器件与功能包括：</p>
+<ul>
+<li>AD9523-1 时钟发生器。</li>
+<li>两个 ADF4382 频率合成器。</li>
+<li>四个四通道 ADAR1000 移相器，用于雷达脉冲时序。</li>
+<li>两个八通道 I²C ADC ADS7830：主板 U88 地址 0x48、U89 地址 0x4A，测量 16 个功放通道的静态电流 Idq。每个通道使用功放板上的 5 mΩ 分流电阻和主板上的 INA241A3 电流检测放大器（50 倍增益）。</li>
+<li>两个八通道 I²C DAC DAC5578：主板 U7 地址 0x48、U69 地址 0x49，控制 16 个功放通道的栅极电压 Vg；启动时通过闭环校准到目标 Idq。</li>
+<li>UM982 GPS 模块：用于界面地图居中及每次检测的位置标记。</li>
+<li>GY-85 IMU：修正目标坐标中的俯仰和横滚。</li>
+<li>BMP180 气压计、步进电机及射频开关。</li>
+<li>一个八通道 I²C ADC ADS7830（主板 U10）：读取八个热敏电阻进行温度监测；任一通道超过阈值时，通过单个 GPIO <code>EN_DIS_COOLING</code> 打开冷却风扇。</li>
+</ul>
+<p>十六块功率放大器板仅用于 AERIS-10E，使用 10 W 的 QPA2962 GaN 放大器以延长探测距离。</p>
+<p>天线阵列：AERIS-10N（Nexus）使用 8×16 贴片阵列；AERIS-10X（Extended，原文此处如此命名）使用 32×16 介质填充缝隙波导阵列。其他组件包括滑环、步进电机及其驱动器、冷却风扇和外壳。</p>
+<h3>处理流程</h3>
+<ol>
+<li>波形生成：DAC 产生 LFM 线性调频信号。</li>
+<li>上下变频：LTC5552 混频器完成频率转换。</li>
+<li>波束转向：ADAR1000 移相器控制 16 个阵元。</li>
+<li>FPGA 信号处理：采集 ADC 原始数据，进行 I/Q 基带下变频、CIC/FIR 抽取与滤波、脉冲压缩、多普勒 FFT、MTI 与 CFAR 检测。</li>
+<li>STM32 系统管理：电源时序、外设配置、GPS/IMU 集成、步进电机控制。</li>
+<li>Python GUI 可视化：实时目标绘图、地图集成和雷达控制界面。</li>
+</ol>
+<p>原文展示 V6 界面动画，但紧随其后的 HTML 注释写明：V6 已弃用，当前使用 V65 Tk 和 V7 PyQt6。本地动画见 <code>9_Firmware/9_3_GUI/GUI_V6.gif</code>。</p>
+<h2>技术规格</h2>
+<p>下表为原文规格，不能单独作为本轮验证结果。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>AERIS-10N（Nexus）</th>
+<th>AERIS-10X（Extended）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>频率</td>
+<td>10.5 GHz</td>
+<td>10.5 GHz</td>
+</tr>
+<tr>
+<td>最大距离</td>
+<td>3 km</td>
+<td>20 km</td>
+</tr>
+<tr>
+<td>天线</td>
+<td>8×16 贴片阵列</td>
+<td>32×16 缝隙波导</td>
+</tr>
+<tr>
+<td>波束转向</td>
+<td>电子扫描 ±45°</td>
+<td>电子扫描 ±45°</td>
+</tr>
+<tr>
+<td>机械扫描</td>
+<td>步进电机 360°</td>
+<td>步进电机 360°</td>
+</tr>
+<tr>
+<td>输出功率</td>
+<td>约 1 W×16</td>
+<td>10 W×16，GaN 放大器</td>
+</tr>
+<tr>
+<td>处理</td>
+<td>FPGA + STM32</td>
+<td>FPGA + STM32</td>
+</tr>
+</tbody></table>
+<h2>入门</h2>
+<h3>仓库文件存放规则</h3>
+<p>为保持仓库根目录整洁并便于查找产物，生成文件应放在以下位置：</p>
+<ul>
+<li>已发布、纳入版本控制、供 GitHub Pages 使用的报告放在 <code>docs/</code>，例如 <code>docs/AERIS_Simulation_Report_v2.pdf</code>。</li>
+<li>本地仿真生成结果放在被 Git 忽略的 <code>5_Simulations/generated/</code>，包括图表、场景输出和临时分析目录。</li>
+<li>本地 FPGA/Vivado 生成产物放在被 Git 忽略的 <code>9_Firmware/9_2_FPGA/reports/</code>，包括 VCD/VVP、临时 CSV 和本地报告快照。</li>
+<li>可复用、纳入版本控制的 FPGA 自动化脚本放在 <code>9_Firmware/9_2_FPGA/scripts/</code>，包括 TCL 流程及构建、上板辅助脚本。</li>
+</ul>
+<p>不要把生成产物留在仓库根目录。</p>
+<h3>前置条件</h3>
+<ul>
+<li>基本雷达原理知识。</li>
+<li>构建硬件时所需的 PCB 装配经验。</li>
+<li>GUI 软件需要 Python 3.8+（译注：<code>pyproject.toml</code> 实际声明 <code>&gt;=3.12</code>，要求不一致）。</li>
+<li>修改信号处理时需要 Vivado 等 FPGA 开发工具。</li>
+</ul>
+<h3>硬件装配</h3>
+<ol>
+<li>订购 PCB：制造输出位于 <code>4_Schematics and Boards Layout/4_7_Production Files/</code>。</li>
+<li>采购元件：BOM/CPL 与制造输出位于同一目录。</li>
+<li>装配：配合使用 <code>4_Schematics and Boards Layout/4_6_Schematics/</code> 中的原理图及上述制造文件；当前没有纳入版本控制的独立装配指南。</li>
+<li>天线：按目标版本选择合适的阵列文件。</li>
+<li>外壳：机械图纸当前位于 <code>8_Utils/Mechanical_Drawings/</code>。</li>
+</ol>
+<h2>许可证</h2>
+<p>以下为原文说明的翻译。仓库中的实际文本另见 <a href="Licence%E5%8E%9F%E6%96%87%E8%AF%91%E6%96%87.html">Licence 本地文本译文</a>；本次没有核实其是否与官方版本一致。</p>
+<p>项目开源，但硬件和软件采用不同许可证，以覆盖各自需要。</p>
+<h3>硬件文档</h3>
+<p>硬件设计文件，包括原理图与 PCB 布局、BOM、Gerber 与制造输出、机械图及外壳设计，采用 CERN 开放硬件许可证第 2 版宽松型（CERN-OHL-P）。</p>
+<p>原文称该硬件专用许可证明确界定“硬件”“文档”“产品”，包含面向贡献者和用户的专利保护，提供更强的责任限制（与高功率射频相关），并与 CERN、OSHWA 等开放硬件规范相符。</p>
+<p>原文称，可以使用、修改并销售基于这些设计的产品，条件是保留原版权声明、以同一许可证分发修改后的设计，并以源文件形式提供修改。</p>
+<h3>软件和固件</h3>
+<p>FPGA 代码（<code>9_Firmware/</code> 中的 VHDL/Verilog）、STM32 固件、Python GUI 与工具继续采用 MIT 许可证，以保留较大使用灵活性。</p>
+<h3>完整许可证文本</h3>
+<p>原文称完整 CERN-OHL-P 文本位于 <code>LICENSE</code> 文件；软件在没有其他声明时适用 MIT 条款。译注：本地实际文件名为 <code>Licence</code>，没有同名 <code>LICENSE</code> 文件。</p>
+<h3>为什么更改许可证</h3>
+<p>项目最初整体使用 MIT。社区（原文特别感谢 gmaynez）指出 MIT 缺少实体硬件所需的法律保护；原文称改用 CERN-OHL-P 可以在保留宽松精神的同时提供适当保护。</p>
+<h2>文档</h2>
+<p>完整文档位于 <code>docs/</code>，原文提供的发布地址为 <a href="https://NawfalMotii79.github.io/PLFM_RADAR/docs/">GitHub Pages</a>。</p>
+<ul>
+<li><a href="web/architecture.html">系统架构中文译文</a></li>
+<li><a href="web/implementation-log.html">实施日志中文译文</a></li>
+<li><a href="web/bring-up.html">硬件上板指南中文译文</a></li>
+<li><a href="web/reports.html">测试报告中文译文</a></li>
+<li><a href="web/release-notes.html">发布说明中文译文</a></li>
+</ul>
+<h2>参与贡献</h2>
+<p>欢迎贡献。仓库布局、分支流程和基本 PR 检查见 <a href="CONTRIBUTING%E5%8E%9F%E6%96%87%E8%AF%91%E6%96%87.html">贡献指南中文译文</a>。特别欢迎射频工程师审查设计并优化天线性能、FPGA 开发者优化信号处理链、软件开发者改进 Python GUI 和 SDK，以及大学研究人员、无人机企业和高级创客参与测试。</p>
+<h2>联系与合作</h2>
+<p>作者欢迎研究人员、工程师及潜在合作方的认真咨询，但因关注人数较多，不能保证回复每条消息。</p>
+<ul>
+<li>技术问题和缺陷报告：通过 <a href="https://github.com/NawfalMotii79/PLFM_RADAR/issues">GitHub issue</a> 提出，便于整个社区参与讨论。</li>
+<li>合作、许可及商业咨询：<code>nawfal.motii.33 [at] gmail [dot] com</code>。</li>
+</ul>
+<h2>赞助</h2>
+<p>原文列出 PCBWay 赞助商标志，本地图片见 <code>8_Utils/PCBWAY.jpg</code>。</p>
+<p>如果对开源雷达技术感兴趣，请为仓库点星。原文提醒：项目仍在积极开发，一些功能尚未完成；已知限制和后续功能见 issue 页面。</p>
+<h2>19,000 个星标 致谢</h2>
+<p>以下为原作者致谢文字的翻译，星标数量未作现时核实。</p>
+<p>这个项目始于摩洛哥的一间小工作室。今天，GitHub 上已有 19,000 名工程师为它点星。我深感荣幸。这说明开源雷达有价值，人们需要可负担的感知技术，工程师希望亲手构建，而不只是购买。感谢每一位点星、分叉、提出 issue、提交 PR 和分享项目的人。工作仍在继续。</p>
+<p>Nawfal Motii，ABAC INDUSTRY。原文网站：<a href="http://www.abacindustry.com">ABAC INDUSTRY</a>。</p>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

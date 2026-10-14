@@ -1,0 +1,325 @@
+﻿sheet,cell,original,中文,状态
+Feuil1,A1,BOARD,电路板,已翻译
+Feuil1,B1,COMPONENT,组件,已翻译
+Feuil1,C1,PART NUMBER,器件型号,已翻译
+Feuil1,D1,N°,编号,已翻译
+Feuil1,E1,VOLTAGE PINS,电源引脚,已翻译
+Feuil1,F1,RATING (V),额定电压范围（V）,已翻译
+Feuil1,G1,CURRENT (mA),电流（mA）,已翻译
+Feuil1,H1,SELECTED VOLTAGE (V),选定电压（V）,已翻译
+Feuil1,I1,VOLTAGE RAIL ,电源轨,已翻译
+Feuil1,J1,VOLTAGE RAIL AFTER BRANCHING AND FILTERING,分支及滤波后的电源轨,已翻译
+Feuil1,K1,ENABLE V,电压使能,已翻译
+Feuil1,L1,SEQUENCE,时序,已翻译
+Feuil1,A2,CLOCKS & FREQUENCY SYNTHESIZER BOARD,时钟与频率合成板,已翻译
+Feuil1,B2,OCXO,OCXO,型号/位号/数值/名称按原文保留
+Feuil1,C2,ECOC-2522-100.000-3FC,ECOC-2522-100.000-3FC,型号/位号/数值/名称按原文保留
+Feuil1,E2,VDD,VDD,型号/位号/数值/名称按原文保留
+Feuil1,F2,"[3,135-3,465]","[3,135-3,465]",型号/位号/数值/名称按原文保留
+Feuil1,I2,+3V3_XO,+3V3_XO,型号/位号/数值/名称按原文保留
+Feuil1,K2,NO,否,已翻译
+Feuil1,L2,NO,否,已翻译
+Feuil1,E3,VREF,VREF,型号/位号/数值/名称按原文保留
+Feuil1,H3,"3,3/2","3,3/2",型号/位号/数值/名称按原文保留
+Feuil1,I3,+3V3_XO,+3V3_XO,型号/位号/数值/名称按原文保留
+Feuil1,K3,NO,否,已翻译
+Feuil1,L3,NO,否,已翻译
+Feuil1,B4,XO,XO,型号/位号/数值/名称按原文保留
+Feuil1,C4,CCHD-957-100,CCHD-957-100,型号/位号/数值/名称按原文保留
+Feuil1,E4,VDD,VDD,型号/位号/数值/名称按原文保留
+Feuil1,F4,"[3-3,6]","[3-3,6]",型号/位号/数值/名称按原文保留
+Feuil1,I4,+3V3_XO,+3V3_XO,型号/位号/数值/名称按原文保留
+Feuil1,K4,NO,否,已翻译
+Feuil1,L4,NO,否,已翻译
+Feuil1,B5,VCXO,VCXO,型号/位号/数值/名称按原文保留
+Feuil1,C5,CVHD-950-100.000,CVHD-950-100.000,型号/位号/数值/名称按原文保留
+Feuil1,E5,VDD,VDD,型号/位号/数值/名称按原文保留
+Feuil1,F5,"[3-3,6]","[3-3,6]",型号/位号/数值/名称按原文保留
+Feuil1,I5,+3V3_XO,+3V3_XO,型号/位号/数值/名称按原文保留
+Feuil1,K5,NO,否,已翻译
+Feuil1,L5,NO,否,已翻译
+Feuil1,B6,CLOCK SYNTHESIZER,时钟合成器,已翻译
+Feuil1,C6,AD9523,AD9523,型号/位号/数值/名称按原文保留
+Feuil1,E6,"VDD3_REF, VDD3_PLL, VDD3_OUT","VDD3_REF, VDD3_PLL, VDD3_OUT",型号/位号/数值/名称按原文保留
+Feuil1,I6,+3V3_CLOCK,+3V3_CLOCK,型号/位号/数值/名称按原文保留
+Feuil1,K6,YES,是,已翻译
+Feuil1,L6," bring the 1.8 V supplies high and stable prior to or simultaneously with the 3.3 V supplies. It
+is recommended to hold the RESET pin low while both supply
+domains settle to ensure that the 3.3 V supplies do not lead the 1.8 V supplies",使 1.8 V 电源先于 3.3 V 电源达到稳定高电平，或同时达到稳定高电平。建议在两个电源域稳定期间保持 RESET 引脚为低电平，确保 3.3 V 电源不会先于 1.8 V 电源上电。,已翻译
+Feuil1,E7,VDD1.8_OUT,VDD1.8_OUT,型号/位号/数值/名称按原文保留
+Feuil1,I7,+1V8_CLOCK,+1V8_CLOCK,型号/位号/数值/名称按原文保留
+Feuil1,K7,YES,是,已翻译
+Feuil1,B8,LO,LO,型号/位号/数值/名称按原文保留
+Feuil1,C8,ADF4382,ADF4382,型号/位号/数值/名称按原文保留
+Feuil1,E8,V5_VCO,V5_VCO,型号/位号/数值/名称按原文保留
+Feuil1,F8,"[4,75-5,25]","[4,75-5,25]",型号/位号/数值/名称按原文保留
+Feuil1,I8,+5V0_LO,+5V0_LO,型号/位号/数值/名称按原文保留
+Feuil1,K8,NO,否,已翻译
+Feuil1,L8,NO,否,已翻译
+Feuil1,E9,V5_CAL,V5_CAL,型号/位号/数值/名称按原文保留
+Feuil1,F9,"[4,75-5,25]","[4,75-5,25]",型号/位号/数值/名称按原文保留
+Feuil1,I9,+5V0_LO,+5V0_LO,型号/位号/数值/名称按原文保留
+Feuil1,K9,NO,否,已翻译
+Feuil1,L9,NO,否,已翻译
+Feuil1,E10,V5_CP,V5_CP,型号/位号/数值/名称按原文保留
+Feuil1,F10,"[4,75-5,25]","[4,75-5,25]",型号/位号/数值/名称按原文保留
+Feuil1,I10,+5V0_LO,+5V0_LO,型号/位号/数值/名称按原文保留
+Feuil1,K10,NO,否,已翻译
+Feuil1,L10,NO,否,已翻译
+Feuil1,E11,V3V3_1,V3V3_1,型号/位号/数值/名称按原文保留
+Feuil1,F11,"[3,15-3,45]","[3,15-3,45]",型号/位号/数值/名称按原文保留
+Feuil1,I11,+3V3_LO_1,+3V3_LO_1,型号/位号/数值/名称按原文保留
+Feuil1,K11,NO,否,已翻译
+Feuil1,L11,NO,否,已翻译
+Feuil1,E12,V3V3_2,V3V3_2,型号/位号/数值/名称按原文保留
+Feuil1,F12,"[3,15-3,45]","[3,15-3,45]",型号/位号/数值/名称按原文保留
+Feuil1,I12,+3V3_LO_2,+3V3_LO_2,型号/位号/数值/名称按原文保留
+Feuil1,K12,NO,否,已翻译
+Feuil1,L12,NO,否,已翻译
+Feuil1,A13,MAIN BOARD,主板,已翻译
+Feuil1,B13,MICROCONTROLLER,微控制器,已翻译
+Feuil1,C13,STM32F746ZGT7,STM32F746ZGT7,型号/位号/数值/名称按原文保留
+Feuil1,E13,VCC,VCC,型号/位号/数值/名称按原文保留
+Feuil1,I13,+3V3,+3V3,型号/位号/数值/名称按原文保留
+Feuil1,K13,NO,否,已翻译
+Feuil1,L13,NO,否,已翻译
+Feuil1,B14,FPGA,FPGA,型号/位号/数值/名称按原文保留
+Feuil1,C14,XC7A50T-2FTG256,XC7A50T-2FTG256,型号/位号/数值/名称按原文保留
+Feuil1,E14,VCC0_BANK,VCC0_BANK,型号/位号/数值/名称按原文保留
+Feuil1,I14,+1V8_FPGA,+1V8_FPGA,型号/位号/数值/名称按原文保留
+Feuil1,K14,YES,是,已翻译
+Feuil1,E15,VCCO_O,VCCO_O,型号/位号/数值/名称按原文保留
+Feuil1,I15,+3V3_FPGA,+3V3_FPGA,型号/位号/数值/名称按原文保留
+Feuil1,K15,YES,是,已翻译
+Feuil1,L15,+1V0_FPGA,+1V0_FPGA,型号/位号/数值/名称按原文保留
+Feuil1,E16,"VCCBAT, VCCADC, VCCAUX","VCCBAT, VCCADC, VCCAUX",型号/位号/数值/名称按原文保留
+Feuil1,I16,+1V8_FPGA,+1V8_FPGA,型号/位号/数值/名称按原文保留
+Feuil1,K16,YES,是,已翻译
+Feuil1,L16,+1V8_FPGA,+1V8_FPGA,型号/位号/数值/名称按原文保留
+Feuil1,E17,"VCCBRAM, VCCINT","VCCBRAM, VCCINT",型号/位号/数值/名称按原文保留
+Feuil1,I17,+1V0_FPGA,+1V0_FPGA,型号/位号/数值/名称按原文保留
+Feuil1,K17,YES,是,已翻译
+Feuil1,L17,+3V3_FPGA,+3V3_FPGA,型号/位号/数值/名称按原文保留
+Feuil1,E18,VCCO_BANK x 3,VCCO_BANK x 3,型号/位号/数值/名称按原文保留
+Feuil1,I18,+3V3_FPGA,+3V3_FPGA,型号/位号/数值/名称按原文保留
+Feuil1,K18,YES,是,已翻译
+Feuil1,B19,DAC,DAC,型号/位号/数值/名称按原文保留
+Feuil1,C19,AD9708,AD9708,型号/位号/数值/名称按原文保留
+Feuil1,E19,AVDD,AVDD,型号/位号/数值/名称按原文保留
+Feuil1,F19,"[2,7-5,5]","[2,7-5,5]",型号/位号/数值/名称按原文保留
+Feuil1,I19,+3V3_AN,+3V3_AN,型号/位号/数值/名称按原文保留
+Feuil1,J19,+3V3_AN,+3V3_AN,型号/位号/数值/名称按原文保留
+Feuil1,K19,NO,否,已翻译
+Feuil1,L19,NO,否,已翻译
+Feuil1,E20,DVDD,DVDD,型号/位号/数值/名称按原文保留
+Feuil1,F20,"[2,7-5,5]","[2,7-5,5]",型号/位号/数值/名称按原文保留
+Feuil1,I20,+3V3_FPGA,+3V3_FPGA,型号/位号/数值/名称按原文保留
+Feuil1,K20,NO,否,已翻译
+Feuil1,L20,NO,否,已翻译
+Feuil1,B21,Mixer,混频器,已翻译
+Feuil1,C21,LTC5552,LTC5552,型号/位号/数值/名称按原文保留
+Feuil1,E21,VCC,VCC,型号/位号/数值/名称按原文保留
+Feuil1,F21,"[3,0-3,6]","[3,0-3,6]",型号/位号/数值/名称按原文保留
+Feuil1,I21,+3V3_AN,+3V3_AN,型号/位号/数值/名称按原文保留
+Feuil1,J21,+3V3_AN1_F |+3V3_AN2_F,+3V3_AN1_F |+3V3_AN2_F,型号/位号/数值/名称按原文保留
+Feuil1,K21,NO,否,已翻译
+Feuil1,L21,NO,否,已翻译
+Feuil1,B22,RF SWITCH,射频开关,已翻译
+Feuil1,C22,M3SWA2-34DR+,M3SWA2-34DR+,型号/位号/数值/名称按原文保留
+Feuil1,E22,VDD,VDD,型号/位号/数值/名称按原文保留
+Feuil1,F22,"[3,3-3,6]","[3,3-3,6]",型号/位号/数值/名称按原文保留
+Feuil1,I22,+3V4,+3V4,型号/位号/数值/名称按原文保留
+Feuil1,K22,NO,否,已翻译
+Feuil1,L22,NO,否,已翻译
+Feuil1,E23,VEE,VEE,型号/位号/数值/名称按原文保留
+Feuil1,F23,"[-3,6--3,3]","[-3,6--3,3]",型号/位号/数值/名称按原文保留
+Feuil1,I23,-3V4,-3V4,型号/位号/数值/名称按原文保留
+Feuil1,K23,NO,否,已翻译
+Feuil1,L23,NO,否,已翻译
+Feuil1,B24,OPAMP,运算放大器,已翻译
+Feuil1,C24,AD8352,AD8352,型号/位号/数值/名称按原文保留
+Feuil1,E24,VCC,VCC,型号/位号/数值/名称按原文保留
+Feuil1,F24,"[3-5,5]","[3-5,5]",型号/位号/数值/名称按原文保留
+Feuil1,I24,+5V0_0,+5V0_0,型号/位号/数值/名称按原文保留
+Feuil1,K24,NO,否,已翻译
+Feuil1,L24,NO,否,已翻译
+Feuil1,B25,ADC,ADC,型号/位号/数值/名称按原文保留
+Feuil1,C25,AD9484,AD9484,型号/位号/数值/名称按原文保留
+Feuil1,E25,AVDD,AVDD,型号/位号/数值/名称按原文保留
+Feuil1,F25,"[1,75-1,9]","[1,75-1,9]",型号/位号/数值/名称按原文保留
+Feuil1,I25,+1V8_CLOCK,+1V8_CLOCK,型号/位号/数值/名称按原文保留
+Feuil1,J25,+1V8_CLOCK_F,+1V8_CLOCK_F,型号/位号/数值/名称按原文保留
+Feuil1,K25,NO,否,已翻译
+Feuil1,L25,NO,否,已翻译
+Feuil1,E26,DRVDD,DRVDD,型号/位号/数值/名称按原文保留
+Feuil1,F26,"[1,75-1,9]","[1,75-1,9]",型号/位号/数值/名称按原文保留
+Feuil1,I26,+1V8_FPGA,+1V8_FPGA,型号/位号/数值/名称按原文保留
+Feuil1,K26,NO,否,已翻译
+Feuil1,L26,NO,否,已翻译
+Feuil1,B27,USB 3,USB 3,型号/位号/数值/名称按原文保留
+Feuil1,C27,FT601,FT601,型号/位号/数值/名称按原文保留
+Feuil1,E27,"VCCIO, VPLL, VPHY, VREGIN","VCCIO, VPLL, VPHY, VREGIN",型号/位号/数值/名称按原文保留
+Feuil1,I27,+3V3_FPGA,+3V3_FPGA,型号/位号/数值/名称按原文保留
+Feuil1,K27,NO,否,已翻译
+Feuil1,L27,NO,否,已翻译
+Feuil1,E28,VREGOUT -->  VCORE,VREGOUT -->  VCORE,型号/位号/数值/名称按原文保留
+Feuil1,I28,+1V8_FT,+1V8_FT,型号/位号/数值/名称按原文保留
+Feuil1,K28,NO,否,已翻译
+Feuil1,L28,NO,否,已翻译
+Feuil1,B29,PHASER,移相器,已翻译
+Feuil1,C29,ADAR1000,ADAR1000,型号/位号/数值/名称按原文保留
+Feuil1,E29,AVDD1,AVDD1,型号/位号/数值/名称按原文保留
+Feuil1,F29,"[-5--4,75]","[-5--4,75]",型号/位号/数值/名称按原文保留
+Feuil1,I29,-5V0_ADAR12 |-5V0_ADAR34,-5V0_ADAR12 |-5V0_ADAR34,型号/位号/数值/名称按原文保留
+Feuil1,K29,YES,是,已翻译
+Feuil1,L29,TX Power_up ,发射链上电,已翻译
+Feuil1,M29,RX Power-up,接收链上电,已翻译
+Feuil1,E30,AVDD3,AVDD3,型号/位号/数值/名称按原文保留
+Feuil1,F30,"[3,1-3,5]","[3,1-3,5]",型号/位号/数值/名称按原文保留
+Feuil1,I30,+3V3_ADAR12 | +3V3_ADAR34,+3V3_ADAR12 | +3V3_ADAR34,型号/位号/数值/名称按原文保留
+Feuil1,J30,+3V3_ADAR1_F | +3V3_ADAR2_F | +3V3_ADAR3_F | +3V3_ADAR4_F ,+3V3_ADAR1_F | +3V3_ADAR2_F | +3V3_ADAR3_F | +3V3_ADAR4_F ,型号/位号/数值/名称按原文保留
+Feuil1,L30,It is recommended to power up the AVDD3 pins (3.3 V) before or at the same time as the AVDD1 pin (−5 V),建议 AVDD3 引脚（3.3 V）先于 AVDD1 引脚（−5 V）上电，或同时上电。,已翻译
+Feuil1,L31,1. Connect all GND pins to ground.,1. 将所有 GND 引脚接地。,已翻译
+Feuil1,M31,1. Connect all GND pins to ground.,1. 将所有 GND 引脚接地。,已翻译
+Feuil1,B32,RF FRONT END,射频前端,已翻译
+Feuil1,C32,ADTR1107,ADTR1107,型号/位号/数值/名称按原文保留
+Feuil1,L32,2. Set the VDD_SW pin to 3.3 V.,2. 将 VDD_SW 引脚设为 3.3 V。,已翻译
+Feuil1,M32,2. Set the VDD_SW pin to 3.3 V.,2. 将 VDD_SW 引脚设为 3.3 V。,已翻译
+Feuil1,L33,3. Set the VSS_SW pin to −3.3 V.,3. 将 VSS_SW 引脚设为 −3.3 V。,已翻译
+Feuil1,M33,3. Set the VSS_SW pin to −3.3 V.,3. 将 VSS_SW 引脚设为 −3.3 V。,已翻译
+Feuil1,L34,4. Set the CTRL_SW pin to 0 V.,4. 将 CTRL_SW 引脚设为 0 V。,已翻译
+Feuil1,M34,4. Set the CTRL_SW pin to 3.3 V.,4. 将 CTRL_SW 引脚设为 3.3 V。,已翻译
+Feuil1,E35,VDD_LNA,VDD_LNA,型号/位号/数值/名称按原文保留
+Feuil1,I35,+3V3_ADTR,+3V3_ADTR,型号/位号/数值/名称按原文保留
+Feuil1,L35,5. Set the VGG_LNA pin to 0 V.,5. 将 VGG_LNA 引脚设为 0 V。,已翻译
+Feuil1,M35,5. Set the VGG_PA pin to −1.75 V.,5. 将 VGG_PA 引脚设为 −1.75 V。,已翻译
+Feuil1,E36,VGG_LNA,VGG_LNA,型号/位号/数值/名称按原文保留
+Feuil1,F36,ADAR1000 CON,ADAR1000 CON,型号/位号/数值/名称按原文保留
+Feuil1,L36,6. Set the VDD_LNA pin to 0 V.,6. 将 VDD_LNA 引脚设为 0 V。,已翻译
+Feuil1,M36,6. Set the VDD_PA pin to 0 V.,6. 将 VDD_PA 引脚设为 0 V。,已翻译
+Feuil1,E37,VSS_SW,VSS_SW,型号/位号/数值/名称按原文保留
+Feuil1,F37,"[-3,6-0,3]","[-3,6-0,3]",型号/位号/数值/名称按原文保留
+Feuil1,I37,-3V3_SW,-3V3_SW,型号/位号/数值/名称按原文保留
+Feuil1,L37,7. Set the VGG_PA pin to −1.75 V.,7. 将 VGG_PA 引脚设为 −1.75 V。,已翻译
+Feuil1,M37,7. Set the VGG_LNA pin to 0 V.,7. 将 VGG_LNA 引脚设为 0 V。,已翻译
+Feuil1,E38,VDD_SW,VDD_SW,型号/位号/数值/名称按原文保留
+Feuil1,F38,"[-0,3-3,6]","[-0,3-3,6]",型号/位号/数值/名称按原文保留
+Feuil1,I38,+3V3_VDD_SW,+3V3_VDD_SW,型号/位号/数值/名称按原文保留
+Feuil1,L38,8. Set the VDD_PA pin to 5 V.,8. 将 VDD_PA 引脚设为 5 V。,已翻译
+Feuil1,M38,8. Set the VDD_LNA pin to 3.3 V.,8. 将 VDD_LNA 引脚设为 3.3 V。,已翻译
+Feuil1,E39,VGG_PA,VGG_PA,型号/位号/数值/名称按原文保留
+Feuil1,F39,ADAR1000 CON,ADAR1000 CON,型号/位号/数值/名称按原文保留
+Feuil1,L39,9. Increase the VGG_PA voltage to achieve the desired IDQ_PA.,9. 提高 VGG_PA 电压，达到所需 IDQ_PA。,已翻译
+Feuil1,M39,9. Apply the RF signal to the ANT pin.,9. 向 ANT 引脚施加射频信号。,已翻译
+Feuil1,E40,VDD_PA,VDD_PA,型号/位号/数值/名称按原文保留
+Feuil1,F40,"[3.3-5,5]","[3.3-5,5]",型号/位号/数值/名称按原文保留
+Feuil1,I40,+5V0_PA_1 | +5V0_PA_2 | +5V0_PA_3,+5V0_PA_1 | +5V0_PA_2 | +5V0_PA_3,型号/位号/数值/名称按原文保留
+Feuil1,L40,10. Apply the RF signal to the TX_IN pin.,10. 向 TX_IN 引脚施加射频信号。,已翻译
+Feuil1,L41,TX Power_down,发射链断电,已翻译
+Feuil1,M41,RX Power_down,接收链断电,已翻译
+Feuil1,L42,1. Turn off the RF signal.,1. 关闭射频信号。,已翻译
+Feuil1,M42,1. Turn off the RF signal.,1. 关闭射频信号。,已翻译
+Feuil1,L43,2. Decrease the VGG_PA voltage to −1.75 V.,2. 将 VGG_PA 电压降低到 −1.75 V。,已翻译
+Feuil1,M43,2. Set the VDD_LNA pin to 0 V.,2. 将 VDD_LNA 引脚设为 0 V。,已翻译
+Feuil1,L44,3. Set the VDD_PA pin to 0 V.,3. 将 VDD_PA 引脚设为 0 V。,已翻译
+Feuil1,M44,3. Set the CTRL_SW pin to 0 V.,3. 将 CTRL_SW 引脚设为 0 V。,已翻译
+Feuil1,L45,4. Set the VSS_SW pin to 0 V.,4. 将 VSS_SW 引脚设为 0 V。,已翻译
+Feuil1,M45,4. Set the VSS_SW pin to 0 V.,4. 将 VSS_SW 引脚设为 0 V。,已翻译
+Feuil1,L46,5. Set the VDD_SW pin to 0 V.,5. 将 VDD_SW 引脚设为 0 V。,已翻译
+Feuil1,M46,5. Set the VDD_SW pin to 0 V.,5. 将 VDD_SW 引脚设为 0 V。,已翻译
+Feuil1,B47,IMU,IMU,型号/位号/数值/名称按原文保留
+Feuil1,C47,GY-85,GY-85,型号/位号/数值/名称按原文保留
+Feuil1,E47,Vcc,Vcc,型号/位号/数值/名称按原文保留
+Feuil1,I47,+3V3,+3V3,型号/位号/数值/名称按原文保留
+Feuil1,K47,NO,否,已翻译
+Feuil1,L47,NO,否,已翻译
+Feuil1,B48,Barometer,气压计,已翻译
+Feuil1,C48,BMP180,BMP180,型号/位号/数值/名称按原文保留
+Feuil1,E48,Vcc,Vcc,型号/位号/数值/名称按原文保留
+Feuil1,I48,+3V3,+3V3,型号/位号/数值/名称按原文保留
+Feuil1,K48,NO,否,已翻译
+Feuil1,B49,GPS,GPS,型号/位号/数值/名称按原文保留
+Feuil1,C49,NEO-6M,NEO-6M,型号/位号/数值/名称按原文保留
+Feuil1,E49,Vcc,Vcc,型号/位号/数值/名称按原文保留
+Feuil1,I49,+3V3,+3V3,型号/位号/数值/名称按原文保留
+Feuil1,K49,NO,否,已翻译
+Feuil1,L49,NO,否,已翻译
+Feuil1,B50,Temperature Sensor,温度传感器,已翻译
+Feuil1,C50,TMP37,TMP37,型号/位号/数值/名称按原文保留
+Feuil1,E50,Vs,Vs,型号/位号/数值/名称按原文保留
+Feuil1,F50,"[2,7-5,5]","[2,7-5,5]",型号/位号/数值/名称按原文保留
+Feuil1,I50,+3V3_AN,+3V3_AN,型号/位号/数值/名称按原文保留
+Feuil1,J50,+3V3_AN4_F,+3V3_AN4_F,型号/位号/数值/名称按原文保留
+Feuil1,K50,NO,否,已翻译
+Feuil1,L50,NO,否,已翻译
+Feuil1,B51,DAC PA,功放控制 DAC,已翻译
+Feuil1,C51,DAC5578,DAC5578,型号/位号/数值/名称按原文保留
+Feuil1,E51,Vcc,Vcc,型号/位号/数值/名称按原文保留
+Feuil1,F51,"[2,7-5]","[2,7-5]",型号/位号/数值/名称按原文保留
+Feuil1,I51,+3V3_AN,+3V3_AN,型号/位号/数值/名称按原文保留
+Feuil1,J51,+3V3_AN3_F,+3V3_AN3_F,型号/位号/数值/名称按原文保留
+Feuil1,K51,NO,否,已翻译
+Feuil1,L51,NO,否,已翻译
+Feuil1,B52,OPAMP PA,功放运算放大器,已翻译
+Feuil1,C52,OPA4703NA/250,OPA4703NA/250,型号/位号/数值/名称按原文保留
+Feuil1,E52,V+,V+,型号/位号/数值/名称按原文保留
+Feuil1,F52,[2-6],[2-6],型号/位号/数值/名称按原文保留
+Feuil1,I52,+5V5_PA,+5V5_PA,型号/位号/数值/名称按原文保留
+Feuil1,K52,YES,是,已翻译
+Feuil1,E53,V-,V-,型号/位号/数值/名称按原文保留
+Feuil1,F53,[-6--2],[-6--2],型号/位号/数值/名称按原文保留
+Feuil1,I53,-5V5_PA,-5V5_PA,型号/位号/数值/名称按原文保留
+Feuil1,K53,YES,是,已翻译
+Feuil1,B54,ADC PA & T°C Sensor,功放及温度传感器 ADC,已翻译
+Feuil1,C54,ADS7830,ADS7830,型号/位号/数值/名称按原文保留
+Feuil1,E54,VDD,VDD,型号/位号/数值/名称按原文保留
+Feuil1,F54,"[2,5-5]","[2,5-5]",型号/位号/数值/名称按原文保留
+Feuil1,I54,+3V3_AN,+3V3_AN,型号/位号/数值/名称按原文保留
+Feuil1,J54,+3V3_AN4_F,+3V3_AN4_F,型号/位号/数值/名称按原文保留
+Feuil1,K54,NO,否,已翻译
+Feuil1,L54,NO,否,已翻译
+Feuil1,E55,VREF,VREF,型号/位号/数值/名称按原文保留
+Feuil1,F55,"[2,5-5]","[2,5-5]",型号/位号/数值/名称按原文保留
+Feuil1,I55,+3V3,+3V3,型号/位号/数值/名称按原文保留
+Feuil1,K55,NO,否,已翻译
+Feuil1,L55,NO,否,已翻译
+Feuil1,B56,CURRENT SENSOR PA,功放电流检测器,已翻译
+Feuil1,C56,INA241A3,INA241A3,型号/位号/数值/名称按原文保留
+Feuil1,E56,VDD,VDD,型号/位号/数值/名称按原文保留
+Feuil1,F56,"[2,7-20]","[2,7-20]",型号/位号/数值/名称按原文保留
+Feuil1,I56,+3V3_AN,+3V3_AN,型号/位号/数值/名称按原文保留
+Feuil1,J56,+3V3_AN5_F | +3V3_AN6_F,+3V3_AN5_F | +3V3_AN6_F,型号/位号/数值/名称按原文保留
+Feuil1,K56,NO,否,已翻译
+Feuil1,L56,NO,否,已翻译
+Feuil1,A57,MICROWAVE POWER AMPLIFIER BOARD,微波功率放大器板,已翻译
+Feuil1,B57,RF POWER AMPLIFIER,射频功率放大器,已翻译
+Feuil1,C57,QPA2962,QPA2962,型号/位号/数值/名称按原文保留
+Feuil1,L57,Bias-up Procedure,偏置上电步骤,已翻译
+Feuil1,M57,Bias-Down Procedure,偏置断电步骤,已翻译
+Feuil1,L58,"Set ID limit to 2840 mA, IG limit to 10 mA",将 ID 限值设为 2840 mA，IG 限值设为 10 mA,已翻译
+Feuil1,M58,Turn off RF signal,关闭射频信号,已翻译
+Feuil1,E59,VD,VD,型号/位号/数值/名称按原文保留
+Feuil1,F59,[18-22],[18-22],型号/位号/数值/名称按原文保留
+Feuil1,I59,+22V0,+22V0,型号/位号/数值/名称按原文保留
+Feuil1,K59,YES,是,已翻译
+Feuil1,L59,Set VG to −4.0 V,将 VG 设为 −4.0 V,已翻译
+Feuil1,M59,Reduce VG to −4.0 V. Ensure IDQ ~ 0 mA,将 VG 降至 −4.0 V，确保 IDQ 约为 0 mA,已翻译
+Feuil1,E60,VG,VG,型号/位号/数值/名称按原文保留
+Feuil1,F60,"[-4--1,2]","[-4--1,2]",型号/位号/数值/名称按原文保留
+Feuil1,I60,DAC,DAC,型号/位号/数值/名称按原文保留
+Feuil1,K60,YES,是,已翻译
+Feuil1,L60,Set VD +22 V,将 VD 设为 +22 V,已翻译
+Feuil1,M60,Set VD to 0 V,将 VD 设为 0 V,已翻译
+Feuil1,L61,Adjust VG more positive until IDQ = 1680 mA,将 VG 向更正的方向调整，直至 IDQ = 1680 mA,已翻译
+Feuil1,M61,Turn off VD supply,关闭 VD 电源,已翻译
+Feuil1,L62,Apply RF signal ,施加射频信号,已翻译
+Feuil1,M62,Turn off VG supply,关闭 VG 电源,已翻译
+Feuil1,A63,MISCELLANEOUS,其他组件,已翻译
+Feuil1,B63,STEPPER MOTOR DRIVER,步进电机驱动器,已翻译
+Feuil1,C63,TBS6600,TBS6600,型号/位号/数值/名称按原文保留
+Feuil1,E63,VDD,VDD,型号/位号/数值/名称按原文保留
+Feuil1,F63,[9-42],[9-42],型号/位号/数值/名称按原文保留
+Feuil1,K63,NO,否,已翻译
+Feuil1,B64,COOLING SYSTEM,冷却系统,已翻译
+Feuil1,K64,YES,是,已翻译
+Feuil1,L64,Apply when temperature reaches a threshold (Relay),温度达到阈值时接通（继电器）,已翻译

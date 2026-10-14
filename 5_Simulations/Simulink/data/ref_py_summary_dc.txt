@@ -1,0 +1,13 @@
+scenario = dc
+n_adc_in   = 16384
+n_cic_out  = 4093
+n_fir_out  = 4087
+n_bb_out   = 4085
+fir_i[0:8] = [0, 0, 0, 0, 0, 0, 0, 0]
+fir_q[0:8] = [0, 0, 0, 0, 0, 0, -1, -1]
+fir_i[-4:] = [20, 21, 20, 20]
+fir_i nonzero count = 4073
+fir_i mean(last 1000) = 20.2000
+compare_dc.csv rows = 4086
+max|py_i - fir_i_raw| over first 4086 = 0
+py_i[0:8]  = [0, 0, 0, 0, 0, 0, 0, 0]

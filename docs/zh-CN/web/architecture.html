@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>架构与数据路径</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="../index.html">中文资料目录</a> · <a href="architecture.md">查看 Markdown</a></header><main><p>原文：<code>docs/architecture.html</code><br>原文 SHA256：<code>3364A2B0A1F94093F94CE5988D9AA36CF90903310555DEB66AE2E7C0DB1CD40D</code><br>翻译日期：2026-10-08。以下为原文全文中文译文；状态、数值及“当前”均转述原文，不代表本次新增测试或硬件验证。原文未标明页面发布日期。源文不一致项见<a href="%E5%AE%A1%E9%98%85%E5%8F%91%E7%8E%B0.html">审阅发现</a>。</p>
+<p>导航：<a href="index.html">AERIS-10 文档</a> · <a href="architecture.html">架构</a> · <a href="implementation-log.html">实现日志</a> · <a href="bring-up.html">上板调试</a> · <a href="reports.html">报告</a> · <a href="release-notes.html">发布说明</a></p>
+<h1>架构与数据路径</h1>
+<p>系统视图。</p>
+<p>当前 XC7A200T 实现及上板调试目标的硬件和固件结构。</p>
+<h2>顶层处理流程</h2>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>重点模块</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ADC 采集</td>
+<td>AD9484 接口 + CDC 边界</td>
+<td>400 MHz 采样时钟域，同步到处理流水线。</td>
+</tr>
+<tr>
+<td>DDC</td>
+<td>NCO + CIC + FIR</td>
+<td>I/Q 转换和抽取，生成可供基带处理的数据流。</td>
+</tr>
+<tr>
+<td>匹配滤波器</td>
+<td>基于 FFT 的处理链</td>
+<td>综合分支是硬件等效联合仿真的黄金参考。</td>
+</tr>
+<tr>
+<td>距离/多普勒</td>
+<td>距离单元抽取器 + 多普勒 FFT</td>
+<td>每帧 32 个 chirp、64 个距离单元，帧输出确定。</td>
+</tr>
+<tr>
+<td>主机路径</td>
+<td>FT601 接口</td>
+<td>USB 流式传输，上板调试中进行帧结构和长时间稳定性验证。</td>
+</tr>
+</tbody></table>
+<h2>当前目标拆分策略</h2>
+<ul>
+<li>生产目标仍为 <code>xc7a200t-2fbg484i</code>，使用完整板级约束。</li>
+<li>TE0712/TE0701 和 TE0713/TE0701 使用专用顶层封装和专用 XDC 文件。</li>
+<li>板卡专用引脚分配与核心 DSP 模块隔离，避免意外引入跨目标回归。</li>
+<li>上板调试从最小心跳顶层开始，然后逐步进入完整信号链验证。</li>
+</ul>
+<h2>参考框图</h2>
+<p><img src="../../assets/img/RADAR_V6.jpg" alt="AERIS-10 系统架构图"></p>
+<p>AERIS-10 项目架构的框图快照。</p>
+<p>架构随上板调试和集成里程碑完成而更新。</p>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>

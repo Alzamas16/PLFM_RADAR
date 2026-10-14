@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>本次固件检查记录</title><style>:root{color-scheme:light}body{margin:0;color:#182635;background:#f6f8fa;font:17px/1.8 system-ui,"Microsoft YaHei",sans-serif}header{padding:14px 5%;background:#123750;color:white}header a{color:white}main{max-width:1080px;margin:30px auto;padding:32px;background:white}h1,h2,h3{line-height:1.4;color:#123750}a{color:#005b93}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;margin:24px 0;width:100%}th,td{border:1px solid #cbd5df;padding:9px 12px;vertical-align:top}th{background:#eaf0f5}pre{background:#f0f3f6;padding:16px;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}blockquote{margin-left:0;padding-left:20px;border-left:3px solid #ccd5df}footer{font-size:14px;color:#566573;margin-top:40px}@media(max-width:700px){main{margin:0;padding:20px}body{font-size:16px}}</style></head><body><header><a href="../index.html">中文资料目录</a> · <a href="%E6%9C%AC%E6%AC%A1%E6%A3%80%E6%9F%A5%E8%AE%B0%E5%BD%95.md">查看 Markdown</a></header><main><h1>本次固件检查记录</h1>
+<p>日期：2026-10-08；平台：当前 Windows 工作区。</p>
+<h2>执行与观察</h2>
+<ul>
+<li>bundled Python：3.12.14；numpy 可导入。</li>
+<li><code>importlib.util.find_spec</code>：pytest、ruff、h5py、PyQt6 均不可用。</li>
+<li><code>Get-Command</code> 的 PATH 查询未找到 iverilog、gcc、make、vivado。</li>
+<li>没有安装额外依赖，没有执行 Vivado、RTL 回归、MCU 构建、跨层 pytest 或板上测试。</li>
+</ul>
+<p>实际命令：</p>
+<pre><code class="language-powershell"># 工作目录 D:/PhD_Prj_Main/PLFM_RADAR/9_Firmware/9_3_GUI
+&amp; &#39;C:/Users/chx_g/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe&#39; -B -m unittest test_GUI_V65_Tk test_v7 -q
+</code></pre>
+<p>工具返回退出码 1；输出结尾：</p>
+<pre><code class="language-text">Ran 174 tests in 4.107s
+FAILED (errors=3, skipped=5)
+</code></pre>
+<p>3 个错误：</p>
+<table>
+<thead>
+<tr>
+<th>测试</th>
+<th>抛错位置</th>
+<th>报错</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>test_get_frame_raw_iq_synthetic</code></td>
+<td><code>test_v7.py:827</code>，<code>os.unlink(tmp)</code></td>
+<td>PermissionError，WinError 32，临时 <code>.npy</code> 被占用</td>
+</tr>
+<tr>
+<td><code>test_load_raw_iq_synthetic</code></td>
+<td><code>test_v7.py:806</code>，<code>os.unlink(tmp)</code></td>
+<td>同上</td>
+</tr>
+<tr>
+<td><code>test_raw_iq_no_fpga_raises</code></td>
+<td><code>test_v7.py:843</code>，<code>os.unlink(tmp)</code></td>
+<td>同上</td>
+</tr>
+</tbody></table>
+<p>测试程序创建的临时 <code>.npy</code> 位于系统 Temp；出错后未人工删除。测试自身包含临时文件清理代码，实际失败与 Windows 文件占用有关。没有针对本项目改写或绕过测试。</p>
+<p>166 个测试正常结束是由 <code>174 - 3 - 5</code> 得出的汇总；3 个为 error 而非断言 failure。这里保留两者区别，不称整套测试通过。5 个跳过的逐项名称没有由 <code>-q</code> 输出，因此本次不凭推测补写名单。</p>
+<footer>本地中文对照 · 2026-10-08。原文中的历史测试与性能不代表本轮硬件验证。</footer></main></body></html>
